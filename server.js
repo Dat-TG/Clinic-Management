@@ -42,19 +42,7 @@ app.set('views', path.join(__dirname, '/views'))
 
 
 app.use('/', async(req, res, next) => {
-    const DrugsM=require('./model/Drugs.m');
-    const rs=await DrugsM.getAll();
-    let list=rs.map((item)=>{
-        return {
-            ID:item.ID,
-            Name: item.Name,
-            Chemicals:item.Chemicals,
-            Unit:item.Unit,
-            Price:item.Price,
-            Uses:item.Uses
-        };
-    })
-    res.render('home',{list:list});
+    res.render('register');
 });
 
 
