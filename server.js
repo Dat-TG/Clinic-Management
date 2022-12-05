@@ -17,7 +17,7 @@ app.use(session({
 
 
 //Router and model
-
+const RegisterRouter=require('./routers/register.r');
 
 //Use static resources
 app.use(express.static(path.join(__dirname, '/public')))
@@ -41,8 +41,12 @@ app.set('view engine', 'hbs')
 app.set('views', path.join(__dirname, '/views'))
 
 
+//Route
+
+app.use('/dang-ky-tai-khoan',RegisterRouter);
+
 app.use('/', async(req, res, next) => {
-    res.render('register');
+    res.render('login');
 });
 
 

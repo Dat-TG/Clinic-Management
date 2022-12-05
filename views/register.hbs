@@ -11,16 +11,18 @@ Nếu có dùng Bootstrap thì dùng Bootstrap 5.0-->
           <div class="card-body p-4 p-md-5">
             <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2">Đăng ký tài khoản</h3>
 
-            <form class="px-md-2">
+            <form class="px-md-2" action="/dang-ky-tai-khoan" method="POST">
               {{!-- Username input --}}
               <div class="form-outline mb-4">
-                <input type="text" id="username" class="form-control" />
+                <input type="text" id="username" class="form-control" name="Username" value="{{user.Username}}" required/>
                 <label class="form-label" for="username">Username</label>
               </div>
 
+              <p class="text-danger {{display}}">Username existed</p>
+
               {{!-- Name input --}}
               <div class="form-outline mb-4">
-                <input type="text" id="name" class="form-control" />
+                <input type="text" id="name" class="form-control" name="Name" value="{{user.Name}}" required/>
                 <label class="form-label" for="name">Họ và tên</label>
               </div>
 
@@ -28,7 +30,7 @@ Nếu có dùng Bootstrap thì dùng Bootstrap 5.0-->
                 <div class="col-md-6 mt-2 mb-2">
                   {{!-- Date of birth input --}}
                   <div class="form-outline datepicker">
-                    <input type="date" class="form-control" id="date-of-birth" />
+                    <input type="date" class="form-control" id="date-of-birth" name="DOB" value="{{user.DOB}}" required/>
                     <label for="date-of-birth" class="form-label">Ngày sinh</label>
                   </div>
 
@@ -37,10 +39,10 @@ Nếu có dùng Bootstrap thì dùng Bootstrap 5.0-->
                     {{!-- Sex input --}}
                     <label class="form-label" for="sex">Giới tính</label>
                     <div class="d-flex">
-                        <input class="form-check-input" type="radio" name="gioi-tinh" id="male">
+                        <input class="form-check-input" type="radio" name="Gender" id="male" value="Nam">
                         <label style="margin-left: 4px;" class="form-check-label" for="male">
                         Nam
-                        <input style="margin-left: 20px;" class="form-check-input" type="radio" name="gioi-tinh" id="female">
+                        <input style="margin-left: 20px;" class="form-check-input" type="radio" name="Gender" id="female" value="Nữ">
                         <label class="form-check-label" for="female">
                         Nữ
                     </div>
@@ -49,32 +51,32 @@ Nếu có dùng Bootstrap thì dùng Bootstrap 5.0-->
               
               {{!-- Phone number input --}}
               <div class="form-outline mb-4">
-                <input type="text" id="phone-number" class="form-control" />
+                <input type="text" id="phone-number" class="form-control" name="Phone" value="{{user.Phone}}" required/>
                 <label class="form-label" for="phone-number">Số điện thoại</label>
               </div>
 
               {{!-- Email input --}}
               <div class="form-outline mb-4">
-                <input type="email" id="email" class="form-control" />
+                <input type="email" id="email" class="form-control" name="Email" value="{{user.Email}}"/>
                 <label class="form-label" for="email">Email</label>
               </div>
 
               {{!-- Address input --}}
               <div class="form-outline mb-4">
-                <input type="text" id="address" class="form-control" />
+                <input type="text" id="address" class="form-control" name="Address" value="{{user.Address}}" required/>
                 <label class="form-label" for="address">Địa chỉ</label>
               </div>
 
               {{!-- Password input --}}
               <div class="form-outline mb-4">
-                <input type="password" id="password" class="form-control" />
+                <input type="password" id="password" class="form-control" name="Password" value="{{user.Password}}" required/>
                 <label class="form-label" for="password">Mật khẩu</label>
               </div>
 
               {{!-- Confirm password input --}}
               <div class="form-outline mb-4">
-                <input type="password" id="confirm-password" class="form-control" />
-                <label class="form-label" for="confirm-password">Xác nhận mật khẩu</label>
+                <input type="password" id="retype_password" class="form-control" name="Retype" value="{{user.Retype}}" required/>
+                <label class="form-label" for="retype_password">Xác nhận mật khẩu</label>
               </div>
 
               {{!-- Button submit --}}
