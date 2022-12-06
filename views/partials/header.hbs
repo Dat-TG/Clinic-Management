@@ -19,7 +19,14 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Tìm kiếm</a>
+                        <a class="nav-link" data-mdb-toggle="dropdown" aria-expanded="false"
+                            href="#">Tìm kiếm</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/tim-kiem/thuoc">Thuốc</a></li>
+                            <li><a class="dropdown-item" href="#">Bác sĩ</a></li>
+                            <li><a class="dropdown-item" href="#">Dịch vụ</a></li>
+                            <li><a class="dropdown-item" href="#">Hồ sơ bệnh án</a></li>
+                        </ul>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Chỉnh sửa</a>
@@ -30,7 +37,8 @@
                 </ul>
             </div>
             <form class="d-flex input-group w-auto ms-lg-3 my-3 my-lg-0">
-                <input type="search" class="form-control me-4 rounded" placeholder="Tìm kiếm nhanh" aria-label="Search" style="min-width: 155px;"/>
+                <input type="search" class="form-control me-4 rounded" placeholder="Tìm kiếm nhanh" aria-label="Search"
+                    style="min-width: 155px;" />
                 <button class="btn btn-primary me-4 rounded" type="button" style="min-width: 120px;">
                     Tìm kiếm
                 </button>

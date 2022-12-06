@@ -1,0 +1,35 @@
+<div class="container">
+<table id="example" class="table table-striped" style="width:100%;background-color: aliceblue;">
+        <thead>
+            <tr>
+                <th>Tên thuốc</th>
+                <th>Đơn vị tính</th>
+                <th>Đơn giá</th>
+                <th>Số lượng</th>
+                <th>Hoạt chất</th>
+                <th>Công dụng chính</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each drugs}}
+            <tr>
+                <td>{{Name}}</td>
+                <td>{{Unit}}</td>
+                <td>{{Price}}</td>
+                <td>{{Quantity}}</td>
+                <td>{{Chemicals}}</td>
+                <td>{{Uses}}</td>
+            </tr>
+            {{/each}}
+        <tfoot>
+            <tr>
+                <th>Tên thuốc</th>
+                <th>Đơn vị tính</th>
+                <th>Đơn giá</th>
+                <th>Số lượng</th>
+                <th>Hoạt chất</th>
+                <th>Công dụng chính</th>
+            </tr>
+        </tfoot>
+    </table>
+</div>
