@@ -19,6 +19,7 @@ app.use(session({
 //Router and model
 const RegisterRouter=require('./routers/register.r');
 const LoginRouter=require('./routers/login.r');
+const LogoutRouter=require('./routers/logout.r');
 
 //Use static resources
 app.use(express.static(path.join(__dirname, '/public')))
@@ -46,6 +47,7 @@ app.set('views', path.join(__dirname, '/views'))
 
 app.use('/dang-ky-tai-khoan',RegisterRouter);
 app.use('/dang-nhap',LoginRouter);
+app.use('/dang-xuat',LogoutRouter);
 
 app.use('/', async(req, res, next) => {
     if (req.session.Username) {
