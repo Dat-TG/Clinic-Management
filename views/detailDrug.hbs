@@ -1,0 +1,19 @@
+<div class="card mb-3 mt-3 ms-auto me-auto text-dark" style="max-width: 720px;background-color: aliceblue;">
+    <div class="row g-0 d-flex flex-row align-items-center">
+        <div class="col-md-4 text-center">
+            <img src="/img/drug.png" style="max-width: 200px;">
+        </div>
+        <div class="col-md-8">
+            <div class="card-body mt-auto mb-auto">
+                <h5 class="card-title mt-4 mb-4"> {{data.Name}}</h5>
+                <p><b>Hoạt chất:</b> {{data.Chemicals}}</p>
+                <p><b>Đơn vị tính:</b> {{data.Unit}}</p>
+                <p><b>Đơn giá:</b> {{data.Price}}</p>
+                <p><b>Số lượng:</b> {{data.Quantity}}</p>
+                <p><b>Công dụng:</b> {{data.Uses}}</p>
+                <p><b>Hình ảnh:</b><a href="{{data.href}}" target="blank"> nhấn vào đây</a></p>
+                <p><b>Mua sắm:</b><a href="{{data.shop}}" target="blank"> nhấn vào đây</a></p>
+            </div>
+        </div>
+    </div>
+</div>

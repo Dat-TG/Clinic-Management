@@ -21,6 +21,7 @@ const RegisterRouter=require('./routers/register.r');
 const LoginRouter=require('./routers/login.r');
 const LogoutRouter=require('./routers/logout.r');
 const SearchRouter=require('./routers/search.r');
+const DetaiDrugRouter=require('./routers/detail-drug.r');
 
 //Use static resources
 app.use(express.static(path.join(__dirname, '/public')))
@@ -50,6 +51,8 @@ app.use('/dang-ky-tai-khoan',RegisterRouter);
 app.use('/dang-nhap',LoginRouter);
 app.use('/dang-xuat',LogoutRouter);
 app.use('/tim-kiem',SearchRouter);
+app.use('/thuoc',DetaiDrugRouter);
+
 
 app.use('/', async(req, res, next) => {
     if (req.session.Username) {
