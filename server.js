@@ -18,6 +18,7 @@ app.use(session({
 
 //Router and model
 const RegisterRouter=require('./routers/register.r');
+const LoginRouter=require('./routers/login.r');
 
 //Use static resources
 app.use(express.static(path.join(__dirname, '/public')))
@@ -44,9 +45,15 @@ app.set('views', path.join(__dirname, '/views'))
 //Route
 
 app.use('/dang-ky-tai-khoan',RegisterRouter);
+app.use('/dang-nhap',LoginRouter);
 
 app.use('/', async(req, res, next) => {
-    res.render('login');
+    if (req.session.Username) {
+        res.render('home', { display1: "d-none", display2: "d-block"});
+    }
+    else {
+        res.render('home', { display1: "d-block", display2: "d-none"});
+    }
 });
 
 

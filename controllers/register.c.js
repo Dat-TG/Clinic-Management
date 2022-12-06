@@ -17,8 +17,13 @@ exports.writeDB=async(req, res, next)=>{
         const pwHashed=CryptoJS.SHA3(pwSalt, {outputLength:hashLength*4}).toString(CryptoJS.enc.Hex);
         user.Password=pwHashed+salt;
         const rs=await userM.getMaxID();
-        var ID=parseInt(parseInt(rs[0].ID)+1);
-        user.ID=ID.toString();
+        if (rs.length==0) {
+            user.ID="1";
+        }
+        else {
+            var ID=parseInt(parseInt(rs[0].ID)+1);
+            user.ID=ID.toString();
+        }
         user.DOB=new Date(user.DOB);
         userM.getByUsername(user.Username).then(rs=>{
             if (rs.length==0) {
