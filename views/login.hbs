@@ -12,16 +12,16 @@
             <form class="px-md-2" action="/dang-nhap" method="POST">
               {{!-- Username input --}}
               <div class="form-outline mb-4">
-                <input type="text" id="Username" class="form-control" name="Username" value="{{Username}}" required/>
-                <label class="form-label" for="Username">Username</label>
+                <input type="text" id="username" class="form-control" name="Username" value="{{Username}}" required/>
+                <label class="form-label" for="username">Username</label>
               </div>
 
                <p class="text-danger d-{{errWrongUsername}}">Username does not exists</p>
 
               {{!-- Password input --}}
               <div class="form-outline mb-4">
-                <input type="password" id="Password" class="form-control" value="{{Password}}" name="Password" required/>
-                <label class="form-label" for="Password">Mật khẩu</label>
+                <input type="password" id="password" class="form-control" value="{{Password}}" name="Password" required/>
+                <label class="form-label" for="password">Mật khẩu</label>
               </div>
 
                <p class="text-danger d-{{errWrongPassword}}">Wrong password</p>
