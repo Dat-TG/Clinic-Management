@@ -13,8 +13,8 @@
         </thead>
         <tbody>
             {{#each drugs}}
-            <tr onclick="window.location='/thuoc/{{Name}}'">
-                <td>{{Name}}</td>
+            <tr>
+                <td><a href="/thuoc/{{Name}}">{{Name}}</a></td>
                 <td>{{Unit}}</td>
                 <td>{{Price}}</td>
                 <td>{{Quantity}}</td>

@@ -1,0 +1,30 @@
+<div class="container">
+<h3 class="text-center mt-2"><b>DANH SÁCH BÁC SĨ</b></h3>
+<table id="example" class="table table-striped" style="width:100%;background-color: aliceblue;">
+        <thead>
+            <tr>
+                <th>Tên bác sĩ</th>
+                <th>Chuyên khoa</th>
+                <th>Điện thoại</th>
+                <th>Học vị</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each doctors}}
+            <tr>
+                <td><a href="/bac-si/{{ID}}-{{Name}}">{{Name}}</a></td>
+                <td>{{Specialist}}</td>
+                <td>{{Phone}}</td>
+                <td>{{Title}}</td>
+            </tr>
+            {{/each}}
+        <tfoot>
+            <tr>
+                <th>Tên bác sĩ</th>
+                <th>Chuyên khoa</th>
+                <th>Điện thoại</th>
+                <th>Học vị</th>
+            </tr>
+        </tfoot>
+    </table>
+</div>
