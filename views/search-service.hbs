@@ -1,0 +1,27 @@
+<div class="container">
+<h3 class="text-center mt-2"><b>BẢNG GIÁ DỊCH VỤ</b></h3>
+<table id="example" class="table table-striped" style="width:100%;background-color: aliceblue;">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Tên dịch vụ</th>
+                <th>Giá</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each services}}
+            <tr>
+                <td>{{ID}}</td>
+                <td>{{ServiceName}}</td>
+                <td>{{Price}}</td>
+            </tr>
+            {{/each}}
+        <tfoot>
+            <tr>
+                <th>ID</th>
+                <th>Tên dịch vụ</th>
+                <th>Giá</th>
+            </tr>
+        </tfoot>
+    </table>
+</div>
