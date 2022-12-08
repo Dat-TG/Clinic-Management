@@ -1,0 +1,77 @@
+<section class="h-100 h-custom" style="background-image:linear-gradient(114.08deg, #BDD65A 51.97%, rgba(34, 198, 119, 0.59) 104.26%, rgba(223, 0, 0, 0.69) 104.27%, rgba(125, 96, 138, 0.208333) 104.28%);">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-lg-8 col-xl-6">
+        <div class="card rounded-3">
+          <div class="card-body p-4 p-md-5">
+            <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2">Sửa thông tin cá nhân</h3>
+
+            <form class="px-md-2" action="/dang-ky-tai-khoan" method="POST">
+              {{!-- Username input --}}
+              <div class="form-outline mb-4">
+                <input type="text" id="username" class="form-control" name="Username" value="{{user.Username}}" required/>
+                <label class="form-label" for="username">Username</label>
+              </div>
+
+              <p class="text-danger {{display}}">Username existed</p>
+
+              {{!-- Name input --}}
+              <div class="form-outline mb-4">
+                <input type="text" id="name" class="form-control" name="Name" value="{{user.Name}}" required/>
+                <label class="form-label" for="name">Họ và tên</label>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 mt-2 mb-2">
+                  {{!-- Date of birth input --}}
+                  <div class="form-outline datepicker">
+                    <input type="date" class="form-control" id="date-of-birth" name="DOB" value="{{user.DOB}}" required/>
+                    <label for="date-of-birth" class="form-label">Ngày sinh</label>
+                  </div>
+
+                </div>
+                <div class="col-md-4 mb-4">
+                    {{!-- Sex input --}}
+                    <label class="form-label" for="sex">Giới tính</label>
+                    <div class="d-flex">
+                        <input class="form-check-input" type="radio" name="Gender" id="male" value="Nam">
+                        <label style="margin-left: 4px;" class="form-check-label" for="male">
+                        Nam
+                        <input style="margin-left: 20px;" class="form-check-input" type="radio" name="Gender" id="female" value="Nữ">
+                        <label class="form-check-label" for="female">
+                        Nữ
+                    </div>
+                </div>
+              </div>
+              
+              {{!-- Phone number input --}}
+              <div class="form-outline mb-4">
+                <input type="text" id="phone-number" class="form-control" name="Phone" value="{{user.Phone}}" required/>
+                <label class="form-label" for="phone-number">Số điện thoại</label>
+              </div>
+
+              {{!-- Email input --}}
+              <div class="form-outline mb-4">
+                <input type="email" id="email" class="form-control" name="Email" value="{{user.Email}}"/>
+                <label class="form-label" for="email">Email</label>
+              </div>
+
+              {{!-- Address input --}}
+              <div class="form-outline mb-4">
+                <input type="text" id="address" class="form-control" name="Address" value="{{user.Address}}" required/>
+                <label class="form-label" for="address">Địa chỉ</label>
+              </div>
+
+              {{!-- Button submit --}}
+              <div class="d-grid gap-2 d-md-flex justify-content-center">
+                <button type="submit" class="btn btn-success btn-lg mb-4">Lưu</button>
+                <button type="button" class="btn btn-danger btn-lg mb-4" style="margin-left: 20px;">Hủy</button>
+              </div>
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
