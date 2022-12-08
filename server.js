@@ -23,6 +23,7 @@ const LogoutRouter=require('./routers/logout.r');
 const SearchRouter=require('./routers/search.r');
 const DetaiDrugRouter=require('./routers/detail-drug.r');
 const ProfileRouter=require('./routers/profile.r');
+const DetailDoctorRouter=require('./routers/detail-doctor.r');
 
 //Use static resources
 app.use(express.static(path.join(__dirname, '/public')))
@@ -54,6 +55,7 @@ app.use('/dang-xuat',LogoutRouter);
 app.use('/tim-kiem',SearchRouter);
 app.use('/thuoc',DetaiDrugRouter);
 app.use('/tai-khoan',ProfileRouter);
+app.use('/bac-si',DetailDoctorRouter);
 
 
 app.use('/', async(req, res, next) => {
