@@ -19,7 +19,11 @@ module.exports = {
         return rs;
     },
     getMaxID: async()=>{
-        const rs=db.collection('Users').find({}).sort("ID",-1).limit(1).toArray();
+        const rs=await db.collection('Users').find({}).sort("ID",-1).limit(1).toArray();
+        return rs;
+    },
+    getAll: async()=> {
+        const rs=await db.collection('Users').find({}).toArray();
         return rs;
     }
 }

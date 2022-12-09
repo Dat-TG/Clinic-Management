@@ -1,0 +1,36 @@
+<div class="container">
+<h3 class="text-center mt-2"><b>DANH SÁCH BỆNH NHÂN</b></h3>
+<table id="example" class="table table-striped" style="width:100%;background-color: aliceblue;">
+        <thead>
+            <tr>
+                <th>Họ tên</th>
+                <th>Ngày sinh</th>
+                <th>Giới tính</th>
+                <th>Điện thoại</th>
+                <th>Email</th>
+                <th>Địa chỉ</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each patients}}
+            <tr>
+                <td><a href="/benh-nhan/{{Username}}">{{Name}}</a></td>
+                <td>{{DOB}}</td>
+                <td>{{Gender}}</td>
+                <td>{{Phone}}</td>
+                <td>{{Email}}</td>
+                <td>{{Address}}</td>
+            </tr>
+            {{/each}}
+        <tfoot>
+            <tr>
+                <th>Họ tên</th>
+                <th>Ngày sinh</th>
+                <th>Giới tính</th>
+                <th>Điện thoại</th>
+                <th>Email</th>
+                <th>Địa chỉ</th>
+            </tr>
+        </tfoot>
+    </table>
+</div>
