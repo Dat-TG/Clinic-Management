@@ -25,6 +25,8 @@ const DetaiDrugRouter=require('./routers/detail-drug.r');
 const ProfileRouter=require('./routers/profile.r');
 const DetailDoctorRouter=require('./routers/detail-doctor.r');
 
+const doctorM=require('./model/Doctors.m');
+
 //Use static resources
 app.use(express.static(path.join(__dirname, '/public')))
 
@@ -59,11 +61,12 @@ app.use('/bac-si',DetailDoctorRouter);
 
 
 app.use('/', async(req, res, next) => {
+    const doctors=await doctorM.getAll();
     if (req.session.Username) {
-        res.render('home', { display1: "d-none", display2: "d-block"});
+        res.render('home', { display1: "d-none", display2: "d-block", doctors:doctors});
     }
     else {
-        res.render('home', { display1: "d-block", display2: "d-none"});
+        res.render('home', { display1: "d-block", display2: "d-none", doctors:doctors});
     }
 });
 

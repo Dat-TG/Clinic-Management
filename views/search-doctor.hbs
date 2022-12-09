@@ -4,6 +4,7 @@
         <thead>
             <tr>
                 <th>Tên bác sĩ</th>
+                <th>Giới tính</th>
                 <th>Chuyên khoa</th>
                 <th>Điện thoại</th>
                 <th>Học vị</th>
@@ -13,6 +14,7 @@
             {{#each doctors}}
             <tr>
                 <td><a href="/bac-si/{{ID}}-{{Name}}">{{Name}}</a></td>
+                <td>{{Gender}}</td>
                 <td>{{Specialist}}</td>
                 <td>{{Phone}}</td>
                 <td>{{Title}}</td>
@@ -21,6 +23,7 @@
         <tfoot>
             <tr>
                 <th>Tên bác sĩ</th>
+                <th>Giới tính</th>
                 <th>Chuyên khoa</th>
                 <th>Điện thoại</th>
                 <th>Học vị</th>

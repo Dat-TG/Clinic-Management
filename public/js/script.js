@@ -1,4 +1,5 @@
 $(function () {
+    "use strict";
     $("#name").on('input', function () {
         var ok = checkUpperCase($(this).val());
         if (ok == 1) {
@@ -51,13 +52,88 @@ $(function () {
             $("#retype_password").get(0).reportValidity();
         }
     });
-    var table = $('#example').DataTable( {
+    var table = $('#example').DataTable({
         lengthChange: false,
-        buttons: [ 'copy', 'excel', 'pdf', 'colvis' ]
-    } );
- 
+        buttons: ['copy', 'excel', 'pdf', 'colvis']
+    });
+
     table.buttons().container()
-        .appendTo( '#example_wrapper .col-md-6:eq(0)' );
+        .appendTo('#example_wrapper .col-md-6:eq(0)');
+    // Date and time picker
+    $('.date').datetimepicker({
+        format: 'L'
+    });
+    $('.time').datetimepicker({
+        format: 'LT'
+    });
+
+
+    // Back to top button
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > 100) {
+            $('.back-to-top').fadeIn('slow');
+        } else {
+            $('.back-to-top').fadeOut('slow');
+        }
+    });
+
+    // Price carousel
+    $(".price-carousel").owlCarousel({
+        autoplay: true,
+        smartSpeed: 1000,
+        margin: 45,
+        dots: false,
+        loop: true,
+        nav: true,
+        navText: [
+            '<i class="bi bi-arrow-left"></i>',
+            '<i class="bi bi-arrow-right"></i>'
+        ],
+        responsive: {
+            0: {
+                items: 1
+            },
+            992: {
+                items: 2
+            },
+            1200: {
+                items: 3
+            }
+        }
+    });
+
+
+    // Team carousel
+    $(".team-carousel, .related-carousel").owlCarousel({
+        autoplay: true,
+        smartSpeed: 1000,
+        margin: 45,
+        dots: false,
+        loop: true,
+        nav: true,
+        navText: [
+            '<i class="bi bi-arrow-left"></i>',
+            '<i class="bi bi-arrow-right"></i>'
+        ],
+        responsive: {
+            0: {
+                items: 1
+            },
+            992: {
+                items: 2
+            }
+        }
+    });
+
+
+    // Testimonials carousel
+    $(".testimonial-carousel").owlCarousel({
+        autoplay: true,
+        smartSpeed: 1000,
+        items: 1,
+        dots: true,
+        loop: true,
+    });
 })
 
 function checkUpperCase(name) {
@@ -100,3 +176,4 @@ function checkPassWordRetype(pass_retype, pass) {
         return 0;
     }
 }
+
