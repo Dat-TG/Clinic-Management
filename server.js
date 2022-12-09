@@ -67,6 +67,10 @@ app.use('/', async(req, res, next) => {
     }
 });
 
+// app.use('/', async(req, res, next) => {
+//     res.render('editDrug');
+// });
+
 
 
 app.use((err, req, res, next) => {

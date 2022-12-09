@@ -1,0 +1,60 @@
+<section class="h-100 h-custom" style="background-image:linear-gradient(114.08deg, #BDD65A 51.97%, rgba(34, 198, 119, 0.59) 104.26%, rgba(223, 0, 0, 0.69) 104.27%, rgba(125, 96, 138, 0.208333) 104.28%);">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-lg-8 col-xl-6">
+        <div class="card rounded-3">
+          <div class="card-body p-4 p-md-5">
+            <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2">Chỉnh sửa thông tin thuốc</h3>
+
+            <form class="px-md-2" action="/dang-ky-tai-khoan" method="POST">
+              {{!-- Drug name input --}}
+              <div class="form-outline mb-4">
+                <input type="text" id="drug-name" class="form-control" name="drug-name" value="{{user.Username}}" required/>
+                <label class="form-label" for="drug-name">Tên thuốc</label>
+              </div>
+
+              <p class="text-danger {{display}}">Tên thuốc tồn tại</p>
+
+              {{!-- Unit input --}}
+              <div class="form-outline mb-4">
+                <input type="text" id="unit" class="form-control" name="unit" value="{{user.Name}}" required/>
+                <label class="form-label" for="unit">Đơn vị tính</label>
+              </div>
+              
+              {{!-- Unit price input --}}
+              <div class="form-outline mb-4">
+                <input type="number" id="unit-price" class="form-control" name="Unit-price" value="{{user.Phone}}" required/>
+                <label class="form-label" for="unit-price">Đơn giá</label>
+              </div>
+
+              {{!-- Quantity input --}}
+              <div class="form-outline mb-4">
+                <input type="number" id="quantity" class="form-control" name="Quantity" value="{{user.Phone}}" required/>
+                <label class="form-label" for="quantity">Số lượng</label>
+              </div>
+
+              {{!-- Active substance input --}}
+              <div class="form-outline mb-4">
+                <input type="text" id="active-substance" class="form-control" name="Active-substance" value="{{user.Address}}" required/>
+                <label class="form-label" for="active-substance">Hoạt chất</label>
+              </div>
+
+              {{!-- Uses input --}}
+              <div class="form-outline mb-4">
+                <input type="text" id="uses" class="form-control" name="Uses" value="{{user.Password}}" required/>
+                <label class="form-label" for="uses">Công dụng chính</label>
+              </div>
+
+              {{!-- Button submit --}}
+              <div class="d-grid gap-2 d-md-flex justify-content-center">
+                <button type="submit" class="btn btn-success btn-lg mb-4">Lưu</button>
+                <button type="button" class="btn btn-danger btn-lg mb-4" style="margin-left: 20px;">Hủy</button>
+              </div>
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
