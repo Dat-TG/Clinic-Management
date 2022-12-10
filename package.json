@@ -22,6 +22,7 @@
     "nodemon": "^2.0.20"
   },
   "dependencies": {
+    "alert": "^5.1.3",
     "crypto-js": "^4.1.1",
     "express": "^4.18.2",
     "express-session": "^1.17.3",

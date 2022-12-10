@@ -1,4 +1,14 @@
 <section style="background-color: #eee;">
+    <div class="row">
+        <div class="alert alert-success alert-dismissible fade show {{editSuccess}} mb-0" role="alert">
+            <strong>Chỉnh sửa thông tin cá nhân thành công.</strong> Bạn có thể tự kiểm tra lại.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        <div class="alert alert-danger alert-dismissible fade show {{editNoSuccess}} mb-0" role="alert">
+            <strong>Chỉnh sửa thông tin cá nhân không thành công.</strong> Vui lòng kiểm tra lại.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    </div>
     <div class="container py-5">
         <div class="row">
             <div class="col">
@@ -20,6 +30,8 @@
                         <h5 class="my-3">{{u.Name}}</h5>
                         <p class="text-muted mb-1">@{{u.Username}}</p>
                         <p class="text-muted mb-4">{{u.Address}}</p>
+                        <button type="button"><a data-bs-toggle="modal" data-bs-target="#editProfileModal"><i
+                                    class="fas fa-edit"></i></a></button>
                     </div>
                 </div>
                 <div class="card mb-4 mb-lg-0">
@@ -121,3 +133,85 @@
         </div>
     </div>
 </section>
+
+
+<!-- Modal -->
+<div class="modal fade" id="editProfileModal" tabindex="-1" aria-labelledby="editProfileModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Chỉnh sửa thông tin cá nhân</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form class="px-md-2" id="editProfileForm" action="/tai-khoan" method="POST">
+                    {{!-- Username input --}}
+                    <div class="form-outline mb-4">
+                        <input type="text" id="username" class="form-control" name="Username" value="{{uu.Username}}"
+                            required />
+                        <label class="form-label" for="username">Username</label>
+                    </div>
+                    <p class="text-danger {{editNoSuccess}}">Username đã tồn tại. Vui lòng nhập Username khác</p>
+
+                    {{!-- Name input --}}
+                    <div class="form-outline mb-4">
+                        <input type="text" id="name" class="form-control" name="Name" value="{{uu.Name}}" required />
+                        <label class="form-label" for="name">Họ và tên</label>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mt-2 mb-2">
+                            {{!-- Date of birth input --}}
+                            <div class="form-outline datepicker">
+                                <input type="date" class="form-control datetimepicker-input" id="date-of-birth"
+                                    name="DOB" value="{{uu.DOBB}}" required />
+                                <label for="date-of-birth" class="form-label">Ngày sinh</label>
+                            </div>
+
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            {{!-- Sex input --}}
+                            <label class="form-label" for="sex">Giới tính</label>
+                            <div class="d-flex">
+                                <input class="form-check-input" type="radio" name="Gender" id="male" value="Nam"
+                                    {{uu.male}}>
+                                <label style="margin-left: 4px;" class="form-check-label" for="male">
+                                    Nam
+                                </label>
+                                <input style="margin-left: 20px;" class="form-check-input" type="radio" name="Gender"
+                                    id="female" value="Nữ" {{uu.female}}>
+                                <label class="form-check-label" for="female">
+                                    Nữ
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    {{!-- Phone number input --}}
+                    <div class="form-outline mb-4">
+                        <input type="text" id="phone-number" class="form-control" name="Phone" value="{{uu.Phone}}"
+                            required />
+                        <label class="form-label" for="phone-number">Số điện thoại</label>
+                    </div>
+
+                    {{!-- Email input --}}
+                    <div class="form-outline mb-4">
+                        <input type="email" id="email" class="form-control" name="Email" value="{{uu.Email}}" />
+                        <label class="form-label" for="email">Email</label>
+                    </div>
+
+                    {{!-- Address input --}}
+                    <div class="form-outline mb-4">
+                        <input type="text" id="address" class="form-control" name="Address" value="{{uu.Address}}"
+                            required />
+                        <label class="form-label" for="address">Địa chỉ</label>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                <button type="submit" class="btn btn-primary" form="editProfileForm">Xác nhận</button>
+            </div>
+        </div>
+    </div>
+</div>

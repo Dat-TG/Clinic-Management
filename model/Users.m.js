@@ -25,5 +25,8 @@ module.exports = {
     getAll: async()=> {
         const rs=await db.collection('Users').find({}).toArray();
         return rs;
+    },
+    update: async(user,data) => {
+        await db.collection('Users').updateOne({Username:user},{$set:data},{upsert:true});
     }
 }

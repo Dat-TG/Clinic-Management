@@ -1,9 +1,8 @@
 $(function () {
-    "use strict";
     $("#name").on('input', function () {
         var ok = checkUpperCase($(this).val());
         if (ok == 1) {
-            $("#name").get(0).setCustomValidity("First letter of each word must be capitalized");
+            $("#name").get(0).setCustomValidity("Chữ cái đầu tiên của mỗi từ phải viết hoa");
             $("#name").get(0).reportValidity();
         }
         else {
@@ -18,22 +17,22 @@ $(function () {
             $("#username").get(0).reportValidity();
         }
         else if (ok == 1) {
-            $("#username").get(0).setCustomValidity("Username must not contain space");
+            $("#username").get(0).setCustomValidity("Username không được chứa khoảng trắng");
             $("#username").get(0).reportValidity();
         }
         else if (ok == 2) {
-            $("#username").get(0).setCustomValidity("Username must contain only letters, numbers and underscore characters");
+            $("#username").get(0).setCustomValidity("Username chỉ được chứa chữ cái, số, hoặc dấu gạch dưới");
             $("#username").get(0).reportValidity();
         }
         else if (ok == 3) {
-            $("#username").get(0).setCustomValidity("Username must not start with number");
+            $("#username").get(0).setCustomValidity("Username không được bắt đầu bằng số");
             $("#username").get(0).reportValidity();
         }
     });
     $("#password").on('input', function () {
         var ok = checkPassWord($(this).val());
         if (ok == 1) {
-            $("#password").get(0).setCustomValidity("Password must has at least 6 characters");
+            $("#password").get(0).setCustomValidity("Mật khẩu phải dài ít nhất 6 ký tự");
             $("#password").get(0).reportValidity();
         }
         else {
@@ -44,7 +43,7 @@ $(function () {
     $("#retype_password").on('input', function () {
         var ok = checkPassWordRetype($(this).val(), $("#password").val());
         if (ok == 1) {
-            $("#retype_password").get(0).setCustomValidity("Password does not match");
+            $("#retype_password").get(0).setCustomValidity("Mật khẩu không khớp");
             $("#retype_password").get(0).reportValidity();
         }
         else {
@@ -75,6 +74,11 @@ $(function () {
         } else {
             $('.back-to-top').fadeOut('slow');
         }
+    });
+    $('.back-to-top').click(function () {
+        console.log("click");
+        $('html, body').animate({scrollTop: 0},0, 'easeInOutExpo');
+        return false;
     });
 
     // Price carousel

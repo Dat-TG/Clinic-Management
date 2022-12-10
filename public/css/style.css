@@ -63,7 +63,7 @@ section {
     right: 30px;
     bottom: 0;
     border-radius: 50% 50% 0 0;
-    z-index: 99;
+    z-index: 100;
 }
 
 .navbar-light .navbar-nav .nav-link {
