@@ -40,6 +40,17 @@ $(function () {
             $("#password").get(0).reportValidity();
         }
     });
+    $("#newpassword").on('input', function () {
+        var ok = checkPassWord($(this).val());
+        if (ok == 1) {
+            $("#newpassword").get(0).setCustomValidity("Mật khẩu phải dài ít nhất 6 ký tự");
+            $("#newpassword").get(0).reportValidity();
+        }
+        else {
+            $("#newpassword").get(0).setCustomValidity("");
+            $("#newpassword").get(0).reportValidity();
+        }
+    });
     $("#retype_password").on('input', function () {
         var ok = checkPassWordRetype($(this).val(), $("#password").val());
         if (ok == 1) {
@@ -137,6 +148,16 @@ $(function () {
         items: 1,
         dots: true,
         loop: true,
+    });
+
+    $("#btnChangePassword").click(function(){
+        if ($("#changePasswordForm").hasClass("d-none")) {
+            $("#changePasswordForm").removeClass("d-none");
+            $("#changePasswordForm").addClass("d-block");
+        } else {
+            $("#changePasswordForm").removeClass("d-block");
+            $("#changePasswordForm").addClass("d-none");
+        }
     });
 })
 

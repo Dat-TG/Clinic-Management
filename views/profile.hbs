@@ -8,6 +8,14 @@
             <strong>Chỉnh sửa thông tin cá nhân không thành công.</strong> Vui lòng kiểm tra lại.
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
+         <div class="alert alert-success alert-dismissible fade show {{changePasswordSuccess}} mb-0" role="alert">
+            <strong>Đổi mật khẩu thành công</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+         <div class="alert alert-danger alert-dismissible fade show {{changePasswordNoSuccess}} mb-0" role="alert">
+            <strong>Đổi mật khẩu không thành công.</strong> Vui lòng kiểm tra lại.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
     </div>
     <div class="container py-5">
         <div class="row">
@@ -115,6 +123,39 @@
                             </div>
                             <div class="col-sm-9">
                                 <p class="text-muted mb-0">{{u.Address}}</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0"><a id="btnChangePassword" class="btn btn-secondary">Đổi mật khẩu</a></p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <form class="d-none mt-2" id="changePasswordForm" action="/tai-khoan" method="POST">
+                                    {{!-- New Password input --}}
+                                    <div class="form-outline mt-4 mb-4">
+                                        <input type="password" id="newpassword" class="form-control"
+                                            value="{{user.NewPassword}}" name="NewPassword" required />
+                                        <label class="form-label" for="newpassword">Mật khẩu hiện tại</label>
+                                    </div>
+                                    <p class="text-danger {{changePasswordNoSuccess}}">Mật khẩu không chính xác</p>
+                                    {{!-- Password input --}}
+                                    <div class="form-outline mt-4 mb-4">
+                                        <input type="password" id="password" class="form-control"
+                                            value="{{user.Password}}" name="Password" required />
+                                        <label class="form-label" for="password">Mật khẩu mới</label>
+                                    </div>
+                                    {{!-- Confirm password input --}}
+                                    <div class="form-outline mt-4 mb-4">
+                                        <input type="password" id="retype_password" class="form-control" name="Retype"
+                                            value="{{user.Retype}}" required />
+                                        <label class="form-label" for="retype_password">Xác nhận mật khẩu mới</label>
+                                    </div>
+                                    {{!-- Button submit --}}
+                                    <button type="submit" class="btn btn-success">Xác nhận</button>
+                                </form>
                             </div>
                         </div>
                     </div>
