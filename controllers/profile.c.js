@@ -1,4 +1,5 @@
 const userM = require('../model/Users.m');
+const doctorM = require('../model/Doctors.m');
 const CryptoJS = require('crypto-js');
 const hashLength = 64;
 String.prototype.replaceAt = function (index, replacement) {
@@ -7,20 +8,27 @@ String.prototype.replaceAt = function (index, replacement) {
 exports.render = async (req, res, next) => {
     try {
         if (req.session.Username) {
-            const rs = await userM.getByUsername(req.session.Username);
-            var u = rs[0];
-            u.src = 'img/';
-            if (u.Gender == 'Nữ') {
-                u.src += 'female.png';
-                u.female = 'checked';
+            if (!req.session.Doctor) {
+                const rs = await userM.getByUsername(req.session.Username);
+                var u = rs[0];
+                u.src = 'img/';
+                if (u.Gender == 'Nữ') {
+                    u.src += 'female.png';
+                    u.female = 'checked';
+                }
+                else {
+                    u.src += 'male.png';
+                    u.male = 'checked';
+                }
+                u.DOBB = typeof u.DOB == "object" ? u.DOB.toLocaleDateString('fr-CA') : "";
+                u.DOB = typeof u.DOB == "object" ? u.DOB.toLocaleDateString('pt-PT') : "";
+                res.render('profile', { u: u, uu: u, display1: "d-none", display2: "d-block", editSuccess: "d-none", editNoSuccess: "d-none", changePasswordSuccess: "d-none", changePasswordNoSuccess: "d-none" });
             }
             else {
-                u.src += 'male.png';
-                u.male = 'checked';
+                const rs = await doctorM.getByUsername(req.session.Username);
+                rs[0].href = 'https://www.google.com/search?q=' + rs[0].Title + ' ' + rs[0].Name;
+                res.render('detailDoctor', { data: rs[0], display1: "d-none", display2: "d-block" });
             }
-            u.DOBB = typeof u.DOB == "object" ? u.DOB.toLocaleDateString('fr-CA') : "";
-            u.DOB = typeof u.DOB == "object" ? u.DOB.toLocaleDateString('pt-PT') : "";
-            res.render('profile', { u: u, uu: u, display1: "d-none", display2: "d-block", editSuccess: "d-none", editNoSuccess: "d-none", changePasswordSuccess: "d-none", changePasswordNoSuccess: "d-none" });
         }
         else {
             res.redirect('/dang-nhap')
@@ -88,11 +96,11 @@ exports.postProfile = async (req, res, next) => {
                 }
                 u.DOBB = typeof u.DOB == "object" ? u.DOB.toLocaleDateString('fr-CA') : "";
                 u.DOB = typeof u.DOB == "object" ? u.DOB.toLocaleDateString('pt-PT') : "";
-                const pwDb=u.Password;
-                const salt=pwDb.slice(hashLength);
-                const pwSalt=user.NewPassword+salt;
-                const pwHashed=CryptoJS.SHA3(pwSalt, {outputLength:hashLength*4}).toString(CryptoJS.enc.Hex);
-                if (pwDb!==(pwHashed+salt)) {
+                const pwDb = u.Password;
+                const salt = pwDb.slice(hashLength);
+                const pwSalt = user.NewPassword + salt;
+                const pwHashed = CryptoJS.SHA3(pwSalt, { outputLength: hashLength * 4 }).toString(CryptoJS.enc.Hex);
+                if (pwDb !== (pwHashed + salt)) {
                     return res.render('profile', { u: u, uu: u, user: user, display1: "d-none", display2: "d-block", editSuccess: "d-none", editNoSuccess: "d-none", changePasswordSuccess: "d-none", changePasswordNoSuccess: "d-block" });
                 }
                 else {

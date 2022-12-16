@@ -11,5 +11,9 @@ module.exports = {
     getByID: async(ID) => {
         const rs=await db.collection('Doctors').find({ID:ID}).toArray();
         return rs;
-    }
+    },
+    getByUsername: async(Username)=> {
+        const rs=await db.collection('Doctors').find({Username:Username}).toArray();
+        return rs;
+    },
 }

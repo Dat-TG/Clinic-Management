@@ -1,38 +1,53 @@
-<section class="h-100 h-custom" style="background-image:linear-gradient(114.08deg, #BDD65A 51.97%, rgba(34, 198, 119, 0.59) 104.26%, rgba(223, 0, 0, 0.69) 104.27%, rgba(125, 96, 138, 0.208333) 104.28%);">
+<section class="h-100 h-custom"
+  style="background-image:linear-gradient(114.08deg, #BDD65A 51.97%, rgba(34, 198, 119, 0.59) 104.26%, rgba(223, 0, 0, 0.69) 104.27%, rgba(125, 96, 138, 0.208333) 104.28%);">
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-lg-8 col-xl-6">
         <div class="card rounded-3">
-          <img src="https://itsourcecode.com/wp-content/uploads/2019/04/hp-zdravotnictvi.jpg"
-            class="w-100" style="border-top-left-radius: .3rem; border-top-right-radius: .3rem;"
-            alt="Sample photo">
+          <img src="https://itsourcecode.com/wp-content/uploads/2019/04/hp-zdravotnictvi.jpg" class="w-100"
+            style="border-top-left-radius: .3rem; border-top-right-radius: .3rem;" alt="Sample photo">
           <div class="card-body p-4 p-md-5">
             <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2">Đăng nhập</h3>
 
             <form class="px-md-2" action="/dang-nhap" method="POST">
               {{!-- Username input --}}
               <div class="form-outline mb-4">
-                <input type="text" id="username" class="form-control" name="Username" value="{{Username}}" required/>
+                <input type="text" id="username" class="form-control" name="Username" value="{{Username}}" required />
                 <label class="form-label" for="username">Username</label>
               </div>
 
-               <p class="text-danger d-{{errWrongUsername}}">Username không tồn tại</p>
+              <p class="text-danger d-{{errWrongUsername}}">Username không tồn tại</p>
 
               {{!-- Password input --}}
               <div class="form-outline mb-4">
-                <input type="password" id="password" class="form-control" value="{{Password}}" name="Password" required/>
+                <input type="password" id="password" class="form-control" value="{{Password}}" name="Password"
+                  required />
                 <label class="form-label" for="password">Mật khẩu</label>
               </div>
 
-               <p class="text-danger d-{{errWrongPassword}}">Mật khẩu không chính xác</p>
+              <p class="text-danger d-{{errWrongPassword}}">Mật khẩu không chính xác</p>
 
+              {{!--Role--}}
+              <div class="form-group mb-4">
+                <label>Đăng nhập với tư cách: </label>
+                <select class="form-select form-inline" aria-label="Default select example" name="role">
+                  {{#ifEquals role "patient"}}
+                  <option value="patient" selected>Bệnh nhân</option>
+                  <option value="doctor">Bác sĩ</option>
+                  {{/ifEquals}}
+                  {{#ifEquals role "doctor"}}
+                  <option value="patient">Bệnh nhân</option>
+                  <option value="doctor" selected>Bác sĩ</option>
+                  {{/ifEquals}}
+                </select>
+              </div>
 
               {{!-- Button submit --}}
               <button type="submit" class="btn btn-success btn-lg mb-4">Đăng nhập</button>
 
               {{!-- Link login --}}
               <p class="mb-1" style="color: #000;">Bạn chưa có tài khoản? Đăng ký tại <a href="/dang-ky-tai-khoan"
-              style="color: rgb(0, 102, 255);">đây</a></p>
+                  style="color: rgb(0, 102, 255);">đây</a></p>
             </form>
 
           </div>

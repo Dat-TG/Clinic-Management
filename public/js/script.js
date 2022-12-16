@@ -201,4 +201,3 @@ function checkPassWordRetype(pass_retype, pass) {
         return 0;
     }
 }
-

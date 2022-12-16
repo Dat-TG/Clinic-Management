@@ -43,11 +43,18 @@ app.engine('hbs', hbs.engine({
     layoutsDir: path.join(__dirname, '/views/layouts'),
     partialsDir: [
         path.join(__dirname, '/views/partials')
-    ]
+    ],
+    helpers: {
+        ifEquals: function(a, b, options) {
+            if (a === b) {
+              return options.fn(this);
+            }
+            return options.inverse(this);
+        }
+    }
 }));
-app.set('view engine', 'hbs')
-app.set('views', path.join(__dirname, '/views'))
-
+app.set('view engine', 'hbs');
+app.set('views', path.join(__dirname, '/views'));
 
 //Route
 
