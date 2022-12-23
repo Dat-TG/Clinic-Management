@@ -35,10 +35,12 @@
                     <li class="nav-item">
                         <a class="nav-link" data-mdb-toggle="dropdown" aria-expanded="false" href="#">Tài liệu</a>
                         <ul class="dropdown-menu">
+                             {{#ifEquals role "doctor"}}
                             <li><a class="dropdown-item" href="/tai-lieu/xuat-hoa-don">Xuất hóa đơn</a></li>
                             <li><a class="dropdown-item" href="/tim-kiem/bac-si">Lập báo cáo tháng</a></li>
                             <li><a class="dropdown-item" href="/tim-kiem/dich-vu">Lập phiếu khám bệnh</a></li>
                             <li><a class="dropdown-item" href="/tim-kiem/benh-nhan">Danh sách khám bệnh</a></li>
+                            {{/ifEquals}}
                             <li><a class="dropdown-item" href="#">Lập phiếu hẹn khám bệnh</a></li>
                         </ul>
                     </li>

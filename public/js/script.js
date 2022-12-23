@@ -1,3 +1,4 @@
+var usernameProfile="";
 $(function () {
     $("#name").on('input', function () {
         var ok = checkUpperCase($(this).val());
@@ -162,7 +163,7 @@ $(function () {
     document.querySelector('input[list="patients"]').addEventListener('input', onInput);
     $("#btnPrint").on("click", function () {
         console.log('print');
-        const data=$("#printPDF").html();
+        const data = $("#printPDF").html();
         var mywindow = window.open('', 'HÓA ĐƠN KHÁM BỆNH', 'height=800,width=600');
         mywindow.document.write('<html><head><title>HÓA ĐƠN KHÁM BỆNH</title>');
         mywindow.document.write('<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> <link rel="stylesheet" href="../css/style.css"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css"> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> <link rel="stylesheet" href="https://mdbcdn.b-cdn.net/wp-content/themes/mdbootstrap4/docs-app/css/dist/mdb5/standard/core.min.css"><link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css"><link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.3.2/css/buttons.bootstrap5.min.css"><link href="img/favicon.ico" rel="icon"> <link rel="preconnect" href="https://fonts.gstatic.com"> <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet"><link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet"><link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet"><link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />');
@@ -172,10 +173,24 @@ $(function () {
         mywindow.document.write('</body></html>');
         mywindow.document.close();
         mywindow.print();
+        $.post("/tai-lieu/xuat-hoa-don",
+            {
+                Patient: usernameProfile,
+                Doctor: $('#DoctorName').html(),
+                DoctorID: $('#DoctorID').html(),
+                Diagnosis: $('#Res').val(),
+                Date: $('#Date').html(),
+                Time: $('#Time').html(),
+                Fee: $("#AllTotal").html(),
+                Content: data
+            },
+            function (data, status) {
+                console.log(data);
+            });
     });
-    $('input').on('input', function() {
+    $('input').on('input', function () {
         var val = $(this).val();
-        $(this).attr('value',val);
+        $(this).attr('value', val);
     });
 })
 
@@ -229,13 +244,14 @@ function onInput(e) {
 
     for (var i = 0; i < options.length; i++) {
         if (options[i].innerText === val) {
+            usernameProfile=options[i].getAttribute('data-username');
             $.post("/tai-lieu/xuat-hoa-don",
                 {
                     username: options[i].getAttribute('data-username'),
                 },
                 function (data, status) {
-                    $('#DOB').attr('value',data.user.DOB);
-                    $('#Address').attr('value',data.user.Address);
+                    $('#DOB').attr('value', data.user.DOB);
+                    $('#Address').attr('value', data.user.Address);
                 });
             // An item was selected from the list!
             // yourCallbackHere()
@@ -252,7 +268,7 @@ function autoGenerate() {
       <th scope="row">${index + 1}</th>
       <td> <input type="text" list="drugs" data-index="${index + 1}" value="" class="form-control mx-sm-3 border-0"> </td>
       <td id="Unit${index + 1}"></td>
-      <td> <input type="number" data-index="${index + 1}" id="Quantity${index+1}" value=1 min=1 class="form-control mx-sm-3 border-0"> </td>
+      <td> <input type="number" data-index="${index + 1}" id="Quantity${index + 1}" value=1 min=1 class="form-control mx-sm-3 border-0"> </td>
       <td id="Price${index + 1}"></td>
       <td id="Total${index + 1}"></td>
     </tr>
@@ -266,10 +282,10 @@ function autoGenerate() {
     for (let i = 0; i < y.length; i++) {
         y[i].addEventListener('input', onInput2);
     }
-    $('input').on('input', function() {
+    $('input').on('input', function () {
         var val = $(this).val();
-        $(this).attr('value',val);
-        $(this).attr('width',val.length+1);
+        $(this).attr('value', val);
+        $(this).attr('width', val.length + 1);
     });
 }
 
@@ -293,10 +309,10 @@ function onInput1(e) {
                     console.log(data);
                     $('#Unit' + index).html(data.drug.Unit);
                     $('#Price' + index).html(data.drug.Price);
-                    let quantity=$('#Quantity'+index).val();
-                    $('#Total' + index).html(parseInt(data.drug.Price)*parseInt(quantity));
+                    let quantity = $('#Quantity' + index).val();
+                    $('#Total' + index).html(parseInt(data.drug.Price) * parseInt(quantity));
                     let curTotal = parseInt($("#AllTotal").html());
-                    curTotal += parseInt(data.drug.Price)*parseInt(quantity);
+                    curTotal += parseInt(data.drug.Price) * parseInt(quantity);
                     $('#AllTotal').html(curTotal);
                 });
             // An item was selected from the list!

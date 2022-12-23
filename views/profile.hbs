@@ -8,11 +8,11 @@
             <strong>Chỉnh sửa thông tin cá nhân không thành công.</strong> Vui lòng kiểm tra lại.
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
-         <div class="alert alert-success alert-dismissible fade show {{changePasswordSuccess}} mb-0" role="alert">
+        <div class="alert alert-success alert-dismissible fade show {{changePasswordSuccess}} mb-0" role="alert">
             <strong>Đổi mật khẩu thành công</strong>
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
-         <div class="alert alert-danger alert-dismissible fade show {{changePasswordNoSuccess}} mb-0" role="alert">
+        <div class="alert alert-danger alert-dismissible fade show {{changePasswordNoSuccess}} mb-0" role="alert">
             <strong>Đổi mật khẩu không thành công.</strong> Vui lòng kiểm tra lại.
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
@@ -166,6 +166,39 @@
                             <div class="card-body">
                                 <p class="mb-4">Lịch sử khám bệnh
                                 </p>
+                                <div class="container">
+                                    <table id="example" class="table table-striped"
+                                        style="width:100%;background-color: aliceblue;">
+                                        <thead>
+                                            <tr>
+                                                <th>Ngày khám</th>
+                                                <th>Giờ khám</th>
+                                                <th>Bác sĩ khám</th>
+                                                <th>Chẩn đoán</th>
+                                                <th>Tổng chi phí</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {{#each records}}
+                                            <tr>
+                                                <td>{{Date}}</td>
+                                                <td>{{Time}}</td>
+                                                <td><a href="/bac-si/{{DoctorID}}-{{Doctor}}">{{Doctor}}</a></td>
+                                                <td>{{Diagnosis}}</td>
+                                                <td>{{Fee}}</td>
+                                            </tr>
+                                            {{/each}}
+                                        <tfoot>
+                                            <tr>
+                                                <th>Ngày khám</th>
+                                                <th>Giờ khám</th>
+                                                <th>Bác sĩ khám</th>
+                                                <th>Chẩn đoán</th>
+                                                <th>Tổng chi phí</th>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>

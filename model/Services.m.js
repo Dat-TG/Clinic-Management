@@ -5,7 +5,7 @@ module.exports = {
         return rs;
     },
     getByName: async(Name) => {
-        const rs=await db.collection('Services').find({Name:Name}).toArray();
+        const rs=await db.collection('Services').find({ServiceName:Name}).toArray();
         return rs;
     },
     getByID: async(ID) => {

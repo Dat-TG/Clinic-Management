@@ -1,6 +1,7 @@
 const userM = require('../model/Users.m');
 const doctorM = require('../model/Doctors.m');
 const CryptoJS = require('crypto-js');
+const RecordsM = require('../model/Records.m');
 const hashLength = 64;
 String.prototype.replaceAt = function (index, replacement) {
     return this.substring(0, index) + replacement + this.substring(index + replacement.length);
@@ -22,12 +23,13 @@ exports.render = async (req, res, next) => {
                 }
                 u.DOBB = typeof u.DOB == "object" ? u.DOB.toLocaleDateString('fr-CA') : "";
                 u.DOB = typeof u.DOB == "object" ? u.DOB.toLocaleDateString('vi-VN') : "";
-                res.render('profile', { u: u, uu: u, display1: "d-none", display2: "d-block", editSuccess: "d-none", editNoSuccess: "d-none", changePasswordSuccess: "d-none", changePasswordNoSuccess: "d-none" });
+                const records=await RecordsM.getByUsername(req.session.Username);
+                res.render('profile', { u: u, uu: u, display1: "d-none", display2: "d-block", editSuccess: "d-none", editNoSuccess: "d-none", changePasswordSuccess: "d-none", changePasswordNoSuccess: "d-none",records:records });
             }
             else {
                 const rs = await doctorM.getByUsername(req.session.Username);
                 rs[0].href = 'https://www.google.com/search?q=' + rs[0].Title + ' ' + rs[0].Name;
-                res.render('detailDoctor', { data: rs[0], display1: "d-none", display2: "d-block" });
+                res.render('detailDoctor', { data: rs[0], display1: "d-none", display2: "d-block",role:"doctor"});
             }
         }
         else {

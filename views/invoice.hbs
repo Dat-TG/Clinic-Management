@@ -81,7 +81,11 @@
                             <li class="text-muted"><i class="fas fa-circle" style="color:#84B0CA ;"></i> <span
                                     class="fw-bold">Ngày tạo: </span>{{today}}</li>
                             <li class="text-muted"><i class="fas fa-circle" style="color:#84B0CA ;"></i> <span
-                                    class="fw-bold">Bác sĩ chẩn đoán: </span>{{doctor.Name}}</li>
+                                    class="fw-bold">Bác sĩ chẩn đoán: </span><span>{{doctor.Name}}</span></li>
+                            <div class="d-none" id="DoctorID">{{doctor.ID}}</div>
+                            <div class="d-none" id="DoctorName">{{doctor.Name}}</div>
+                            <div class="d-none" id="Date">{{date}}</div>
+                            <div class="d-none" id="Time">{{time}}</div>
                         </ul>
                     </div>
                 </div>

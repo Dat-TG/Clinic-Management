@@ -71,11 +71,15 @@ app.use('/tai-lieu',DocumentRouter);
 
 app.use('/', async(req, res, next) => {
     const doctors=await doctorM.getAll();
+    let role="patient";
+    if (req.session.Doctor) {
+        role="doctor";
+    }
     if (req.session.Username) {
-        res.render('home', { display1: "d-none", display2: "d-block", doctors:doctors});
+        res.render('home', { display1: "d-none", display2: "d-block", doctors:doctors, role:role});
     }
     else {
-        res.render('home', { display1: "d-block", display2: "d-none", doctors:doctors});
+        res.render('home', { display1: "d-block", display2: "d-none", doctors:doctors, role:role});
     }
 });
 
