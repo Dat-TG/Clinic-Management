@@ -310,8 +310,10 @@ function onInput1(e) {
                     $('#Unit' + index).html(data.drug.Unit);
                     $('#Price' + index).html(data.drug.Price);
                     let quantity = $('#Quantity' + index).val();
-                    $('#Total' + index).html(parseInt(data.drug.Price) * parseInt(quantity));
                     let curTotal = parseInt($("#AllTotal").html());
+                    let oldTotal=parseInt($('#Total'+index).html());
+                    if (oldTotal>0) curTotal-=oldTotal;
+                    $('#Total' + index).html(parseInt(data.drug.Price) * parseInt(quantity));
                     curTotal += parseInt(data.drug.Price) * parseInt(quantity);
                     $('#AllTotal').html(curTotal);
                 });
