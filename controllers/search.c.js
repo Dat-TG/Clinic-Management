@@ -45,7 +45,7 @@ exports.viewAllPatients=async(req, res, next)=>{
     try {
         const rs=await userM.getAll();
         for (let i=0;i<rs.length;i++) {
-            rs[i].DOB=typeof rs[i].DOB == "object" ? rs[i].DOB.toLocaleDateString('pt-PT') : "";
+            rs[i].DOB=typeof rs[i].DOB == "object" ? rs[i].DOB.toLocaleDateString('vi-VN') : "";
         }
         if (req.session.Username) {
             res.render('search-patient',{patients:rs, display1: "d-none", display2: "d-block"});

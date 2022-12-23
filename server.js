@@ -24,6 +24,7 @@ const SearchRouter=require('./routers/search.r');
 const DetaiDrugRouter=require('./routers/detail-drug.r');
 const ProfileRouter=require('./routers/profile.r');
 const DetailDoctorRouter=require('./routers/detail-doctor.r');
+const DocumentRouter=require('./routers/doc.r');
 
 const doctorM=require('./model/Doctors.m');
 
@@ -65,6 +66,7 @@ app.use('/tim-kiem',SearchRouter);
 app.use('/thuoc',DetaiDrugRouter);
 app.use('/tai-khoan',ProfileRouter);
 app.use('/bac-si',DetailDoctorRouter);
+app.use('/tai-lieu',DocumentRouter);
 
 
 app.use('/', async(req, res, next) => {

@@ -21,7 +21,7 @@ exports.render = async (req, res, next) => {
                     u.male = 'checked';
                 }
                 u.DOBB = typeof u.DOB == "object" ? u.DOB.toLocaleDateString('fr-CA') : "";
-                u.DOB = typeof u.DOB == "object" ? u.DOB.toLocaleDateString('pt-PT') : "";
+                u.DOB = typeof u.DOB == "object" ? u.DOB.toLocaleDateString('vi-VN') : "";
                 res.render('profile', { u: u, uu: u, display1: "d-none", display2: "d-block", editSuccess: "d-none", editNoSuccess: "d-none", changePasswordSuccess: "d-none", changePasswordNoSuccess: "d-none" });
             }
             else {
@@ -58,7 +58,7 @@ exports.postProfile = async (req, res, next) => {
                             u.male = 'checked';
                         }
                         u.DOBB = typeof u.DOB == "object" ? u.DOB.toLocaleDateString('fr-CA') : "";
-                        u.DOB = typeof u.DOB == "object" ? u.DOB.toLocaleDateString('pt-PT') : "";
+                        u.DOB = typeof u.DOB == "object" ? u.DOB.toLocaleDateString('vi-VN') : "";
                         req.session.Username = user.Username;
                         return res.render('profile', { u: u, uu: u, display1: "d-none", display2: "d-block", editSuccess: "d-block", editNoSuccess: "d-none", changePasswordSuccess: "d-none", changePasswordNoSuccess: "d-none" });
                     }
@@ -78,7 +78,7 @@ exports.postProfile = async (req, res, next) => {
                             user.male = 'checked';
                         }
                         user.DOBB = typeof user.DOB == "object" ? user.DOB.toLocaleDateString('fr-CA') : "";
-                        u.DOB = typeof u.DOB == "object" ? u.DOB.toLocaleDateString('pt-PT') : "";
+                        u.DOB = typeof u.DOB == "object" ? u.DOB.toLocaleDateString('vi-VN') : "";
                         return res.render('profile', { u: u, uu: user, display1: "d-none", display2: "d-block", editSuccess: "d-none", editNoSuccess: "d-block", changePasswordSuccess: "d-none", changePasswordNoSuccess: "d-none" });
                     }
                 })
@@ -95,7 +95,7 @@ exports.postProfile = async (req, res, next) => {
                     u.male = 'checked';
                 }
                 u.DOBB = typeof u.DOB == "object" ? u.DOB.toLocaleDateString('fr-CA') : "";
-                u.DOB = typeof u.DOB == "object" ? u.DOB.toLocaleDateString('pt-PT') : "";
+                u.DOB = typeof u.DOB == "object" ? u.DOB.toLocaleDateString('vi-VN') : "";
                 const pwDb = u.Password;
                 const salt = pwDb.slice(hashLength);
                 const pwSalt = user.NewPassword + salt;
