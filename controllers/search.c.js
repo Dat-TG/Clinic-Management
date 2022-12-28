@@ -2,6 +2,7 @@ const drugM = require('../model/Drugs.m');
 const doctorM = require('../model/Doctors.m');
 const serviceM = require('../model/Services.m');
 const userM = require('../model/Users.m');
+const RecordsM = require('../model/Records.m');
 exports.viewAllDrugs = async (req, res, next) => {
     try {
         const rs = await drugM.getAll();
@@ -63,11 +64,28 @@ exports.viewAllPatients = async (req, res, next) => {
         for (let i = 0; i < rs.length; i++) {
             rs[i].DOB = typeof rs[i].DOB == "object" ? rs[i].DOB.toLocaleDateString('vi-VN') : "";
         }
-        if (req.session.Username) {
+        if (req.session.Username && req.session.Doctor) {
             res.render('search-patient', { patients: rs, display1: "d-none", display2: "d-block", role: role });
         }
         else {
-            res.render('search-patient', { patients: rs, display1: "d-block", display2: "d-none", role: role });
+            res.render('error', { patients: rs, display1: "d-block", display2: "d-none", role: role });
+        }
+    } catch (err) {
+        next(err);
+    }
+}
+exports.viewAllRecords=async (req, res, next) => {
+    try {
+        const rs = await RecordsM.getAll();
+        let role = "patient";
+        if (req.session.Doctor) {
+            role = "doctor";
+        }
+        if (req.session.Username && req.session.Doctor) {
+            res.render('search-record', { records:rs, display1: "d-none", display2: "d-block", role: role });
+        }
+        else {
+            res.render('error', { display1: "d-block", display2: "d-none", role: role });
         }
     } catch (err) {
         next(err);

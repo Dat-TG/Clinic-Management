@@ -3,9 +3,13 @@
     <table id="example" class="table table-striped" style="width:100%;background-color: aliceblue;">
         <thead>
             <tr>
+                <th>Mã bệnh án</th>
+                <th>Bệnh nhân</th>
+                <th>Username</th>
                 <th>Ngày khám</th>
                 <th>Giờ khám</th>
                 <th>Bác sĩ khám</th>
+                <th>ID Bác sĩ</th>
                 <th>Chẩn đoán</th>
                 <th>Tổng chi phí</th>
             </tr>
@@ -13,18 +17,26 @@
         <tbody>
             {{#each records}}
             <tr>
+                <td>{{ID}}</td>
+                <td>{{Name}}</td>
+                <td>{{Patient}}</td>
                 <td>{{Date}}</td>
                 <td>{{Time}}</td>
                 <td><a href="/bac-si/{{DoctorID}}-{{Doctor}}">{{Doctor}}</a></td>
+                <td>{{DoctorID}}</td>
                 <td>{{Diagnosis}}</td>
                 <td>{{Fee}}</td>
             </tr>
             {{/each}}
         <tfoot>
             <tr>
+                <th>Mã bệnh án</th>
+                <th>Bệnh nhân</th>
+                <th>Username</th>
                 <th>Ngày khám</th>
                 <th>Giờ khám</th>
                 <th>Bác sĩ khám</th>
+                <th>ID Bác sĩ</th>
                 <th>Chẩn đoán</th>
                 <th>Tổng chi phí</th>
             </tr>

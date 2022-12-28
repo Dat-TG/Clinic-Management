@@ -3,6 +3,7 @@
 <table id="example" class="table table-striped" style="width:100%;background-color: aliceblue;">
         <thead>
             <tr>
+                <th>Username</th>
                 <th>Họ tên</th>
                 <th>Ngày sinh</th>
                 <th>Giới tính</th>
@@ -14,6 +15,7 @@
         <tbody>
             {{#each patients}}
             <tr>
+                <td>{{Username}}</td>
                 <td><a href="/benh-nhan/{{Username}}">{{Name}}</a></td>
                 <td>{{DOB}}</td>
                 <td>{{Gender}}</td>
@@ -24,6 +26,7 @@
             {{/each}}
         <tfoot>
             <tr>
+                <th>Username</th>
                 <th>Họ tên</th>
                 <th>Ngày sinh</th>
                 <th>Giới tính</th>
