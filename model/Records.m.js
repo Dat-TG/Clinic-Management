@@ -4,6 +4,7 @@ module.exports = {
         const rs = await db.collection('MedicalRecords').insertOne({
             ID: data.ID,
             Patient: data.Patient,
+            Name: data.Name,
             Doctor: data.Doctor,
             DoctorID: data.DoctorID,
             Diagnosis: data.Diagnosis,

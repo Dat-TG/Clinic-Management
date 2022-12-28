@@ -38,7 +38,7 @@ exports.UpdateInvoice = async (req, res, next) => {
     if (user.length > 0) {
         user[0].DOB = typeof user[0].DOB == "object" ? user[0].DOB.toLocaleDateString('vi-VN') : "";
     }
-    if (data.Patient) {
+    if (data.Patient || data.Name) {
         const rs=await RecordsM.getMaxID();
         if (rs.length==0) {
             data.ID="1";

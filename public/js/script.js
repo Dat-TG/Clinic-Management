@@ -1,4 +1,5 @@
 var usernameProfile="";
+var NamePatient="";
 $(function () {
     $("#name").on('input', function () {
         var ok = checkUpperCase($(this).val());
@@ -176,6 +177,7 @@ $(function () {
         $.post("/tai-lieu/xuat-hoa-don",
             {
                 Patient: usernameProfile,
+                Name: NamePatient,
                 Doctor: $('#DoctorName').html(),
                 DoctorID: $('#DoctorID').html(),
                 Diagnosis: $('#Res').val(),
@@ -242,22 +244,33 @@ function onInput(e) {
     list = input.getAttribute('list'),
         options = document.getElementById(list).childNodes;
 
+    var ok=false;
+
     for (var i = 0; i < options.length; i++) {
         if (options[i].innerText === val) {
+            console.log("match");
             usernameProfile=options[i].getAttribute('data-username');
+            NamePatient=options[i].getAttribute('data-name');
             $.post("/tai-lieu/xuat-hoa-don",
                 {
-                    username: options[i].getAttribute('data-username'),
+                    username: options[i].getAttribute('data-username')
                 },
                 function (data, status) {
                     $('#DOB').attr('value', data.user.DOB);
+                    document.getElementById('DOB').value=data.user.DOB;
                     $('#Address').attr('value', data.user.Address);
+                    document.getElementById('Address').value=data.user.Address;
                 });
             // An item was selected from the list!
             // yourCallbackHere()
             //alert('item selected: ' + val);
+            ok=true;
             break;
         }
+    }
+    if (!ok) {
+        usernameProfile="123";
+        NamePatient=val;
     }
 }
 
