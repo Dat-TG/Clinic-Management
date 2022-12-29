@@ -2,6 +2,7 @@ const userM = require('../model/Users.m');
 const doctorM = require('../model/Doctors.m');
 const CryptoJS = require('crypto-js');
 const RecordsM = require('../model/Records.m');
+const AppointmentM = require('../model/Appointment.m');
 const hashLength = 64;
 String.prototype.replaceAt = function (index, replacement) {
     return this.substring(0, index) + replacement + this.substring(index + replacement.length);
@@ -24,12 +25,20 @@ exports.render = async (req, res, next) => {
                 u.DOBB = typeof u.DOB == "object" ? u.DOB.toLocaleDateString('fr-CA') : "";
                 u.DOB = typeof u.DOB == "object" ? u.DOB.toLocaleDateString('vi-VN') : "";
                 const records=await RecordsM.getByUsername(req.session.Username);
-                res.render('profile', { u: u, uu: u, display1: "d-none", display2: "d-block", editSuccess: "d-none", editNoSuccess: "d-none", changePasswordSuccess: "d-none", changePasswordNoSuccess: "d-none",records:records });
+                const appointments=await AppointmentM.getByUsername(req.session.Username);
+                for (let i=0;i<appointments.length;i++) {
+                    appointments[i].Date = typeof appointments[i].Date == "object" ? appointments[i].Date.toLocaleDateString('vi-VN') : "";
+                }
+                res.render('profile', { u: u, uu: u, display1: "d-none", display2: "d-block", editSuccess: "d-none", editNoSuccess: "d-none", changePasswordSuccess: "d-none", changePasswordNoSuccess: "d-none",records:records, appointments:appointments, role:"patient"});
             }
             else {
                 const rs = await doctorM.getByUsername(req.session.Username);
+                const appointments=await AppointmentM.getByID(rs[0].ID);
+                for (let i=0;i<appointments.length;i++) {
+                    appointments[i].Date = typeof appointments[i].Date == "object" ? appointments[i].Date.toLocaleDateString('vi-VN') : "";
+                }
                 rs[0].href = 'https://www.google.com/search?q=' + rs[0].Title + ' ' + rs[0].Name;
-                res.render('detailDoctor', { data: rs[0], display1: "d-none", display2: "d-block",role:"doctor"});
+                res.render('detailDoctor', { data: rs[0], display1: "d-none", display2: "d-block",role:"doctor", appointments:appointments});
             }
         }
         else {

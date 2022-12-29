@@ -11,7 +11,8 @@ module.exports = {
             ID: data.Doctor.ID,
             Doctor: data.Doctor.Name,
             Date: data.Date,
-            Time: data.Time
+            Time: data.Time,
+            Status: data.Status
         });
         return rs;
     },

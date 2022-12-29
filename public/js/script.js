@@ -71,6 +71,14 @@ $(function () {
 
     table.buttons().container()
         .appendTo('#example_wrapper .col-md-6:eq(0)');
+
+        var table1 = $('#table_appointment').DataTable({
+            lengthChange: false,
+            buttons: ['copy', 'excel', 'pdf', 'colvis']
+        });
+    
+        table1.buttons().container()
+            .appendTo('#table_appointment_wrapper .col-md-6:eq(0)');
     // Date and time picker
     $('.date').datetimepicker({
         format: 'L'

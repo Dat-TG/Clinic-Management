@@ -80,5 +80,51 @@
                 </div>
             </div>
         </div>
+        {{#ifEquals role "doctor"}}
+        <div class="row">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <p class="mb-4">Phiếu hẹn khám bệnh
+                    </p>
+                    <div class="container">
+                        <table id="table_appointment" class="table table-striped"
+                            style="width:100%;background-color: aliceblue;">
+                            <thead>
+                                <tr>
+                                    <th>Ngày hẹn</th>
+                                    <th>Giờ hẹn</th>
+                                    <th>Bệnh nhân</th>
+                                    <th>Số điện thoại</th>
+                                    <th>Email</th>
+                                    <th>Trạng thái</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{#each appointments}}
+                                <tr>
+                                    <td>{{Date}}</td>
+                                    <td>{{Time}}</td>
+                                    <td><a href="/benh-nhan/{{Username}}">{{Name}}</a></td>
+                                    <td>{{Phone}}</td>
+                                    <td>{{Email}}</td>
+                                    <td>{{Status}}</td>
+                                </tr>
+                                {{/each}}
+                            <tfoot>
+                                <tr>
+                                    <th>Ngày hẹn</th>
+                                    <th>Giờ hẹn</th>
+                                    <th>Bệnh nhân</th>
+                                    <th>Số điện thoại</th>
+                                    <th>Email</th>
+                                    <th>Trạng thái</th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{/ifEquals}}
     </div>
 </section>

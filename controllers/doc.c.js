@@ -77,6 +77,8 @@ exports.getAppointment=async (req,res,next)=>{
 exports.postAppointment=async (req,res,next)=>{
     try {
         req.body.Doctor=JSON.parse(req.body.Doctor);
+        req.body.Status="Đang chờ";
+        req.body.Date=new Date(req.body.Date);
         await AppointmentM.add(req.body);
         res.redirect('/');
     } catch (err) {
