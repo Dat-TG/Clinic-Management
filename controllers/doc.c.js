@@ -3,6 +3,7 @@ const UsersM = require('../model/Users.m');
 const DrugsM = require('../model/Drugs.m');
 const ServicesM = require('../model/Services.m');
 const RecordsM = require('../model/Records.m');
+const AppointmentM = require('../model/Appointment.m');
 exports.createInvoice = async (req, res, next) => {
     if (!req.session.Doctor) {
         res.redirect('/');
@@ -50,4 +51,35 @@ exports.UpdateInvoice = async (req, res, next) => {
         await RecordsM.add(data);
     }
     res.send({ user: user[0], drug: drug[0] });
+}
+exports.getAppointment=async (req,res,next)=>{
+    try {
+        const doctors=await DoctorsM.getAll();
+        let role = "patient";
+        if (req.session.Doctor) {
+            role = "doctor";
+        }
+        if (req.session.Doctor) {
+            res.render('error', { display1: "d-none", display2: "d-block", role: role });
+        }
+        if (req.session.Username) {
+            const user=await UsersM.getByUsername(req.session.Username);
+            user[0].DOB = typeof user[0].DOB == "object" ? user[0].DOB.toLocaleDateString('fr-CA') : "";
+            res.render('appointment', { doctors:doctors, user:user[0],display1: "d-none", display2: "d-block", role: role });
+        }
+        else {
+            res.render('appointment', { doctors:doctors, display1: "d-block", display2: "d-none", role: role });
+        }
+    } catch (err) {
+        next(err);
+    }
+}
+exports.postAppointment=async (req,res,next)=>{
+    try {
+        req.body.Doctor=JSON.parse(req.body.Doctor);
+        await AppointmentM.add(req.body);
+        res.redirect('/');
+    } catch (err) {
+        next(err);
+    }
 }

@@ -43,7 +43,9 @@
                             <li><a class="dropdown-item" href="/tim-kiem/dich-vu">Lập phiếu khám bệnh</a></li>
                             <li><a class="dropdown-item" href="/tim-kiem/benh-nhan">Danh sách khám bệnh</a></li>
                             {{/ifEquals}}
-                            <li><a class="dropdown-item" href="#">Lập phiếu hẹn khám bệnh</a></li>
+                            {{#ifEquals role "patient"}}
+                            <li><a class="dropdown-item" href="/tai-lieu/lap-phieu-hen">Lập phiếu hẹn khám bệnh</a></li>
+                            {{/ifEquals}}
                         </ul>
                     </li>
                 </ul>
