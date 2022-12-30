@@ -257,3 +257,21 @@ section {
     width: 150px;
     height: 150px;
 }
+
+.table-container {
+    background-color: #fff;
+}
+
+.table-title {
+    text-align: center;
+    font-size: 40px;
+}
+
+.month-report {
+    text-align: center;
+    font-size: 30px;
+}
+
+.month-report input {
+    width: 70px;
+}

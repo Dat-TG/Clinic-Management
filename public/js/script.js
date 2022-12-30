@@ -310,6 +310,33 @@ function autoGenerate() {
     });
 }
 
+function autoGenerate1() {
+    let index = document.getElementsByTagName("tbody")[0].childElementCount;
+    $('table tbody').append(`
+    <tr>
+      <th scope="row">${index + 1}</th>
+      <td> <input type="text" list="drugs" data-index="${index + 1}" value="" class="form-control mx-sm-3 border-1"> </td>
+      <td> <input type="text" list="drugs" data-index="${index + 1}" value="" class="form-control mx-sm-3 border-1"> </td>
+      <td> <input type="number" data-index="${index + 1}" id="Quantity${index + 1}" min=1 class="form-control mx-sm-3 border-1"> </td>
+      <td> <input type="number" data-index="${index + 1}" id="Quantity${index + 1}" min=1 class="form-control mx-sm-3 border-1"> </td>
+    </tr>
+        `);
+    var x = document.querySelectorAll('input[list="drugs"]');
+    for (let i = 0; i < x.length; i++) {
+        x[i].addEventListener('input', onInput1);
+
+    }
+    var y = document.querySelectorAll('input[type="number"]');
+    for (let i = 0; i < y.length; i++) {
+        y[i].addEventListener('input', onInput2);
+    }
+    $('input').on('input', function () {
+        var val = $(this).val();
+        $(this).attr('value', val);
+        $(this).attr('width', val.length + 1);
+    });
+}
+
 function onInput1(e) {
     console.log('input');
     var input = e.target,
