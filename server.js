@@ -51,6 +51,23 @@ app.engine('hbs', hbs.engine({
               return options.fn(this);
             }
             return options.inverse(this);
+        },
+        createInput: function(n) {
+            var listRow = '';
+            for(var i = 0; i < n; ++i)
+            {
+                listRow += 
+                `
+                <tr>
+                    <th scope="row">${i + 1}</th>
+                    <td><input type="date" name="ngay-${i + 1}"></td>
+                    <td><input type="number" name="sobenhnhan-${i + 1}"></td>
+                    <td><input type="number" name="doanhthu-${i + 1}"></td>
+                    <td><input type="number" name="tyle-${i + 1}"></td>
+                </tr>
+                `;
+            }
+            return listRow;
         }
     }
 }));
@@ -84,7 +101,7 @@ app.use('/tai-lieu',DocumentRouter);
 // });
 
 app.use('/', async(req, res, next) => {
-    res.render('drugReport');
+    res.render('saleReport');
 });
 
 app.use((err, req, res, next) => {
