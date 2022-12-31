@@ -1,3 +1,4 @@
+const { ObjectID } = require('bson');
 const {db}=require('../model/Database.m');
 module.exports = {
     add: async (data) => {
@@ -32,4 +33,8 @@ module.exports = {
         const rs=await db.collection('Appointments').find({Username:Username}).toArray();
         return rs;
     },
+    changeStatus: async(ID, Status)=>{
+        const rs=await db.collection('Appointments').updateOne({_id:new ObjectID(ID)},{$set:{Status:Status}});
+        return rs;
+    }
 }

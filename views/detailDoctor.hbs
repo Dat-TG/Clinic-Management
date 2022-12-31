@@ -107,7 +107,13 @@
                                     <td><a href="/benh-nhan/{{Username}}">{{Name}}</a></td>
                                     <td>{{Phone}}</td>
                                     <td>{{Email}}</td>
-                                    <td>{{Status}}</td>
+                                    <td>
+                                        <select class="changeStatus" id="{{_id}}">
+                                            <option value="{{Status}}" selected>{{Status}}</option>
+                                            <option value="Chấp nhận">Chấp nhận</option>
+                                            <option value="Hủy">Hủy</option>
+                                        </select>
+                                    </td>
                                 </tr>
                                 {{/each}}
                             <tfoot>

@@ -85,3 +85,11 @@ exports.postAppointment=async (req,res,next)=>{
         next(err);
     }
 }
+exports.changeStatus=async(req,res,next)=>{
+    try {
+        const rs=await AppointmentM.changeStatus(req.body.ID, req.body.Status);
+        res.send('updated');
+    } catch (err) {
+        next(err);
+    }
+}

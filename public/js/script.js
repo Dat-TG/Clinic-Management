@@ -169,6 +169,16 @@ $(function () {
             $("#changePasswordForm").addClass("d-none");
         }
     });
+    $('.changeStatus').on('change',function(){
+        $.post("/tai-lieu/trang-thai-phieu-hen",
+            {
+                ID: $(this).attr('id'),
+                Status: $(this).val()
+            },
+            function (data, status) {
+                console.log(data);
+            });
+    })
     document.querySelector('input[list="patients"]').addEventListener('input', onInput);
     $("#btnPrint").on("click", function () {
         console.log('print');
