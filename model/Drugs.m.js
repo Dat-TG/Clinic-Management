@@ -7,5 +7,12 @@ module.exports = {
     getByName: async(Name) => {
         const rs=await db.collection('Drugs').find({Name:Name}).toArray();
         return rs;
-    }
+    },
+    getByID: async(ID) => {
+        const rs=await db.collection('Drugs').find({ID:ID}).toArray();
+        return rs;
+    },
+    update: async(ID,data) => {
+        await db.collection('Drugs').updateOne({ID:ID},{$set:data},{upsert:true});
+    },
 }

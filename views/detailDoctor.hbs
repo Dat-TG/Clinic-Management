@@ -110,8 +110,12 @@
                                     <td>
                                         <select class="changeStatus" id="{{_id}}">
                                             <option value="{{Status}}" selected>{{Status}}</option>
+                                            {{#ifEquals Status "Hủy"}}
                                             <option value="Chấp nhận">Chấp nhận</option>
+                                            {{/ifEquals}}
+                                            {{#ifEquals Status "Chấp nhận"}}
                                             <option value="Hủy">Hủy</option>
+                                            {{/ifEquals}}
                                         </select>
                                     </td>
                                 </tr>

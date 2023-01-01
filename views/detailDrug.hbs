@@ -1,7 +1,24 @@
+{{#ifEquals info "edit"}}
+<div class="row">
+    <div class="alert alert-success alert-dismissible fade show mb-0" role="alert">
+        <strong>Chỉnh sửa thông tin thuốc thành công.</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+</div>
+{{/ifEquals}}
 <div class="card mb-3 mt-3 ms-auto me-auto text-dark" style="max-width: 720px;background-color: aliceblue;">
     <div class="row g-0 d-flex flex-row align-items-center">
         <div class="col-md-4 text-center">
-            <img src="/img/drug.png" style="max-width: 200px;">
+            <div class="d-flex flex-column align-items-center">
+                <img src="/img/drug.png" style="max-width: 200px;" class="mb-2">
+                {{#ifEquals role "doctor"}}
+                <div class="d-flex justify-content-center">
+                    <button class="d-block me-2" data-bs-toggle="modal" data-bs-target="#editDrugModal"><i
+                            class="bi bi-pencil-square"></i></button>
+                    <button class="d-block"><i class="bi bi-trash3"></i></button>
+                </div>
+                {{/ifEquals}}
+            </div>
         </div>
         <div class="col-md-8">
             <div class="card-body mt-auto mb-auto">
@@ -13,6 +30,64 @@
                 <p><b>Công dụng:</b> {{data.Uses}}</p>
                 <p><b>Hình ảnh:</b><a href="{{data.href}}" target="blank"> nhấn vào đây</a></p>
                 <p><b>Mua sắm:</b><a href="{{data.shop}}" target="blank"> nhấn vào đây</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="editDrugModal" tabindex="-1" aria-labelledby="editDrugModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Chỉnh sửa thông tin thuốc</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form class="px-md-2" id="editDrugForm" action="/chinh-sua/thuoc/{{data.ID}}" method="POST">
+                    {{!-- Drug name input --}}
+                    <div class="form-outline mb-4">
+                        <input type="text" id="Name" class="form-control" name="Name" value="{{data.Name}}" required />
+                        <label class="form-label" for="Name">Tên thuốc</label>
+                    </div>
+
+                    {{!-- Unit input --}}
+                    <div class="form-outline mb-4">
+                        <input type="text" id="Unit" class="form-control" name="Unit" value="{{data.Unit}}" required />
+                        <label class="form-label" for="Unit">Đơn vị tính</label>
+                    </div>
+
+                    {{!-- Unit price input --}}
+                    <div class="form-outline mb-4">
+                        <input type="number" id="Price" class="form-control" name="Price" value="{{data.Price}}"
+                            required />
+                        <label class="form-label" for="Price">Đơn giá</label>
+                    </div>
+
+                    {{!-- Quantity input --}}
+                    <div class="form-outline mb-4">
+                        <input type="number" id="Quantity" class="form-control" name="Quantity"
+                            value="{{data.Quantity}}" required />
+                        <label class="form-label" for="Quantity">Số lượng</label>
+                    </div>
+
+                    {{!-- Active substance input --}}
+                    <div class="form-outline mb-4">
+                        <input type="text" id="Chemicals" class="form-control" name="Chemicals"
+                            value="{{data.Chemicals}}" required />
+                        <label class="form-label" for="Chemicals">Hoạt chất</label>
+                    </div>
+
+                    {{!-- Uses input --}}
+                    <div class="form-outline mb-4">
+                        <input type="text" id="Uses" class="form-control" name="Uses" value="{{data.Uses}}" required />
+                        <label class="form-label" for="Uses">Công dụng chính</label>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                <button type="submit" class="btn btn-primary" form="editDrugForm">Xác nhận</button>
             </div>
         </div>
     </div>
