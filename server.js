@@ -51,6 +51,9 @@ app.engine('hbs', hbs.engine({
               return options.fn(this);
             }
             return options.inverse(this);
+        },
+        sum: function(a, b) {
+            return a+b;
         }
     }
 }));

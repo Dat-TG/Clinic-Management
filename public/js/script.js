@@ -1,5 +1,5 @@
-var usernameProfile="";
-var NamePatient="";
+var usernameProfile = "";
+var NamePatient = "";
 $(function () {
     $("#name").on('input', function () {
         var ok = checkUpperCase($(this).val());
@@ -72,13 +72,13 @@ $(function () {
     table.buttons().container()
         .appendTo('#example_wrapper .col-md-6:eq(0)');
 
-        var table1 = $('#table_appointment').DataTable({
-            lengthChange: false,
-            buttons: ['copy', 'excel', 'pdf', 'colvis']
-        });
-    
-        table1.buttons().container()
-            .appendTo('#table_appointment_wrapper .col-md-6:eq(0)');
+    var table1 = $('#table_appointment').DataTable({
+        lengthChange: false,
+        buttons: ['copy', 'excel', 'pdf', 'colvis']
+    });
+
+    table1.buttons().container()
+        .appendTo('#table_appointment_wrapper .col-md-6:eq(0)');
     // Date and time picker
     $('.date').datetimepicker({
         format: 'L'
@@ -169,7 +169,7 @@ $(function () {
             $("#changePasswordForm").addClass("d-none");
         }
     });
-    $('.changeStatus').on('change',function(){
+    $('.changeStatus').on('change', function () {
         $.post("/tai-lieu/trang-thai-phieu-hen",
             {
                 ID: $(this).attr('id'),
@@ -179,7 +179,7 @@ $(function () {
                 console.log(data);
             });
     })
-    document.querySelector('input[list="patients"]').addEventListener('input', onInput);
+    $('input[list="patients"]').on('input', onInput);
     $("#btnPrint").on("click", function () {
         console.log('print');
         const data = $("#printPDF").html();
@@ -212,6 +212,25 @@ $(function () {
         var val = $(this).val();
         $(this).attr('value', val);
     });
+    var animateButton = function (e) {
+
+        e.preventDefault;
+        //reset animation
+        e.target.classList.remove('animate');
+
+        e.target.classList.add('animate');
+
+        e.target.classList.add('animate');
+        setTimeout(function () {
+            e.target.classList.remove('animate');
+        }, 2000);
+    };
+
+    var classname = document.getElementsByClassName("button");
+
+    for (var i = 0; i < classname.length; i++) {
+        classname[i].addEventListener('click', animateButton, false);
+    }
 })
 
 function checkUpperCase(name) {
@@ -262,33 +281,33 @@ function onInput(e) {
     list = input.getAttribute('list'),
         options = document.getElementById(list).childNodes;
 
-    var ok=false;
+    var ok = false;
 
     for (var i = 0; i < options.length; i++) {
         if (options[i].innerText === val) {
             console.log("match");
-            usernameProfile=options[i].getAttribute('data-username');
-            NamePatient=options[i].getAttribute('data-name');
+            usernameProfile = options[i].getAttribute('data-username');
+            NamePatient = options[i].getAttribute('data-name');
             $.post("/tai-lieu/xuat-hoa-don",
                 {
                     username: options[i].getAttribute('data-username')
                 },
                 function (data, status) {
                     $('#DOB').attr('value', data.user.DOB);
-                    document.getElementById('DOB').value=data.user.DOB;
+                    document.getElementById('DOB').value = data.user.DOB;
                     $('#Address').attr('value', data.user.Address);
-                    document.getElementById('Address').value=data.user.Address;
+                    document.getElementById('Address').value = data.user.Address;
                 });
             // An item was selected from the list!
             // yourCallbackHere()
             //alert('item selected: ' + val);
-            ok=true;
+            ok = true;
             break;
         }
     }
     if (!ok) {
-        usernameProfile="123";
-        NamePatient=val;
+        usernameProfile = "123";
+        NamePatient = val;
     }
 }
 
@@ -342,8 +361,8 @@ function onInput1(e) {
                     $('#Price' + index).html(data.drug.Price);
                     let quantity = $('#Quantity' + index).val();
                     let curTotal = parseInt($("#AllTotal").html());
-                    let oldTotal=parseInt($('#Total'+index).html());
-                    if (oldTotal>0) curTotal-=oldTotal;
+                    let oldTotal = parseInt($('#Total' + index).html());
+                    if (oldTotal > 0) curTotal -= oldTotal;
                     $('#Total' + index).html(parseInt(data.drug.Price) * parseInt(quantity));
                     curTotal += parseInt(data.drug.Price) * parseInt(quantity);
                     $('#AllTotal').html(curTotal);
@@ -371,4 +390,88 @@ function onInput2(e) {
     console.log(val, unitPrice, total);
     $("#Total" + index).html(total);
     $("#AllTotal").html(allTotal);
+}
+
+function autoGeneratePatientList() {
+    let index = document.getElementsByTagName("tbody")[0].childElementCount;
+    $('table tbody').append(`
+    <tr>
+      <th class="col-1 text-center">${index + 1}</th>
+      <td class="col-3 text-center"> <input type="text" data-index="${index + 1}" list="patients" id="Name${index + 1}" name="Name"  class="form-control mx-sm-3 border-0" value=""> </td>
+      <td class="col-1 text-center"><input type="text" id="Gender${index + 1}" data-index="${index + 1}" class="form-control mx-sm-3 border-0"></td>
+      <td class="col-2 text-center"><input type="text" id="DOB${index + 1}" data-index="${index + 1}" id="DOB" class="form-control mx-sm-3 border-0" value=""></td>
+      <td class="col-4 text-center">  <input type="text" id="Address${index + 1}" data-index="${index + 1}" class="form-control mx-sm-3 border-0" value=""> </td>
+      <td class="col-1 text-center"><input type="time" id="Time${index + 1}" data-index="${index + 1}" class="form-control mx-sm-3 border-0"></td>
+      <td class="d-none"><input id="Username${index + 1}" class="d-none" type="text"></td>
+      </tr>
+        `);
+    var x = document.querySelectorAll('input[list="patients"]');
+    for (let i = 0; i < x.length; i++) {
+        x[i].addEventListener('input', onInputPatientList);
+    }
+}
+
+function onInputPatientList(e) {
+    console.log('input');
+    var input = e.target,
+        val = input.value;
+    list = input.getAttribute('list'),
+        options = document.getElementById(list).childNodes;
+
+    var ok = false;
+    console.log('index: ', input.getAttribute('data-index'));
+    var index = input.getAttribute("data-index");
+    var today = new Date();
+    var time = today.toLocaleTimeString('it-IT');
+    document.getElementById('Time' + index).value = time;
+
+    for (var i = 0; i < options.length; i++) {
+        if (options[i].innerText === val) {
+            console.log("match");
+            $('#Name' + index).attr('value', options[i].getAttribute('data-name'));
+            document.getElementById('Name' + index).value = options[i].getAttribute('data-name');
+            $.post("/tai-lieu/danh-sach-kham-benh",
+                {
+                    username: options[i].getAttribute('data-username')
+                },
+                function (data, status) {
+                    if (data.user) {
+                        document.getElementById('Gender' + index).value = data.user.Gender;
+                        document.getElementById('DOB' + index).value = data.user.DOB;
+                        document.getElementById('Address' + index).value = data.user.Address;
+                        document.getElementById('Username' + index).value = options[i].getAttribute('data-username');
+                    }
+                });
+            // An item was selected from the list!
+            // yourCallbackHere()
+            //alert('item selected: ' + val);
+            ok = true;
+            break;
+        }
+    }
+    if (!ok) {
+        usernameProfile = "123";
+        NamePatient = val;
+    }
+}
+
+function savePatientsList() {
+    let nPatients = parseInt(document.getElementsByTagName("tbody")[0].childElementCount);
+    let PatientsList = [];
+    for (let i = 1; i <= nPatients; i++) {
+        let x = {};
+        x.Username = $('#Username' + i).val();
+        x.Name = $('#Name' + i).val();
+        x.Address = $('#Address' + i).val();
+        x.Gender = $('#Gender' + i).val();
+        x.DOB = $('#DOB' + i).val();
+        x.Time=$('#Time'+i).val();
+        PatientsList.push(x);
+    }
+    $.post("/tai-lieu/danh-sach-kham-benh",
+        {
+            PatientsList: PatientsList
+        },
+        function (data, status) {
+        });
 }

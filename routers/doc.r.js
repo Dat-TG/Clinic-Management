@@ -6,4 +6,6 @@ router.post('/xuat-hoa-don', docC.UpdateInvoice);
 router.get('/lap-phieu-hen',docC.getAppointment);
 router.post('/lap-phieu-hen',docC.postAppointment);
 router.post('/trang-thai-phieu-hen',docC.changeStatus);
+router.get('/danh-sach-kham-benh',docC.getPatientsListInDay);
+router.post('/danh-sach-kham-benh',docC.postPatientsListInDay);
 module.exports=router;

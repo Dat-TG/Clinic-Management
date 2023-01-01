@@ -4,6 +4,7 @@ const DrugsM = require('../model/Drugs.m');
 const ServicesM = require('../model/Services.m');
 const RecordsM = require('../model/Records.m');
 const AppointmentM = require('../model/Appointment.m');
+const PatientsInDayM = require('../model/PatientsInDay.m');
 exports.createInvoice = async (req, res, next) => {
     if (!req.session.Doctor) {
         res.redirect('/');
@@ -89,6 +90,47 @@ exports.changeStatus=async(req,res,next)=>{
     try {
         const rs=await AppointmentM.changeStatus(req.body.ID, req.body.Status);
         res.send('updated');
+    } catch (err) {
+        next(err);
+    }
+}
+exports.getPatientsListInDay=async(req,res,next)=>{
+    let role = "patient";
+    if (req.session.Doctor) {
+        role = "doctor";
+    }
+    if (!req.session.Doctor) {
+        if (req.session.Username) {
+            return res.render('error', { display1: "d-none", display2: "d-block", role: role });
+        }
+        else {
+            return res.render('error', { display1: "d-block", display2: "d-none", role: role });
+        }
+    }
+    try {
+        //const rs=await AppointmentM.changeStatus(req.body.ID, req.body.Status);
+        var patients = await UsersM.getAll();
+        var today=new Date();
+        today = typeof today == "object" ? today.toLocaleDateString('vi-VN') : "";
+        var list=await PatientsInDayM.getAll();
+        res.render('patients-list-in-day', {patients:patients, display1: "d-none", display2: "d-block", role: role, today:today, list:list});
+    } catch (err) {
+        next(err);
+    }
+}
+exports.postPatientsListInDay=async(req,res,next)=>{
+    try {
+        const data=req.body;
+        if (data.username) {
+            const rs=await UsersM.getByUsername(data.username);
+            rs[0].DOB = typeof rs[0].DOB == "object" ? rs[0].DOB.toLocaleDateString('vi-VN') : "";
+            return res.send({user:rs[0]});
+        } else {
+            await PatientsInDayM.deleteAll();
+            for (let i=0;i<data.PatientsList.length;i++) {
+                let rs=await PatientsInDayM.add(data.PatientsList[i]);
+            }
+        }
     } catch (err) {
         next(err);
     }
