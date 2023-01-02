@@ -427,4 +427,9 @@ section {
 		 background-color: #f44336;
 	}
 }
- 
+
+
+.process-img {
+    max-width: 90vw;
+    min-width: 640px;
+}
