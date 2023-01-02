@@ -5,6 +5,7 @@ const ServicesM = require('../model/Services.m');
 const RecordsM = require('../model/Records.m');
 const AppointmentM = require('../model/Appointment.m');
 const PatientsInDayM = require('../model/PatientsInDay.m');
+const RevenueM = require('../model/Revenue.m');
 exports.createInvoice = async (req, res, next) => {
     if (!req.session.Doctor) {
         res.redirect('/');
@@ -131,6 +132,85 @@ exports.postPatientsListInDay=async(req,res,next)=>{
                 let rs=await PatientsInDayM.add(data.PatientsList[i]);
             }
         }
+    } catch (err) {
+        next(err);
+    }
+}
+exports.getRevenue=async(req,res,next)=>{
+    let role = "patient";
+    if (req.session.Doctor) {
+        role = "doctor";
+    }
+    if (!req.session.Doctor) {
+        if (req.session.Username) {
+            return res.render('error', { display1: "d-none", display2: "d-block", role: role });
+        }
+        else {
+            return res.render('error', { display1: "d-block", display2: "d-none", role: role });
+        }
+    }
+    try {
+        res.render('revenue', {display1: "d-none", display2: "d-block", role: role});
+    } catch (err) {
+        next(err);
+    }
+}
+exports.postRevenue=async(req,res,next)=>{
+    let role = "patient";
+    if (req.session.Doctor) {
+        role = "doctor";
+    }
+    if (!req.session.Doctor) {
+        if (req.session.Username) {
+            return res.render('error', { display1: "d-none", display2: "d-block", role: role });
+        }
+        else {
+            return res.render('error', { display1: "d-block", display2: "d-none", role: role });
+        }
+    }
+    try {
+        const rs=await RevenueM.add(req.body);
+        res.redirect('/tai-lieu/xem-bao-cao-doanh-thu');
+    } catch (err) {
+        next(err);
+    }
+}
+exports.viewAllRevenue=async(req,res,next)=>{
+    let role = "patient";
+    if (req.session.Doctor) {
+        role = "doctor";
+    }
+    if (!req.session.Doctor) {
+        if (req.session.Username) {
+            return res.render('error', { display1: "d-none", display2: "d-block", role: role });
+        }
+        else {
+            return res.render('error', { display1: "d-block", display2: "d-none", role: role });
+        }
+    }
+    try {
+        const rs=await RevenueM.getAll();
+        res.render('revenue-list', { revenues:rs,display1: "d-none", display2: "d-block", role: role });
+    } catch (err) {
+        next(err);
+    }
+}
+exports.viewRevenueDetail=async(req,res,next)=>{
+    let role = "patient";
+    if (req.session.Doctor) {
+        role = "doctor";
+    }
+    if (!req.session.Doctor) {
+        if (req.session.Username) {
+            return res.render('error', { display1: "d-none", display2: "d-block", role: role });
+        }
+        else {
+            return res.render('error', { display1: "d-block", display2: "d-none", role: role });
+        }
+    }
+    try {
+        const rs=await RevenueM.getByID(req.params.ID);
+        res.render('revenue-detail', { data:rs[0],display1: "d-none", display2: "d-block", role: role });
     } catch (err) {
         next(err);
     }

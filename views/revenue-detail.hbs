@@ -1,0 +1,280 @@
+<h3 class="text-center mt-2"><b>BÁO CÁO DOANH THU</b></h3>
+<div class="table-container">
+    <table class="table table-bordered">
+        <thead>
+            <div class="d-flex justify-content-center mb-2">
+                <div class="text-center me-2">Tháng <input type="text" name="thang" form="revenue" value="{{data.thang}}"></div>
+                <div class="text-center">Năm <input type="text" name="nam" form="revenue" value="{{data.nam}}"></div>
+            </div>
+            <tr>
+                <th scope="col" class="text-center">STT</th>
+                <th scope="col" class="text-center">Ngày</th>
+                <th scope="col" class="text-center">Số bệnh nhân</th>
+                <th scope="col" class="text-center">Doanh thu</th>
+                <th scope="col" class="text-center">Tỷ lệ (%)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <form id="revenue" method="post" action="/tai-lieu/bao-cao-doanh-thu">
+            <tr>
+                    <th scope="row" class="text-center">1</th>
+                    <td class="text-center"><input type="date" class="text-center" name="ngay-1" value="{{data.ngay-1}}"></td>
+                    <td class="text-center"><input type="number" class="text-center" name="sobenhnhan-1" value="{{data.sobenhnhan-1}}"></td>
+                    <td class="text-center"><input type="number" class="text-center" name="doanhthu-1" value="{{data.doanhthu-1}}"></td>
+                    <td class="text-center"><input type="text" step="any" class="text-center" id="tyle-1" name="tyle-1" value="{{data.tyle-1}}"></td>
+                </tr>
+                
+                <tr>
+                    <th scope="row" class="text-center">2</th>
+                    <td class="text-center"><input type="date" class="text-center" name="ngay-2" value="{{data.ngay-2}}"></td>
+                    <td class="text-center"><input type="number" class="text-center" name="sobenhnhan-2" value="{{data.sobenhnhan-2}}"></td>
+                    <td class="text-center"><input type="number" class="text-center" name="doanhthu-2" value="{{data.doanhthu-2}}"></td>
+                    <td class="text-center"><input type="text" step="any" class="text-center" id="tyle-2" name="tyle-2" value="{{data.tyle-2}}"></td>
+                </tr>
+                
+                <tr>
+                    <th scope="row" class="text-center">3</th>
+                    <td class="text-center"><input type="date" class="text-center" name="ngay-3" value="{{data.ngay-3}}"></td>
+                    <td class="text-center"><input type="number" class="text-center" name="sobenhnhan-3" value="{{data.sobenhnhan-3}}"></td>
+                    <td class="text-center"><input type="number" class="text-center" name="doanhthu-3" value="{{data.doanhthu-3}}"></td>
+                    <td class="text-center"><input type="text" step="any" class="text-center" id="tyle-3" name="tyle-3" value="{{data.tyle-3}}"></td>
+                </tr>
+                
+                <tr>
+                    <th scope="row" class="text-center">4</th>
+                    <td class="text-center"><input type="date" class="text-center" name="ngay-4" value="{{data.ngay-4}}"></td>
+                    <td class="text-center"><input type="number" class="text-center" name="sobenhnhan-4" value="{{data.sobenhnhan-4}}"></td>
+                    <td class="text-center"><input type="number" class="text-center" name="doanhthu-4" value="{{data.doanhthu-4}}"></td>
+                    <td class="text-center"><input type="text" step="any" class="text-center" id="tyle-4" name="tyle-4" value="{{data.tyle-4}}"></td>
+                </tr>
+                
+                <tr>
+                    <th scope="row" class="text-center">5</th>
+                    <td class="text-center"><input type="date" class="text-center" name="ngay-5" value="{{data.ngay-5}}"></td>
+                    <td class="text-center"><input type="number" class="text-center" name="sobenhnhan-5" value="{{data.sobenhnhan-5}}"></td>
+                    <td class="text-center"><input type="number" class="text-center" name="doanhthu-5" value="{{data.doanhthu-5}}"></td>
+                    <td class="text-center"><input type="text" step="any" class="text-center" id="tyle-5" name="tyle-5" value="{{data.tyle-5}}"></td>
+                </tr>
+                
+                <tr>
+                    <th scope="row" class="text-center">6</th>
+                    <td class="text-center"><input type="date" class="text-center" name="ngay-6" value="{{data.ngay-6}}"></td>
+                    <td class="text-center"><input type="number" class="text-center" name="sobenhnhan-6" value="{{data.sobenhnhan-6}}"></td>
+                    <td class="text-center"><input type="number" class="text-center" name="doanhthu-6" value="{{data.doanhthu-6}}"></td>
+                    <td class="text-center"><input type="text" step="any" class="text-center" id="tyle-6" name="tyle-6" value="{{data.tyle-6}}"></td>
+                </tr>
+                
+                <tr>
+                    <th scope="row" class="text-center">7</th>
+                    <td class="text-center"><input type="date" class="text-center" name="ngay-7" value="{{data.ngay-7}}"></td>
+                    <td class="text-center"><input type="number" class="text-center" name="sobenhnhan-7" value="{{data.sobenhnhan-7}}"></td>
+                    <td class="text-center"><input type="number" class="text-center" name="doanhthu-7" value="{{data.doanhthu-7}}"></td>
+                    <td class="text-center"><input type="text" step="any" class="text-center" id="tyle-7" name="tyle-7" value="{{data.tyle-7}}"></td>
+                </tr>
+                
+                <tr>
+                    <th scope="row" class="text-center">8</th>
+                    <td class="text-center"><input type="date" class="text-center" name="ngay-8" value="{{data.ngay-8}}"></td>
+                    <td class="text-center"><input type="number" class="text-center" name="sobenhnhan-8" value="{{data.sobenhnhan-8}}"></td>
+                    <td class="text-center"><input type="number" class="text-center" name="doanhthu-8" value="{{data.doanhthu-8}}"></td>
+                    <td class="text-center"><input type="text" step="any" class="text-center" id="tyle-8" name="tyle-8" value="{{data.tyle-8}}"></td>
+                </tr>
+                
+                <tr>
+                    <th scope="row" class="text-center">9</th>
+                    <td class="text-center"><input type="date" class="text-center" name="ngay-9" value="{{data.ngay-9}}"></td>
+                    <td class="text-center"><input type="number" class="text-center" name="sobenhnhan-9" value="{{data.sobenhnhan-9}}"></td>
+                    <td class="text-center"><input type="number" class="text-center" name="doanhthu-9" value="{{data.doanhthu-9}}"></td>
+                    <td class="text-center"><input type="text" step="any" class="text-center" id="tyle-9" name="tyle-9" value="{{data.tyle-9}}"></td>
+                </tr>
+                
+                <tr>
+                    <th scope="row" class="text-center">10</th>
+                    <td class="text-center"><input type="date" class="text-center" name="ngay-10" value="{{data.ngay-10}}"></td>
+                    <td class="text-center"><input type="number" class="text-center" name="sobenhnhan-10" value="{{data.sobenhnhan-10}}"></td>
+                    <td class="text-center"><input type="number" class="text-center" name="doanhthu-10" value="{{data.doanhthu-10}}"></td>
+                    <td class="text-center"><input type="text" step="any" class="text-center" id="tyle-10" name="tyle-10" value="{{data.tyle-10}}"></td>
+                </tr>
+                
+                <tr>
+                    <th scope="row" class="text-center">11</th>
+                    <td class="text-center"><input type="date" class="text-center" name="ngay-11" value="{{data.ngay-11}}"></td>
+                    <td class="text-center"><input type="number" class="text-center" name="sobenhnhan-11" value="{{data.sobenhnhan-11}}"></td>
+                    <td class="text-center"><input type="number" class="text-center" name="doanhthu-11" value="{{data.doanhthu-11}}"></td>
+                    <td class="text-center"><input type="text" step="any" class="text-center" id="tyle-11" name="tyle-11" value="{{data.tyle-11}}"></td>
+                </tr>
+                
+                <tr>
+                    <th scope="row" class="text-center">12</th>
+                    <td class="text-center"><input type="date" class="text-center" name="ngay-12" value="{{data.ngay-12}}"></td>
+                    <td class="text-center"><input type="number" class="text-center" name="sobenhnhan-12" value="{{data.sobenhnhan-12}}"></td>
+                    <td class="text-center"><input type="number" class="text-center" name="doanhthu-12" value="{{data.doanhthu-12}}"></td>
+                    <td class="text-center"><input type="text" step="any" class="text-center" id="tyle-12" name="tyle-12" value="{{data.tyle-12}}"></td>
+                </tr>
+                
+                <tr>
+                    <th scope="row" class="text-center">13</th>
+                    <td class="text-center"><input type="date" class="text-center" name="ngay-13" value="{{data.ngay-13}}"></td>
+                    <td class="text-center"><input type="number" class="text-center" name="sobenhnhan-13" value="{{data.sobenhnhan-13}}"></td>
+                    <td class="text-center"><input type="number" class="text-center" name="doanhthu-13" value="{{data.doanhthu-13}}"></td>
+                    <td class="text-center"><input type="text" step="any" class="text-center" id="tyle-13" name="tyle-13" value="{{data.tyle-13}}"></td>
+                </tr>
+                
+                <tr>
+                    <th scope="row" class="text-center">14</th>
+                    <td class="text-center"><input type="date" class="text-center" name="ngay-14" value="{{data.ngay-14}}"></td>
+                    <td class="text-center"><input type="number" class="text-center" name="sobenhnhan-14" value="{{data.sobenhnhan-14}}"></td>
+                    <td class="text-center"><input type="number" class="text-center" name="doanhthu-14" value="{{data.doanhthu-14}}"></td>
+                    <td class="text-center"><input type="text" step="any" class="text-center" id="tyle-14" name="tyle-14" value="{{data.tyle-14}}"></td>
+                </tr>
+                
+                <tr>
+                    <th scope="row" class="text-center">15</th>
+                    <td class="text-center"><input type="date" class="text-center" name="ngay-15" value="{{data.ngay-15}}"></td>
+                    <td class="text-center"><input type="number" class="text-center" name="sobenhnhan-15" value="{{data.sobenhnhan-15}}"></td>
+                    <td class="text-center"><input type="number" class="text-center" name="doanhthu-15" value="{{data.doanhthu-15}}"></td>
+                    <td class="text-center"><input type="text" step="any" class="text-center" id="tyle-15" name="tyle-15" value="{{data.tyle-15}}"></td>
+                </tr>
+                
+                <tr>
+                    <th scope="row" class="text-center">16</th>
+                    <td class="text-center"><input type="date" class="text-center" name="ngay-16" value="{{data.ngay-16}}"></td>
+                    <td class="text-center"><input type="number" class="text-center" name="sobenhnhan-16" value="{{data.sobenhnhan-16}}"></td>
+                    <td class="text-center"><input type="number" class="text-center" name="doanhthu-16" value="{{data.doanhthu-16}}"></td>
+                    <td class="text-center"><input type="text" step="any" class="text-center" id="tyle-16" name="tyle-16" value="{{data.tyle-16}}"></td>
+                </tr>
+                
+                <tr>
+                    <th scope="row" class="text-center">17</th>
+                    <td class="text-center"><input type="date" class="text-center" name="ngay-17" value="{{data.ngay-17}}"></td>
+                    <td class="text-center"><input type="number" class="text-center" name="sobenhnhan-17" value="{{data.sobenhnhan-17}}"></td>
+                    <td class="text-center"><input type="number" class="text-center" name="doanhthu-17" value="{{data.doanhthu-17}}"></td>
+                    <td class="text-center"><input type="text" step="any" class="text-center" id="tyle-17" name="tyle-17" value="{{data.tyle-17}}"></td>
+                </tr>
+                
+                <tr>
+                    <th scope="row" class="text-center">18</th>
+                    <td class="text-center"><input type="date" class="text-center" name="ngay-18" value="{{data.ngay-18}}"></td>
+                    <td class="text-center"><input type="number" class="text-center" name="sobenhnhan-18" value="{{data.sobenhnhan-18}}"></td>
+                    <td class="text-center"><input type="number" class="text-center" name="doanhthu-18" value="{{data.doanhthu-18}}"></td>
+                    <td class="text-center"><input type="text" step="any" class="text-center" id="tyle-18" name="tyle-18" value="{{data.tyle-18}}"></td>
+                </tr>
+                
+                <tr>
+                    <th scope="row" class="text-center">19</th>
+                    <td class="text-center"><input type="date" class="text-center" name="ngay-19" value="{{data.ngay-19}}"></td>
+                    <td class="text-center"><input type="number" class="text-center" name="sobenhnhan-19" value="{{data.sobenhnhan-19}}"></td>
+                    <td class="text-center"><input type="number" class="text-center" name="doanhthu-19" value="{{data.doanhthu-19}}"></td>
+                    <td class="text-center"><input type="text" step="any" class="text-center" id="tyle-19" name="tyle-19" value="{{data.tyle-19}}"></td>
+                </tr>
+                
+                <tr>
+                    <th scope="row" class="text-center">20</th>
+                    <td class="text-center"><input type="date" class="text-center" name="ngay-20" value="{{data.ngay-20}}"></td>
+                    <td class="text-center"><input type="number" class="text-center" name="sobenhnhan-20" value="{{data.sobenhnhan-20}}"></td>
+                    <td class="text-center"><input type="number" class="text-center" name="doanhthu-20" value="{{data.doanhthu-20}}"></td>
+                    <td class="text-center"><input type="text" step="any" class="text-center" id="tyle-20" name="tyle-20" value="{{data.tyle-20}}"></td>
+                </tr>
+                
+                <tr>
+                    <th scope="row" class="text-center">21</th>
+                    <td class="text-center"><input type="date" class="text-center" name="ngay-21" value="{{data.ngay-21}}"></td>
+                    <td class="text-center"><input type="number" class="text-center" name="sobenhnhan-21" value="{{data.sobenhnhan-21}}"></td>
+                    <td class="text-center"><input type="number" class="text-center" name="doanhthu-21" value="{{data.doanhthu-21}}"></td>
+                    <td class="text-center"><input type="text" step="any" class="text-center" id="tyle-21" name="tyle-21" value="{{data.tyle-21}}"></td>
+                </tr>
+                
+                <tr>
+                    <th scope="row" class="text-center">22</th>
+                    <td class="text-center"><input type="date" class="text-center" name="ngay-22" value="{{data.ngay-22}}"></td>
+                    <td class="text-center"><input type="number" class="text-center" name="sobenhnhan-22" value="{{data.sobenhnhan-22}}"></td>
+                    <td class="text-center"><input type="number" class="text-center" name="doanhthu-22" value="{{data.doanhthu-22}}"></td>
+                    <td class="text-center"><input type="text" step="any" class="text-center" id="tyle-22" name="tyle-22" value="{{data.tyle-22}}"></td>
+                </tr>
+                
+                <tr>
+                    <th scope="row" class="text-center">23</th>
+                    <td class="text-center"><input type="date" class="text-center" name="ngay-23" value="{{data.ngay-23}}"></td>
+                    <td class="text-center"><input type="number" class="text-center" name="sobenhnhan-23" value="{{data.sobenhnhan-23}}"></td>
+                    <td class="text-center"><input type="number" class="text-center" name="doanhthu-23" value="{{data.doanhthu-23}}"></td>
+                    <td class="text-center"><input type="text" step="any" class="text-center" id="tyle-23" name="tyle-23" value="{{data.tyle-23}}"></td>
+                </tr>
+                
+                <tr>
+                    <th scope="row" class="text-center">24</th>
+                    <td class="text-center"><input type="date" class="text-center" name="ngay-24" value="{{data.ngay-24}}"></td>
+                    <td class="text-center"><input type="number" class="text-center" name="sobenhnhan-24" value="{{data.sobenhnhan-24}}"></td>
+                    <td class="text-center"><input type="number" class="text-center" name="doanhthu-24" value="{{data.doanhthu-24}}"></td>
+                    <td class="text-center"><input type="text" step="any" class="text-center" id="tyle-24" name="tyle-24" value="{{data.tyle-24}}"></td>
+                </tr>
+                
+                <tr>
+                    <th scope="row" class="text-center">25</th>
+                    <td class="text-center"><input type="date" class="text-center" name="ngay-25" value="{{data.ngay-25}}"></td>
+                    <td class="text-center"><input type="number" class="text-center" name="sobenhnhan-25" value="{{data.sobenhnhan-25}}"></td>
+                    <td class="text-center"><input type="number" class="text-center" name="doanhthu-25" value="{{data.doanhthu-25}}"></td>
+                    <td class="text-center"><input type="text" step="any" class="text-center" id="tyle-25" name="tyle-25" value="{{data.tyle-25}}"></td>
+                </tr>
+                
+                <tr>
+                    <th scope="row" class="text-center">26</th>
+                    <td class="text-center"><input type="date" class="text-center" name="ngay-26" value="{{data.ngay-26}}"></td>
+                    <td class="text-center"><input type="number" class="text-center" name="sobenhnhan-26" value="{{data.sobenhnhan-26}}"></td>
+                    <td class="text-center"><input type="number" class="text-center" name="doanhthu-26" value="{{data.doanhthu-26}}"></td>
+                    <td class="text-center"><input type="text" step="any" class="text-center" id="tyle-26" name="tyle-26" value="{{data.tyle-26}}"></td>
+                </tr>
+                
+                <tr>
+                    <th scope="row" class="text-center">27</th>
+                    <td class="text-center"><input type="date" class="text-center" name="ngay-27" value="{{data.ngay-27}}"></td>
+                    <td class="text-center"><input type="number" class="text-center" name="sobenhnhan-27" value="{{data.sobenhnhan-27}}"></td>
+                    <td class="text-center"><input type="number" class="text-center" name="doanhthu-27" value="{{data.doanhthu-27}}"></td>
+                    <td class="text-center"><input type="text" step="any" class="text-center" id="tyle-27" name="tyle-27" value="{{data.tyle-27}}"></td>
+                </tr>
+                
+                <tr>
+                    <th scope="row" class="text-center">28</th>
+                    <td class="text-center"><input type="date" class="text-center" name="ngay-28" value="{{data.ngay-28}}"></td>
+                    <td class="text-center"><input type="number" class="text-center" name="sobenhnhan-28" value="{{data.sobenhnhan-28}}"></td>
+                    <td class="text-center"><input type="number" class="text-center" name="doanhthu-28" value="{{data.doanhthu-28}}"></td>
+                    <td class="text-center"><input type="text" step="any" class="text-center" id="tyle-28" name="tyle-28" value="{{data.tyle-28}}"></td>
+                </tr>
+                
+                <tr>
+                    <th scope="row" class="text-center">29</th>
+                    <td class="text-center"><input type="date" class="text-center" name="ngay-29" value="{{data.ngay-29}}"></td>
+                    <td class="text-center"><input type="number" class="text-center" name="sobenhnhan-29" value="{{data.sobenhnhan-29}}"></td>
+                    <td class="text-center"><input type="number" class="text-center" name="doanhthu-29" value="{{data.doanhthu-29}}"></td>
+                    <td class="text-center"><input type="text" step="any" class="text-center" id="tyle-29" name="tyle-29" value="{{data.tyle-29}}"></td>
+                </tr>
+                
+                <tr>
+                    <th scope="row" class="text-center">30</th>
+                    <td class="text-center"><input type="date" class="text-center" name="ngay-30" value="{{data.ngay-30}}"></td>
+                    <td class="text-center"><input type="number" class="text-center" name="sobenhnhan-30" value="{{data.sobenhnhan-30}}"></td>
+                    <td class="text-center"><input type="number" class="text-center" name="doanhthu-30" value="{{data.doanhthu-30}}"></td>
+                    <td class="text-center"><input type="text" step="any" class="text-center" id="tyle-30" name="tyle-30" value="{{data.tyle-30}}"></td>
+                </tr>
+                
+                <tr>
+                    <th scope="row" class="text-center">31</th>
+                    <td class="text-center"><input type="date" class="text-center" name="ngay-31" value="{{data.ngay-31}}"></td>
+                    <td class="text-center"><input type="number" class="text-center" name="sobenhnhan-31" value="{{data.sobenhnhan-31}}"></td>
+                    <td class="text-center"><input type="number" class="text-center" name="doanhthu-31" value="{{data.doanhthu-31}}"></td>
+                    <td class="text-center"><input type="text" step="any" class="text-center" id="tyle-31" name="tyle-31" value="{{data.tyle-31}}"></td>
+                </tr>
+            </form>
+            <tr>
+                <th scope="row" class="text-center"></th>
+                <td class="text-center"></td>
+                <td class="text-center"><b>Tổng doanh thu</b></td>
+                <td class="text-center"><input type="number" class="text-center" name="total" id="total" form="revenue" value="{{data.total}}"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="d-flex justify-content-start ms-2 mb-4">
+    <div><button class="btn btn-success me-2" onclick="CalPercent()">Tính tỉ lệ</button></div>
+    <div><button class="btn btn-success me-2" type="submit" form="revenue">Gửi báo cáo</button></div>
+    <div><a href="/tai-lieu/xem-bao-cao-doanh-thu"><button class="btn btn-success">Xem các báo cáo trước đây</button></a></div>
+</div>

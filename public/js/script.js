@@ -212,25 +212,25 @@ $(function () {
         var val = $(this).val();
         $(this).attr('value', val);
     });
-    var animateButton = function (e) {
+    var animateButton = function(e) {
 
         e.preventDefault;
         //reset animation
         e.target.classList.remove('animate');
-
+        
         e.target.classList.add('animate');
-
+        
         e.target.classList.add('animate');
-        setTimeout(function () {
-            e.target.classList.remove('animate');
-        }, 2000);
-    };
-
-    var classname = document.getElementsByClassName("button");
-
-    for (var i = 0; i < classname.length; i++) {
+        setTimeout(function(){
+          e.target.classList.remove('animate');
+        },4000);
+      };
+      
+      var classname = document.getElementsByClassName("button");
+      
+      for (var i = 0; i < classname.length; i++) {
         classname[i].addEventListener('click', animateButton, false);
-    }
+      }
 })
 
 function checkUpperCase(name) {
@@ -474,4 +474,20 @@ function savePatientsList() {
         },
         function (data, status) {
         });
+}
+
+function CalPercent() {
+    var list=document.querySelectorAll('input[name^=doanhthu]');
+    var total=0;
+    for (let i=0;i<list.length;i++) {
+        total+=parseInt(list[i].value)||0;
+    }
+    document.getElementById('total').value=total;
+    for (let i=0;i<list.length;i++) {
+        let index=i+1;
+        let res=(parseInt(list[i].value)||0)/(parseInt(total))*100;
+        res=res.toFixed(2);
+        $('#tyle-'+index).val(res);
+    }
+    console.log(total);
 }

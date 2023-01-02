@@ -8,7 +8,7 @@
                 <h1 class="display-1 text-white mb-md-4"><b>Phòng Khám Đa Khoa Tốt Nhất Hiện Nay</b></h1>
                 <div class="pt-2">
                     <a href="/tim-kiem/bac-si" class="btn btn-light rounded-pill py-md-3 px-md-5 mx-2">Tìm bác sĩ</a>
-                    <a href="" class="btn btn-outline-light rounded-pill py-md-3 px-md-5 mx-2">Lập phiếu hẹn</a>
+                    <a href="/tai-lieu/lap-phieu-hen" class="btn btn-outline-light rounded-pill py-md-3 px-md-5 mx-2">Lập phiếu hẹn</a>
                 </div>
             </div>
         </div>
@@ -171,67 +171,6 @@
     </div>
 </div>
 <!-- Services End -->
-
-
-<!-- Appointment Start -->
-<div class="container-fluid bg-primary my-5 py-5">
-    <div class="container py-5">
-        <div class="row gx-5">
-            <div class="col-lg-6 mb-5 mb-lg-0">
-                <div class="mb-4">
-                    <h5 class="d-inline-block text-white text-uppercase border-bottom border-5">CUỘC HẸN</h5>
-                    <h1 class="display-4"><b>Tạo một phiếu hẹn cho bác sĩ</b></h1>
-                </div>
-                <p class="text-white mb-5">Bạn có thể được khám bệnh bởi bác sĩ mà mình mong muốn vào khung giờ hẹn</p>
-                <a class="btn btn-dark rounded-pill py-3 px-5 me-3" href="/tim-kiem/bac-si">Tìm bác sĩ</a>
-                <a class="btn btn-outline-dark rounded-pill py-3 px-5" href="">Tìm hiểu thêm</a>
-            </div>
-            <div class="col-lg-6">
-                <div class="bg-white text-center rounded p-5">
-                    <h1 class="mb-4">ĐẶT LỊCH HẸN</h1>
-                    <form>
-                        <div class="row g-3">
-                            <div class="col-12 col-sm-6">
-                                <select class="form-select bg-light border-0" style="height: 55px;">
-                                    <option selected>Chọn bác sĩ</option>
-                                    {{#each doctors}}
-                                    <option value="{{ID}}">{{Name}}</option>
-                                    {{/each}}
-                                </select>
-                            </div>
-                            <div class="col-12 col-sm-6">
-                                <input type="text" class="form-control bg-light border-0" placeholder="Họ tên của bạn"
-                                    style="height: 55px;">
-                            </div>
-                            <div class="col-12 col-sm-6">
-                                <input type="email" class="form-control bg-light border-0" placeholder="Số điện thoại"
-                                    style="height: 55px;">
-                            </div>
-                            <div class="col-12 col-sm-6">
-                                <div class="date" id="date" data-target-input="nearest">
-                                    <input type="text" class="form-control bg-light border-0 datetimepicker-input"
-                                        placeholder="Ngày hẹn" data-target="#date" data-toggle="datetimepicker"
-                                        style="height: 55px;">
-                                </div>
-                            </div>
-                            <div class="col-12 col-sm-6">
-                                <div class="time" id="time" data-target-input="nearest">
-                                    <input type="text" class="form-control bg-light border-0 datetimepicker-input"
-                                        placeholder="Giờ hẹn" data-target="#time" data-toggle="datetimepicker"
-                                        style="height: 55px;">
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <button class="btn btn-primary w-100 py-3" type="submit">Tạo phiếu hẹn</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Appointment End -->
 
 
 <!-- Pricing Plan Start -->

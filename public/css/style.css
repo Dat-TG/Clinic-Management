@@ -273,7 +273,6 @@ section {
 }
  .button {
 	 display: inline-block;
-	 max-width: 100px;
 	 margin: 20px auto;
 	 background: #8bc34a;
 	 color: #fefefe;
@@ -380,21 +379,21 @@ section {
 		 -webkit-transform: translate(-50%, -50%) rotate(1080deg) scale(0);
 	}
 }
- @keyframes success {
-	 from {
-		 transform: translate(-50%, -50%) rotate(0) scale(0);
-	}
-	 to {
-		 transform: translate(-50%, -50%) rotate(-45deg) scale(1);
-	}
+@keyframes success {
+    from {
+        transform: translate(-50%, -50%) rotate(0) scale(0);
+   }
+    to {
+        transform: translate(-50%, -50%) rotate(-45deg) scale(1);
+   }
 }
- @-webkit-keyframes success {
-	 from {
-		 -webkit-transform: translate(-50%, -50%) rotate(0) scale(0);
-	}
-	 to {
-		 -webkit-transform: translate(-50%, -50%) rotate(-45deg) scale(1);
-	}
+@-webkit-keyframes success {
+    from {
+        -webkit-transform: translate(-50%, -50%) rotate(0) scale(0);
+   }
+    to {
+        -webkit-transform: translate(-50%, -50%) rotate(-45deg) scale(1);
+   }
 }
  @keyframes error {
 	 from {

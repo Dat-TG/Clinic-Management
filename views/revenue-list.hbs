@@ -1,0 +1,27 @@
+<div class="container">
+    <h3 class="text-center mt-2"><b>CÁC BÁO CÁO DOANH THU</b></h3>
+    <table id="example" class="table table-striped" style="width:100%;background-color: aliceblue;">
+        <thead>
+            <tr>
+                <th>Mã báo cáo</th>
+                <th>Tháng</th>
+                <th>Năm</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each revenues}}
+            <tr>
+                <td><a href="/tai-lieu/bao-cao-doanh-thu/{{_id}}">{{_id}}</a></td>
+                <td>{{thang}}</td>
+                <td>{{nam}}</td>
+            </tr>
+            {{/each}}
+        <tfoot>
+            <tr>
+                <th>Mã báo cáo</th>
+                <th>Tháng</th>
+                <th>Năm</th>
+            </tr>
+        </tfoot>
+    </table>
+</div>

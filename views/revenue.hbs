@@ -1,0 +1,34 @@
+<h3 class="text-center mt-2"><b>BÁO CÁO DOANH THU</b></h3>
+<div class="table-container">
+    <table class="table table-bordered">
+        <thead>
+            <div class="d-flex justify-content-center mb-2">
+                <div class="text-center me-2">Tháng <input type="text" name="thang" form="revenue"></div>
+                <div class="text-center">Năm <input type="text" name="nam" form="revenue"></div>
+            </div>
+            <tr>
+                <th scope="col" class="text-center">STT</th>
+                <th scope="col" class="text-center">Ngày</th>
+                <th scope="col" class="text-center">Số bệnh nhân</th>
+                <th scope="col" class="text-center">Doanh thu</th>
+                <th scope="col" class="text-center">Tỷ lệ (%)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <form id="revenue" method="post" action="/tai-lieu/bao-cao-doanh-thu">
+                {{{createInput 31}}}
+            </form>
+            <tr>
+                <th scope="row" class="text-center"></th>
+                <td class="text-center"></td>
+                <td class="text-center"><b>Tổng doanh thu</b></td>
+                <td class="text-center"><input type="number" class="text-center" name="total" form="revenue" id="total"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="d-flex justify-content-start ms-2 mb-4">
+    <div><button class="btn btn-success me-2" onclick="CalPercent()">Tính tỉ lệ</button></div>
+    <div><button class="btn btn-success me-2" type="submit" form="revenue" value="submit">Gửi báo cáo</button></div>
+    <div><a href="/tai-lieu/xem-bao-cao-doanh-thu"><button class="btn btn-success">Xem các báo cáo trước đây</button></a></div>
+</div>

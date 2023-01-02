@@ -8,4 +8,8 @@ router.post('/lap-phieu-hen',docC.postAppointment);
 router.post('/trang-thai-phieu-hen',docC.changeStatus);
 router.get('/danh-sach-kham-benh',docC.getPatientsListInDay);
 router.post('/danh-sach-kham-benh',docC.postPatientsListInDay);
+router.get('/bao-cao-doanh-thu/:ID',docC.viewRevenueDetail);
+router.get('/bao-cao-doanh-thu',docC.getRevenue);
+router.post('/bao-cao-doanh-thu',docC.postRevenue);
+router.get('/xem-bao-cao-doanh-thu',docC.viewAllRevenue);
 module.exports=router;

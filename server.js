@@ -55,6 +55,40 @@ app.engine('hbs', hbs.engine({
         },
         sum: function(a, b) {
             return a+b;
+        },
+        createInput: function(n) {
+            var listRow = '';
+            for(var i = 0; i < n; ++i)
+            {
+                listRow += 
+                `
+                <tr>
+                    <th scope="row" class="text-center">${i + 1}</th>
+                    <td class="text-center"><input type="date" class="text-center" name="ngay-${i + 1}"></td>
+                    <td class="text-center"><input type="number" class="text-center" name="sobenhnhan-${i + 1}"></td>
+                    <td class="text-center"><input type="number" class="text-center" name="doanhthu-${i + 1}"></td>
+                    <td class="text-center"><input type="number" step="any" class="text-center" id="tyle-${i + 1}" name="tyle-${i + 1}"></td>
+                </tr>
+                `;
+            }
+            return listRow;
+        },
+        createOutput: function(n) {
+            var listRow = '';
+            for(var i = 0; i < n; ++i)
+            {
+                listRow += 
+                `
+                <tr>
+                    <th scope="row" class="text-center">${i + 1}</th>
+                    <td class="text-center"><input type="date" class="text-center" name="ngay-${i + 1}" value="{{data.ngay-${i + 1}}}"></td>
+                    <td class="text-center"><input type="number" class="text-center" name="sobenhnhan-${i + 1}" value="{{data.sobenhnhan-${i + 1}}}"></td>
+                    <td class="text-center"><input type="number" class="text-center" name="doanhthu-${i + 1}" value="{{data.doanhthu-${i + 1}}}"></td>
+                    <td class="text-center"><input type="text" step="any" class="text-center" id="tyle-${i + 1}" name="tyle-${i + 1}" value="{{data.tyle-${i + 1}}}"></td>
+                </tr>
+                `;
+            }
+            return listRow;
         }
     }
 }));
