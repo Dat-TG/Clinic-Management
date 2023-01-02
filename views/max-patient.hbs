@@ -1,0 +1,35 @@
+<div class="d-flex align-items-center justify-content-center vh-100">
+    <div class="text-center">
+        <p class="fs-3"> Số bệnh nhân tối đa trong ngày</p>
+        <h1 class="display-1 fw-bold">{{data.max}}</h1>
+        <div class="d-flex justify-content-center">
+            <button class="d-block me-2" data-bs-toggle="modal" data-bs-target="#editMaxPatientModal"><i
+                    class="bi bi-pencil-square"></i></button>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="editMaxPatientModal" tabindex="-1" aria-labelledby="editMaxPatientModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Thay đổi số bệnh nhân tối đa trong ngày</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form class="px-md-2" id="editMaxPatientForm" action="/chinh-sua/so-benh-nhan-toi-da" method="POST">
+                    <div class="form-outline mb-4">
+                        <input type="text" id="max" class="form-control" name="max" value="{{data.max}}" required />
+                        <label class="form-label" for="max">Số bệnh nhân tối đa trong ngày: </label>
+                    </div>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                <button type="submit" class="btn btn-primary" form="editMaxPatientForm">Xác nhận</button>
+            </div>
+        </div>
+    </div>
+</div>

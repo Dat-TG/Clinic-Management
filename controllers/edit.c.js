@@ -1,5 +1,7 @@
 const DrugsM = require("../model/Drugs.m");
 const ServicesM = require("../model/Services.m");
+const fs=require('fs');
+const { dirname } = require("path");
 
 exports.getEditDrugService=async(req,res,next)=>{
     let role = "patient";
@@ -122,6 +124,48 @@ exports.deleteService=async(req,res,next)=>{
         await ServicesM.delete(ID);
         req.session.info="delete";
         res.redirect('/tim-kiem/dich-vu');
+    } catch (err) {
+        next(err);
+    }
+}
+exports.getMaxPatients=async(req,res,next)=>{
+    let role = "patient";
+    if (req.session.Doctor) {
+        role = "doctor";
+    }
+    if (!req.session.Doctor) {
+        if (req.session.Username) {
+            return res.render('error', { display1: "d-none", display2: "d-block", role: role });
+        }
+        else {
+            return res.render('error', { display1: "d-block", display2: "d-none", role: role });
+        }
+    }
+    try {
+        let data = fs.readFileSync('./model/MaxPatient.json');
+        data = JSON.parse(data);
+        res.render('max-patient', { data:data,display1: "d-none", display2: "d-block", role: role });
+    } catch (err) {
+        next(err);
+    }
+}
+exports.postMaxPatients=async(req,res,next)=>{
+    let role = "patient";
+    if (req.session.Doctor) {
+        role = "doctor";
+    }
+    if (!req.session.Doctor) {
+        if (req.session.Username) {
+            return res.render('error', { display1: "d-none", display2: "d-block", role: role });
+        }
+        else {
+            return res.render('error', { display1: "d-block", display2: "d-none", role: role });
+        }
+    }
+    try {
+        let data = req.body;
+        fs.writeFileSync('./model/MaxPatient.json',JSON.stringify(data));
+        return res.redirect('/chinh-sua/so-benh-nhan-toi-da');
     } catch (err) {
         next(err);
     }

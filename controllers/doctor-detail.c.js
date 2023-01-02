@@ -10,7 +10,7 @@ exports.viewDetail = async (req, res, next) => {
             role = "doctor";
         }
         if (req.session.Username) {
-            res.render('detailDoctor', { data: rs[0], display1: "d-none", display2: "d-block", role:role});
+            res.render('detailDoctor', { data: rs[0], display1: "d-none", display2: "d-block", role:role, username:req.session.Username});
         }
         else {
             res.render('detailDoctor', { data: rs[0], display1: "d-block", display2: "d-none", role:role});
