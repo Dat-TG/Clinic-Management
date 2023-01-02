@@ -74,7 +74,7 @@ app.use('/tai-lieu',DocumentRouter);
 app.use('/chinh-sua',EditRouter);
 
 
-app.use('/', async(req, res, next) => {
+app.get('/', async(req, res, next) => {
     const doctors=await doctorM.getAll();
     let role="patient";
     if (req.session.Doctor) {
@@ -88,6 +88,19 @@ app.use('/', async(req, res, next) => {
     }
 });
 
+
+app.all('*',function(req, res) {
+    let role="patient";
+    if (req.session.Doctor) {
+        role="doctor";
+    }
+    if (req.session.Username) {
+        res.render('page-not-found', { display1: "d-none", display2: "d-block", role:role});
+    }
+    else {
+        res.render('page-not-found', { display1: "d-block", display2: "d-none", role:role});
+    }
+});
 
 
 app.use((err, req, res, next) => {
