@@ -11,10 +11,20 @@ exports.viewDetail = async (req, res, next) => {
         const rs = await drugM.getByID(ID);
         if (rs.length==0) {
             if (req.session.Username) {
-                return res.render('page-not-found', { display1: "d-none", display2: "d-block", role: role });
+                var info="";
+                if (req.session.delete) {
+                    info="delete";
+                    delete req.session.delete;
+                }
+                return res.render('page-not-found', { display1: "d-none", display2: "d-block", role: role, info:info});
             }
             else {
-                return res.render('page-not-found', { display1: "d-block", display2: "d-none", role: role });
+                var info="";
+                if (req.session.delete) {
+                    info="delete";
+                    delete req.session.delete;
+                }
+                return res.render('page-not-found', { display1: "d-block", display2: "d-none", role: role, info:info });
             }
         }
         rs[0].href = 'https://www.google.com/search?tbm=isch&q=' + rs[0].Name;

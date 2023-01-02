@@ -15,7 +15,7 @@
                 <div class="d-flex justify-content-center">
                     <button class="d-block me-2" data-bs-toggle="modal" data-bs-target="#editDrugModal"><i
                             class="bi bi-pencil-square"></i></button>
-                    <button class="d-block"><i class="bi bi-trash3"></i></button>
+                    <button class="d-block" data-bs-toggle="modal" data-bs-target="#deleteDrugModal"><i class="bi bi-trash3"></i></button>
                 </div>
                 {{/ifEquals}}
             </div>
@@ -88,6 +88,28 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
                 <button type="submit" class="btn btn-primary" form="editDrugForm">Xác nhận</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="deleteDrugModal" tabindex="-1" aria-labelledby="deleteDrugModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Xóa thuốc</i></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Bạn có chắc chắn muốn xóa thuốc <i>{{data.Name}}?
+                <form class="px-md-2" id="deleteDrugForm" action="/chinh-sua/thuoc/xoa/{{data.ID}}-{{data.Name}}" method="POST">
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                <button type="submit" class="btn btn-primary" form="deleteDrugForm">Xác nhận</button>
             </div>
         </div>
     </div>

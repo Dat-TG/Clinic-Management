@@ -15,4 +15,7 @@ module.exports = {
     update: async(ID,data) => {
         await db.collection('Drugs').updateOne({ID:ID},{$set:data},{upsert:true});
     },
+    delete: async(ID)=>{
+        await db.collection('Drugs').deleteOne({ID:ID});
+    }
 }

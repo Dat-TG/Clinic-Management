@@ -54,3 +54,28 @@ exports.postEditDrug=async(req,res,next)=>{
         next(err);
     }
 }
+exports.deleteDrug=async(req,res,next)=>{
+    let role = "patient";
+    if (req.session.Doctor) {
+        role = "doctor";
+    }
+    if (!req.session.Doctor) {
+        if (req.session.Username) {
+            return res.render('error', { display1: "d-none", display2: "d-block", role: role });
+        }
+        else {
+            return res.render('error', { display1: "d-block", display2: "d-none", role: role });
+        }
+    }
+    try {
+        var Name = req.params.Name;
+        var ID=Name.split("-")[0];
+        Name=Name.split("-")[1];
+        await DrugsM.delete(ID);
+        req.session.delete="delete";
+        return res.redirect('/thuoc/'+ID+"-"+Name);
+
+    } catch (err) {
+        next(err);
+    }
+}
