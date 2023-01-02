@@ -1,0 +1,63 @@
+{{!-- Chỉ có bác sĩ mới sửa được thông tin thuốc --}}
+{{!-- Update alert for patient --}}
+{{!-- ............................ --}}
+<div class="container py-5">
+    <div class="row-lg-12">
+        <div class="col">
+            <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item"><a href="/">Trang chủ</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Chỉnh sửa dịch vụ</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <div class="container-fluid p-3 mb-2 text-white my-5 py-5" style = "background-color:#c8e2b1;">
+        <div class="container py-5">
+            <div class="row gx-5">
+                <div class="col-lg-6" style="margin-left: 40px;">
+                    <div class="text-center bg-white rounded p-5">
+                    <h1 class="mb-4 text-black">CHỈNH SỬA DỊCH VỤ</h1>
+                    <form class="px-md-2" action="" method="post">
+                        <div class="row g-4">
+                            {{!-- Select name services --}}
+                            <div class="col-12">
+                                <select class="form-select bg-light" name="Doctor" required>
+                                    <option selected>Chọn tên dịch vụ &#8727;</option>
+                                    <option value="">{{!-- value = data.ServiceName --}}</option>
+                                </select>     
+                            </div>
+
+                            {{!-- Sau khi chọn dịch vụ thì các thuộc tính dưới đây auto điền vào --}}
+                            {{!-- PriceService --}}
+                            <div class="col-12 col input-group text-start">
+                                <label class="form-label text-dark" for="price" style="margin-right: 20px; margin-top: 5px;">Giá dịch vụ:</label>
+                                <input type="text" id="price" class="form-control bg-light" name="Price" value=""
+                                        aria-label="Price" aria-describedby="price">
+                                    {{!-- value = data.Price --}}
+                                <span class="input-group-text bg-light" id="price">VND</span>
+                            </div>
+
+                            {{!-- Confirm --}}
+                            <div class="col-12">
+                                <button class="btn btn-primary w-70 py-3" type="submit" style="margin-top: 20px;">
+                                    Lưu thông tin
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    </div>
+                </div>
+
+                <div class="col-lg-5 text-dark">
+                    <div class="mb-3">
+                        <h1 class="display-5"><b>Chỉnh sửa thông tin dịch vụ cho bệnh nhân</b></h1>
+                    </div>
+                    <p class="text-dark mb-5">Để biết thêm thông tin dịch vụ bạn có thể xem thêm các thông tin dưới đây.</p>
+                    <a class="btn btn-dark rounded-pill py-3 px-5 me-3">Tìm hiểu thêm</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,80 @@
+{{!-- Chỉ có bác sĩ mới sửa được thông tin thuốc --}}
+{{!-- Update alert for patient --}}
+{{!-- ............................ --}}
+<div class="container py-5">
+    <div class="row-lg-12">
+        <div class="col">
+            <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item"><a href="/">Trang chủ</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Chỉnh sửa thuốc</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <div class = "d-flex flex-row mb-3 mt-3 ms-auto me-auto align-items-center" 
+        style="height: 720px; width: 720px; margin: 50px;">
+    <div class="text-center rounded p-5" style = "background-color:#c8e2b1;">
+        <h1 class="mb-4 text-dark"><b>CHỈNH SỬA THUỐC</b></h1>
+        <h5 id="status" class="d-block text-dark border-bottom border-dark border-2" 
+            style="margin: 10px; margin-bottom: 20px; text-align: left; width: fit-content; font-size: 18px;">
+            <em>Quản lý thông tin thuốc</em>
+        </h5>
+        <form class="px-md-2" action="" method="post"> 
+            <div class="row g-3">
+                {{!-- Select DrugName --}}
+                <div class="col-md-12 text-start">
+                    <select class="form-select bg-light" name="Doctor" required>
+                        <option selected>Chọn tên thuốc &#8727;</option>
+                        <option value="">{{!-- value = data.Name --}}</option>
+                    </select>     
+                </div>
+
+                {{!-- Sau khi chọn thuốc thì các thuộc tính dưới đây auto điền vào --}}
+                {{!-- DrugUnit --}}
+                <div class="col-12 col-md-4 text-start">
+                    <label class="form-label text-dark" for="unit">Đơn vị tính</label>
+                    <input type="text" id="unit" class="form-control bg-light" name="Unit" value="">
+                    {{!-- value = data.Unit --}}
+                </div>
+
+                {{!-- DrugPrice --}}
+                <div class="col-12 col-md-4 text-start">
+                    <label class="form-label text-dark" for="price">Đơn giá</label>
+                    <input type="text" id="price" class="form-control bg-light" name="Price" value="">
+                    {{!-- value = data.Price --}}
+                </div>
+
+                {{!-- DrugQuantity --}}
+                <div class="col-12 col-md-4 text-start">
+                    <label for="quantity" class="form-label text-black">Số lượng</label>
+                    <input type="text" class="form-control bg-light" id="quantity" name="Quantity" value="">
+                    {{!-- value = data.Quantity --}}
+                </div>
+
+                {{!-- DrugChemicals --}}
+                <div class="col-md-12 text-start">
+                    <label class="form-label text-dark" for="chemical">Hoạt chất</label>
+                    <input type="text" id="chemical" class="form-control bg-light" name="Chemical" value=""> 
+                    {{!-- value = data.Chemicals --}}
+                </div>
+
+                {{!-- DrugUses --}}
+                <div class="col-md-12 text-start">
+                    <label class="form-label text-dark" for="uses">Công dụng</label>
+                    <input type="text" id="uses" class="form-control bg-light" name="Uses" style="height:100px;" value=""> 
+                    {{!-- value = data.Uses --}}
+                </div>
+
+                <div class="col-md-12">
+                    {{!-- Confirm --}}
+                    <button class="btn btn-primary w-60 py-3" type="submit" style="margin-top: 20px;">
+                        Lưu thông tin
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+    </div>
+</div>
