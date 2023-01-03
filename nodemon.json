@@ -1,1 +1,5 @@
-{"ext":"js json hbs css"}
+{
+    "ext":"js json hbs css",
+    "verbose": true,
+    "ignore":["model/MaxPatient.json"]
+}

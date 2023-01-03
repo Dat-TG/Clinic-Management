@@ -4,7 +4,7 @@
   "description": "A web-based application for clinic management - Group 21",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js",
+    "start": "nodemon server.js --config nodemon.json",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

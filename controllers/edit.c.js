@@ -133,6 +133,7 @@ exports.getMaxPatients=async(req,res,next)=>{
     if (req.session.Doctor) {
         role = "doctor";
     }
+    console.log(role);
     if (!req.session.Doctor) {
         if (req.session.Username) {
             return res.render('error', { display1: "d-none", display2: "d-block", role: role });
@@ -163,8 +164,8 @@ exports.postMaxPatients=async(req,res,next)=>{
         }
     }
     try {
-        let data = req.body;
-        fs.writeFileSync('./model/MaxPatient.json',JSON.stringify(data));
+        var data = {"max":req.body.max};
+        fs.writeFileSync('./model/MaxPatient.json',JSON.stringify(data), {encoding: "utf-8"});
         return res.redirect('/chinh-sua/so-benh-nhan-toi-da');
     } catch (err) {
         next(err);

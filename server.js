@@ -91,7 +91,10 @@ app.engine('hbs', hbs.engine({
                 `;
             }
             return listRow;
-        }
+        },
+        indexOf: function(context,ndx) {
+            return context[ndx];
+          }
     }
 }));
 app.set('view engine', 'hbs');

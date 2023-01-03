@@ -6,6 +6,7 @@ const RecordsM = require('../model/Records.m');
 const AppointmentM = require('../model/Appointment.m');
 const PatientsInDayM = require('../model/PatientsInDay.m');
 const RevenueM = require('../model/Revenue.m');
+const DrugReportM = require('../model/Drug-Report.m');
 exports.createInvoice = async (req, res, next) => {
     if (!req.session.Doctor) {
         res.redirect('/');
@@ -169,7 +170,12 @@ exports.postRevenue=async(req,res,next)=>{
         }
     }
     try {
-        const rs=await RevenueM.add(req.body);
+        var data=req.body;
+        data.date=new Date();
+        data.date=data.date.toLocaleString('vi-VN');
+        data.author=await DoctorsM.getByUsername(req.session.Username);
+        data.author=data.author[0];
+        const rs=await RevenueM.add(data);
         res.redirect('/tai-lieu/xem-bao-cao-doanh-thu');
     } catch (err) {
         next(err);
@@ -211,6 +217,108 @@ exports.viewRevenueDetail=async(req,res,next)=>{
     try {
         const rs=await RevenueM.getByID(req.params.ID);
         res.render('revenue-detail', { data:rs[0],display1: "d-none", display2: "d-block", role: role });
+    } catch (err) {
+        next(err);
+    }
+}
+exports.getDrugReport=async(req,res,next)=>{
+    let role = "patient";
+    if (req.session.Doctor) {
+        role = "doctor";
+    }
+    if (!req.session.Doctor) {
+        if (req.session.Username) {
+            return res.render('error', { display1: "d-none", display2: "d-block", role: role });
+        }
+        else {
+            return res.render('error', { display1: "d-block", display2: "d-none", role: role });
+        }
+    }
+    try {
+        const drugs=await DrugsM.getAll();
+        res.render('drug-report', {drugs:drugs,display1: "d-none", display2: "d-block", role: role});
+    } catch (err) {
+        next(err);
+    }
+}
+exports.postDrugReport=async(req,res,next)=>{
+    let role = "patient";
+    if (req.session.Doctor) {
+        role = "doctor";
+    }
+    if (!req.session.Doctor) {
+        if (req.session.Username) {
+            return res.render('error', { display1: "d-none", display2: "d-block", role: role });
+        }
+        else {
+            return res.render('error', { display1: "d-block", display2: "d-none", role: role });
+        }
+    }
+    try {
+        var data=req.body;
+        data.date=new Date();
+        data.date=data.date.toLocaleString('vi-VN');
+        data.author=await DoctorsM.getByUsername(req.session.Username);
+        data.author=data.author[0];
+        const rs=await DrugReportM.add(data);
+        res.redirect('/tai-lieu/xem-bao-cao-thuoc');
+    } catch (err) {
+        next(err);
+    }
+}
+exports.viewAllDrugReports=async(req,res,next)=>{
+    let role = "patient";
+    if (req.session.Doctor) {
+        role = "doctor";
+    }
+    if (!req.session.Doctor) {
+        if (req.session.Username) {
+            return res.render('error', { display1: "d-none", display2: "d-block", role: role });
+        }
+        else {
+            return res.render('error', { display1: "d-block", display2: "d-none", role: role });
+        }
+    }
+    try {
+        const rs=await DrugReportM.getAll();
+        res.render('drug-report-list', { reports:rs,display1: "d-none", display2: "d-block", role: role });
+    } catch (err) {
+        next(err);
+    }
+}
+exports.viewDrugReportDetail=async(req,res,next)=>{
+    let role = "patient";
+    if (req.session.Doctor) {
+        role = "doctor";
+    }
+    if (!req.session.Doctor) {
+        if (req.session.Username) {
+            return res.render('error', { display1: "d-none", display2: "d-block", role: role });
+        }
+        else {
+            return res.render('error', { display1: "d-block", display2: "d-none", role: role });
+        }
+    }
+    try {
+        const rs=await DrugReportM.getByID(req.params.ID);
+        const drugs=await DrugsM.getAll();
+        var array=[];
+        let i=0;
+        while (true) {
+            i++;
+            if (rs[0]['Name'+i]!=undefined) {
+                array.push({
+                    Name: rs[0]['Name'+i],
+                    Unit: rs[0]['Unit'+i],
+                    Quantity: rs[0]['Quantity'+i],
+                    Used: rs[0]['Used'+i],
+                });
+            }
+            else {
+                break;
+            }
+        }
+        res.render('drug-report-detail', { drugs:drugs,thang:rs[0].thang,nam:rs[0].nam,data:array,display1: "d-none", display2: "d-block", role: role });
     } catch (err) {
         next(err);
     }
