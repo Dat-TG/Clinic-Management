@@ -28,6 +28,7 @@ exports.check = async (req, res, next) => {
                         return false;
                     }
                     req.session.Username = rs[0].Username;
+                    req.session.Name=rs[0].Name;
                     res.redirect('/');
                     return true;
                 }
@@ -44,6 +45,7 @@ exports.check = async (req, res, next) => {
                         return false;
                     }
                     req.session.Username = rs[0].Username;
+                    req.session.Name=rs[0].Name;
                     req.session.Doctor=true;
                     res.redirect('/');
                     return true;

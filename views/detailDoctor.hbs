@@ -96,6 +96,7 @@
                                     <th>Bệnh nhân</th>
                                     <th>Số điện thoại</th>
                                     <th>Email</th>
+                                    <th>Username</th>
                                     <th>Trạng thái</th>
                                 </tr>
                             </thead>
@@ -104,9 +105,10 @@
                                 <tr>
                                     <td>{{Date}}</td>
                                     <td>{{Time}}</td>
-                                    <td><a href="/benh-nhan/{{Username}}">{{Name}}</a></td>
+                                    <td>{{Name}}</td>
                                     <td>{{Phone}}</td>
                                     <td>{{Email}}</td>
+                                    <td>{{#if Username}}{{Username}}{{else}}Không có{{/if}}</td>
                                     <td>
                                         <select class="changeStatus" id="{{_id}}">
                                             <option value="{{Status}}" selected>{{Status}}</option>
@@ -114,6 +116,10 @@
                                             <option value="Chấp nhận">Chấp nhận</option>
                                             {{/ifEquals}}
                                             {{#ifEquals Status "Chấp nhận"}}
+                                            <option value="Hủy">Hủy</option>
+                                            {{/ifEquals}}
+                                            {{#ifEquals Status "Đang chờ"}}
+                                            <option value="Chấp nhận">Chấp nhận</option>
                                             <option value="Hủy">Hủy</option>
                                             {{/ifEquals}}
                                         </select>
@@ -127,6 +133,7 @@
                                     <th>Bệnh nhân</th>
                                     <th>Số điện thoại</th>
                                     <th>Email</th>
+                                    <th>Username</th>
                                     <th>Trạng thái</th>
                                 </tr>
                             </tfoot>

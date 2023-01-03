@@ -1,10 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-info" id="header">
     <div class="container-fluid">
-        <button class="navbar-toggler" type="button" data-mdb-toggle="collapse"
-            data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-            aria-label="Toggle navigation">
-            <i class="fas fa-bars"></i>
-        </button>
         <a class="navbar-brand" href="/">
             <div class="d-flex flex-row align-items-center">
                 <div>
@@ -16,70 +11,85 @@
             </div>
         </a>
         <div class="d-flex justify-content-end">
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" data-mdb-toggle="dropdown" aria-expanded="false"
-                            href="#">Tìm kiếm</a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="/tim-kiem/thuoc">Thuốc</a></li>
-                            <li><a class="dropdown-item" href="/tim-kiem/bac-si">Bác sĩ</a></li>
-                            <li><a class="dropdown-item" href="/tim-kiem/dich-vu">Dịch vụ</a></li>
-                            {{#ifEquals role "doctor"}}
-                            <li><a class="dropdown-item" href="/tim-kiem/benh-nhan">Bệnh nhân</a></li>
-                            <li><a class="dropdown-item" href="/tim-kiem/ho-so-benh-an">Hồ sơ bệnh án</a></li>
-                            {{/ifEquals}}
+            <div class="d-flex flex-column">
+                <div class="d-flex">
+                    <div id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link" data-mdb-toggle="dropdown" aria-expanded="false" href="#">Tìm
+                                    kiếm</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="/tim-kiem/thuoc">Thuốc</a></li>
+                                    <li><a class="dropdown-item" href="/tim-kiem/bac-si">Bác sĩ</a></li>
+                                    <li><a class="dropdown-item" href="/tim-kiem/dich-vu">Dịch vụ</a></li>
+                                    {{#ifEquals role "doctor"}}
+                                    <li><a class="dropdown-item" href="/tim-kiem/benh-nhan">Bệnh nhân</a></li>
+                                    <li><a class="dropdown-item" href="/tim-kiem/ho-so-benh-an">Hồ sơ bệnh án</a></li>
+                                    {{/ifEquals}}
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-mdb-toggle="dropdown" aria-expanded="false" href="#">Chỉnh
+                                    sửa</a>
+                                <ul class="dropdown-menu">
+                                    {{#ifEquals role "doctor"}}
+                                    <li><a class="dropdown-item" href="/chinh-sua/thuoc-dich-vu">Thuốc/Dịch vụ</a></li>
+                                    <li><a class="dropdown-item" href="/chinh-sua/so-benh-nhan-toi-da">Số bệnh nhân tối
+                                            đa trong ngày</a></li>
+                                    {{/ifEquals}}
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-mdb-toggle="dropdown" aria-expanded="false" href="#">Tài
+                                    liệu</a>
+                                <ul class="dropdown-menu">
+                                    {{#ifEquals role "doctor"}}
+                                    <li><a class="dropdown-item" href="/tai-lieu/xuat-hoa-don">Lập phiếu khám bệnh</a>
+                                    </li>
+                                    <li><a class="dropdown-item" href="/tai-lieu/bao-cao-doanh-thu">Lập báo cáo doanh
+                                            thu</a></li>
+                                    <li><a class="dropdown-item" href="/tai-lieu/bao-cao-thuoc">Lập báo cáo thuốc</a>
+                                    </li>
+                                    <li><a class="dropdown-item" href="/tai-lieu/danh-sach-kham-benh">Danh sách khám
+                                            bệnh</a></li>
+                                    {{/ifEquals}}
+                                    {{#ifEquals role "patient"}}
+                                    <li><a class="dropdown-item" href="/tai-lieu/lap-phieu-hen">Lập phiếu hẹn khám
+                                            bệnh</a></li>
+                                    {{/ifEquals}}
+                                </ul>
+                            </li>
                         </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-mdb-toggle="dropdown" aria-expanded="false" href="#">Chỉnh sửa</a>
-                        <ul class="dropdown-menu">
-                            {{#ifEquals role "doctor"}}
-                            <li><a class="dropdown-item" href="/chinh-sua/thuoc-dich-vu">Thuốc/Dịch vụ</a></li>
-                            <li><a class="dropdown-item" href="/chinh-sua/so-benh-nhan-toi-da">Số bệnh nhân tối đa trong ngày</a></li>
-                            {{/ifEquals}}
+                    </div>
+                    <div class="dropdown ms-2">
+                        <a class="dropdown-toggle d-flex align-items-center hidden-arrow" href="#"
+                            id="navbarDropdownMenuAvatar" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="white"
+                                class="bi bi-person-circle me-2" viewBox="0 0 16 16">
+                                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                                <path fill-rule="evenodd"
+                                    d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+                            </svg>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
+                            <li>
+                                <a class="dropdown-item {{display1}}" href="/dang-nhap">Đăng nhập</a>
+                                <a class="dropdown-item {{display2}}" href="/tai-khoan">Tài khoản</a>
+                                <a class="dropdown-item {{display2}}" href="/dang-xuat">Đăng xuất</a>
+                            </li>
                         </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-mdb-toggle="dropdown" aria-expanded="false" href="#">Tài liệu</a>
-                        <ul class="dropdown-menu">
-                             {{#ifEquals role "doctor"}}
-                            <li><a class="dropdown-item" href="/tai-lieu/xuat-hoa-don">Lập phiếu khám bệnh</a></li>
-                            <li><a class="dropdown-item" href="/tai-lieu/bao-cao-doanh-thu">Lập báo cáo doanh thu</a></li>
-                            <li><a class="dropdown-item" href="/tai-lieu/bao-cao-thuoc">Lập báo cáo thuốc</a></li>
-                            <li><a class="dropdown-item" href="/tai-lieu/danh-sach-kham-benh">Danh sách khám bệnh</a></li>
-                            {{/ifEquals}}
-                            {{#ifEquals role "patient"}}
-                            <li><a class="dropdown-item" href="/tai-lieu/lap-phieu-hen">Lập phiếu hẹn khám bệnh</a></li>
-                            {{/ifEquals}}
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-            <form class="d-flex input-group w-auto ms-lg-3 my-3 my-lg-0">
-                <input type="search" class="form-control me-4 rounded" placeholder="Tìm kiếm nhanh" aria-label="Search"
-                    style="min-width: 155px;" />
-                <button class="btn btn-primary me-4 rounded" type="button" style="min-width: 120px;">
-                    Tìm kiếm
-                </button>
-            </form>
-            <div class="dropdown">
-                <a class="dropdown-toggle d-flex align-items-center hidden-arrow" href="#" id="navbarDropdownMenuAvatar"
-                    role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="white"
-                        class="bi bi-person-circle me-2" viewBox="0 0 16 16">
-                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
-                        <path fill-rule="evenodd"
-                            d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
-                    </svg>
-                </a>
-                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
-                    <li>
-                        <a class="dropdown-item {{display1}}" href="/dang-nhap">Đăng nhập</a>
-                        <a class="dropdown-item {{display2}}" href="/tai-khoan">Tài khoản</a>
-                        <a class="dropdown-item {{display2}}" href="/dang-xuat">Đăng xuất</a>
-                    </li>
-                </ul>
+                    </div>
+                </div>
+                <div class="text-white d-flex justify-content-end">
+                    {{#if session.Name}}
+                    <div class="row">
+                        <div class="d-flex alert alert-info alert-dismissible fade show mb-0" role="alert" style="display: inline-block;font-size: small; height: 30px;line-height: 30px;padding: 0px 20px;">
+                            <div>Xin chào, {{session.Name}}!</div>
+                            <div><button type="button" class="btn-close mt-2 mb-2 btn-sm me-1" data-bs-dismiss="alert" aria-label="Close" style="display: inline-block;height: 10px;line-height: 0px;padding: 0px 0px;"></button></div>
+                        </div>
+                    </div>
+                    {{/if}}
+                </div>
             </div>
         </div>
     </div>

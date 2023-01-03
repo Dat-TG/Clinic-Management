@@ -16,6 +16,10 @@ app.use(session({
         secure: false,
         maxAge: 30*24*60*60*1000},
 }))
+app.use(function(req,res,next){
+    res.locals.session=req.session;
+    next();
+})
 
 
 //Router and model
