@@ -1,10 +1,11 @@
-const hbs = require('express-handlebars')
-const express = require('express')
-const session = require('express-session')
+require('dotenv').config();
+const hbs = require('express-handlebars');
+const express = require('express');
+const session = require('express-session');
 const { urlencoded } = require('express');
 const path=require('path');
-const app = express()
-const port = 3000
+const app = express();
+const port = process.env.PORT || 3000;
 
 //Use Session 
 app.set('trust proxy', 1) // trust first proxy
