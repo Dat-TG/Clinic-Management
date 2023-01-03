@@ -212,25 +212,56 @@ $(function () {
         var val = $(this).val();
         $(this).attr('value', val);
     });
-    var animateButton = function(e) {
+    var animateButton = function (e) {
 
         e.preventDefault;
         //reset animation
         e.target.classList.remove('animate');
-        
+
         e.target.classList.add('animate');
-        
+
         e.target.classList.add('animate');
-        setTimeout(function(){
-          e.target.classList.remove('animate');
-        },4000);
-      };
-      
-      var classname = document.getElementsByClassName("button");
-      
-      for (var i = 0; i < classname.length; i++) {
+        setTimeout(function () {
+            e.target.classList.remove('animate');
+        }, 4000);
+    };
+
+    var classname = document.getElementsByClassName("button");
+
+    for (var i = 0; i < classname.length; i++) {
         classname[i].addEventListener('click', animateButton, false);
-      }
+    }
+    $("#editSchedule").click(function () {
+        $("#saveSchedule").removeClass("d-none");
+        $("#saveSchedule").addClass("d-block");
+        $("#editSchedule").removeClass("d-block");
+        $("#editSchedule").addClass("d-none");
+        $('.schedule-cell').click(function(){
+            console.log('cell click');
+            let items=["accent-pink-gradient","accent-orange-gradient","accent-green-gradient","accent-cyan-gradient","accent-blue-gradient","accent-purple-gradient"];
+            let item = items[Math.floor(Math.random()*items.length)];
+            if ($(this).html()=="") {
+                $(this).html("<div class='"+item+"'></div>");
+            }
+            else {
+                $(this).html("");
+            }
+        })
+    });
+    $("#saveSchedule").click(function () {
+        $('.schedule-cell').off("click");
+        $.post("/chinh-sua/lich-lam-viec",
+            {
+                schedule: $('#WorkSchedule').html()
+            },
+            function (data, status) {
+                //console.log(data);
+            });
+        $("#editSchedule").removeClass("d-none");
+        $("#editSchedule").addClass("d-block");
+        $("#saveSchedule").removeClass("d-block");
+        $("#saveSchedule").addClass("d-none");
+    });
 })
 
 function checkUpperCase(name) {
@@ -466,7 +497,7 @@ function savePatientsList() {
         x.Address = $('#Address' + i).val();
         x.Gender = $('#Gender' + i).val();
         x.DOB = $('#DOB' + i).val();
-        x.Time=$('#Time'+i).val();
+        x.Time = $('#Time' + i).val();
         PatientsList.push(x);
     }
     $.post("/tai-lieu/danh-sach-kham-benh",
@@ -478,17 +509,17 @@ function savePatientsList() {
 }
 
 function CalPercent() {
-    var list=document.querySelectorAll('input[name^=doanhthu]');
-    var total=0;
-    for (let i=0;i<list.length;i++) {
-        total+=parseInt(list[i].value)||0;
+    var list = document.querySelectorAll('input[name^=doanhthu]');
+    var total = 0;
+    for (let i = 0; i < list.length; i++) {
+        total += parseInt(list[i].value) || 0;
     }
-    document.getElementById('total').value=total;
-    for (let i=0;i<list.length;i++) {
-        let index=i+1;
-        let res=(parseInt(list[i].value)||0)/(parseInt(total))*100;
-        res=res.toFixed(2);
-        $('#tyle-'+index).val(res);
+    document.getElementById('total').value = total;
+    for (let i = 0; i < list.length; i++) {
+        let index = i + 1;
+        let res = (parseInt(list[i].value) || 0) / (parseInt(total)) * 100;
+        res = res.toFixed(2);
+        $('#tyle-' + index).val(res);
     }
     console.log(total);
 }
@@ -498,7 +529,7 @@ function autoGenerate1() {
     $('table tbody').append(`
     <tr>
       <th scope="row" class="text-center">${index + 1}</th>
-      <td class="text-center"> <input type="text" form="drug-report" list="drugs" data-index="${index + 1}" name="Name${index+1}" value="" class="form-control mx-sm-3 border-1 text-center"> </td>
+      <td class="text-center"> <input type="text" form="drug-report" list="drugs" data-index="${index + 1}" name="Name${index + 1}" value="" class="form-control mx-sm-3 border-1 text-center"> </td>
       <td class="text-center"> <input type="text" form="drug-report" data-index="${index + 1}" value="" name="Unit${index + 1}" id="Unit${index + 1}" class="form-control mx-sm-3 border-1 text-center"> </td>
       <td class="text-center"> <input type="number" form="drug-report" data-index="${index + 1}" name="Quantity${index + 1}" id="Quantity${index + 1}" class="form-control mx-sm-3 border-1 text-center"> </td>
       <td class="text-center"> <input type="number" form="drug-report" data-index="${index + 1}" name="Used${index + 1}" id="Used${index + 1}" class="form-control mx-sm-3 border-1 text-center"> </td>

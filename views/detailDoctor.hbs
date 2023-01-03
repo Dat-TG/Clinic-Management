@@ -136,5 +136,22 @@
             </div>
         </div>
         {{/ifEquals}}
+        <div class="row">
+            <div class="card">
+                <h4 class="text-center mt-4">Lịch làm việc</h4>
+                <div id="WorkSchedule">
+                    {{#ifEquals data.error "empty"}}
+                    {{>schedule}}
+                    {{/ifEquals}}
+                    {{#if data.schedule}}{{{data.schedule}}}{{/if}}
+                </div>
+                {{#ifEquals username data.Username}}
+                <div class="d-fex justify-content-start mb-4">
+                    <button class="btn btn-success d-block" id="editSchedule">Chỉnh sửa lịch làm việc</button>
+                    <button class="btn btn-success d-none" id="saveSchedule">Lưu</button>
+                </div>
+                {{/ifEquals}}
+            </div>
+        </div>
     </div>
 </section>

@@ -16,4 +16,7 @@ module.exports = {
         const rs=await db.collection('Doctors').find({Username:Username}).toArray();
         return rs;
     },
+    update: async(user,data) => {
+        await db.collection('Doctors').updateOne({Username:user},{$set:data},{upsert:true});
+    }
 }

@@ -38,7 +38,8 @@ exports.render = async (req, res, next) => {
                     appointments[i].Date = typeof appointments[i].Date == "object" ? appointments[i].Date.toLocaleDateString('vi-VN') : "";
                 }
                 rs[0].href = 'https://www.google.com/search?q=' + rs[0].Title + ' ' + rs[0].Name;
-                res.render('detailDoctor', { data: rs[0], display1: "d-none", display2: "d-block",role:"doctor", appointments:appointments});
+                if (rs[0].schedule==undefined) rs[0].error="empty";
+                res.render('detailDoctor', { data: rs[0], display1: "d-none", display2: "d-block",role:"doctor", appointments:appointments, username:req.session.Username});
             }
         }
         else {

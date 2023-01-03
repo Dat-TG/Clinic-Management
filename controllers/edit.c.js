@@ -2,6 +2,7 @@ const DrugsM = require("../model/Drugs.m");
 const ServicesM = require("../model/Services.m");
 const fs=require('fs');
 const { dirname } = require("path");
+const DoctorsM = require("../model/Doctors.m");
 
 exports.getEditDrugService=async(req,res,next)=>{
     let role = "patient";
@@ -167,6 +168,25 @@ exports.postMaxPatients=async(req,res,next)=>{
         var data = {"max":req.body.max};
         fs.writeFileSync('./model/MaxPatient.json',JSON.stringify(data), {encoding: "utf-8"});
         return res.redirect('/chinh-sua/so-benh-nhan-toi-da');
+    } catch (err) {
+        next(err);
+    }
+}
+exports.postSchedule=async(req,res,next)=>{
+    let role = "patient";
+    if (req.session.Doctor) {
+        role = "doctor";
+    }
+    if (!req.session.Doctor) {
+        if (req.session.Username) {
+            return res.render('error', { display1: "d-none", display2: "d-block", role: role });
+        }
+        else {
+            return res.render('error', { display1: "d-block", display2: "d-none", role: role });
+        }
+    }
+    try {
+        await DoctorsM.update(req.session.Username,req.body);
     } catch (err) {
         next(err);
     }
