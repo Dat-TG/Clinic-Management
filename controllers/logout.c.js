@@ -1,7 +1,8 @@
 exports.logout=async(req, res, next)=>{
     try {
-        req.session.Username=null;
-        req.session.Doctor=null;
+        delete req.session.Username;
+        delete req.session.Name;
+        delete req.session.Doctor;
         res.redirect('/dang-nhap');
     } catch (err) {
         next(err);

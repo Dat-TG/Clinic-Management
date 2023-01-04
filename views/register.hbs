@@ -1,6 +1,4 @@
-<!--Code giao diện đăng ký tài khoản
-Nếu có dùng Bootstrap thì dùng Bootstrap 5.0-->
-<section class="h-100 h-custom">
+<section>
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-lg-8 col-xl-6">
@@ -13,23 +11,23 @@ Nếu có dùng Bootstrap thì dùng Bootstrap 5.0-->
 
             <form class="px-md-2" action="/dang-ky-tai-khoan" method="POST">
               {{!-- Username input --}}
-              <div class="form-outline mb-4">
-                <input type="text" id="username" class="form-control" name="Username" value="{{user.Username}}" required/>
+              <div class="form-floating mb-4 form-floating">
+                <input type="text" id="username" class="form-control" name="Username" value="{{user.Username}}" placeholder="Username" required/>
                 <label class="form-label" for="username">Username</label>
               </div>
 
               <p class="text-danger {{display}}">Username đã tồn tại</p>
 
               {{!-- Name input --}}
-              <div class="form-outline mb-4">
-                <input type="text" id="name" class="form-control" name="Name" value="{{user.Name}}" required/>
+              <div class="form-floating mb-4 form-floating"> 
+                <input type="text" id="name" class="form-control" name="Name" value="{{user.Name}}" placeholder="Họ và tên" required/>
                 <label class="form-label" for="name">Họ và tên</label>
               </div>
 
               <div class="row">
                 <div class="col-md-6 mt-2 mb-2">
                   {{!-- Date of birth input --}}
-                  <div class="form-outline datepicker">
+                  <div class="form-floating datepicker form-floating">
                     <input type="date" class="form-control" id="date-of-birth" name="DOB" value="{{user.DOB}}" required/>
                     <label for="date-of-birth" class="form-label">Ngày sinh</label>
                   </div>
@@ -50,32 +48,32 @@ Nếu có dùng Bootstrap thì dùng Bootstrap 5.0-->
               </div>
               
               {{!-- Phone number input --}}
-              <div class="form-outline mb-4">
-                <input type="text" id="phone-number" class="form-control" name="Phone" value="{{user.Phone}}" required/>
+              <div class="form-floating mb-4 form-floating">
+                <input type="text" id="phone-number" class="form-control" name="Phone" value="{{user.Phone}}" placeholder="Số điện thoại" required/>
                 <label class="form-label" for="phone-number">Số điện thoại</label>
               </div>
 
               {{!-- Email input --}}
-              <div class="form-outline mb-4">
-                <input type="email" id="email" class="form-control" name="Email" value="{{user.Email}}"/>
+              <div class="form-floating mb-4 form-floating">
+                <input type="email" id="email" class="form-control" name="Email" value="{{user.Email}}" placeholder="Email"/>
                 <label class="form-label" for="email">Email</label>
               </div>
 
               {{!-- Address input --}}
-              <div class="form-outline mb-4">
-                <input type="text" id="address" class="form-control" name="Address" value="{{user.Address}}" required/>
+              <div class="form-floating mb-4 form-floating">
+                <input type="text" id="address" class="form-control" name="Address" value="{{user.Address}}" placeholder="Địa chỉ" required/>
                 <label class="form-label" for="address">Địa chỉ</label>
               </div>
 
               {{!-- Password input --}}
-              <div class="form-outline mb-4">
-                <input type="password" id="password" class="form-control" name="Password" value="{{user.Password}}" required/>
+              <div class="form-floating mb-4 form-floating">
+                <input type="password" id="password" class="form-control" name="Password" value="{{user.Password}}" placeholder="Mật khẩu" required/>
                 <label class="form-label" for="password">Mật khẩu</label>
               </div>
 
               {{!-- Confirm password input --}}
-              <div class="form-outline mb-4">
-                <input type="password" id="retype_password" class="form-control" name="Retype" value="{{user.Retype}}" required/>
+              <div class="form-floating mb-4 form-floating">
+                <input type="password" id="retype_password" class="form-control" name="Retype" value="{{user.Retype}}" placeholder="Xác nhận mật khẩu" required/>
                 <label class="form-label" for="retype_password">Xác nhận mật khẩu</label>
               </div>
 

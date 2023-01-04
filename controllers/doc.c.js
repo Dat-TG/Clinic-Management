@@ -8,8 +8,17 @@ const PatientsInDayM = require('../model/PatientsInDay.m');
 const RevenueM = require('../model/Revenue.m');
 const DrugReportM = require('../model/Drug-Report.m');
 exports.createInvoice = async (req, res, next) => {
+    let role = "patient";
+    if (req.session.Doctor) {
+        role = "doctor";
+    }
     if (!req.session.Doctor) {
-        res.redirect('/');
+        if (req.session.Username) {
+            return res.render('error', { display1: "d-none", display2: "d-block", role: role });
+        }
+        else {
+            return res.render('error', { display1: "d-block", display2: "d-none", role: role });
+        }
     }
     else {
         const patients = await UsersM.getAll();

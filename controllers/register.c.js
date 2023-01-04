@@ -9,6 +9,9 @@ exports.render= async(req, res, next) =>{
     }
 }
 exports.writeDB=async(req, res, next)=>{
+    if (req.session.Username) {
+        return res.redirect('/tai-khoan');
+    }
     try {
         var user=req.body;
         const pw=user.Password;
@@ -32,7 +35,7 @@ exports.writeDB=async(req, res, next)=>{
             }
             else {
                 user.Password=pw;
-                res.render('register',{user:user, display: "block",display1:"d-block",display2:"d-none"});
+                res.render('register',{user:user, display: "block",display1:"d-block",display2:"d-none", role:"patient"});
             }
         })
     } catch(err) {

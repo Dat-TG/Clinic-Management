@@ -1,4 +1,4 @@
-<section class="h-100 h-custom">
+<section>
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-lg-8 col-xl-6">
@@ -10,16 +10,16 @@
 
             <form class="px-md-2" action="/dang-nhap" method="POST">
               {{!-- Username input --}}
-              <div class="form-outline mb-4">
-                <input type="text" id="username" class="form-control" name="Username" value="{{Username}}" required />
+              <div class="form-floating mb-4 form-floating">
+                <input type="text" id="username" class="form-control" name="Username" value="{{Username}}" placeholder="Username" required />
                 <label class="form-label" for="username">Username</label>
               </div>
 
               <p class="text-danger d-{{errWrongUsername}}">Username không tồn tại</p>
 
               {{!-- Password input --}}
-              <div class="form-outline mb-4">
-                <input type="password" id="password" class="form-control" value="{{Password}}" name="Password"
+              <div class="form-floating mb-4 form-floating">
+                <input type="password" id="password" class="form-control" value="{{Password}}" name="Password" placeholder="Mật khẩu"
                   required />
                 <label class="form-label" for="password">Mật khẩu</label>
               </div>

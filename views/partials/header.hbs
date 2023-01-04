@@ -6,7 +6,7 @@
                     <img src="/img/clinic.png">
                 </div>
                 <div>
-                    HỆ THỐNG QUẢN LÝ PHÒNG KHÁM
+                    <div>PHÒNG KHÁM GROUP21</div>
                 </div>
             </div>
         </a>
@@ -15,23 +15,11 @@
                 <div class="d-flex">
                     <div id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="nav-item">
-                                <a class="nav-link" data-bs-toggle="dropdown" aria-expanded="false" href="#">Tìm
-                                    kiếm</a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="/tim-kiem/thuoc">Thuốc</a></li>
-                                    <li><a class="dropdown-item" href="/tim-kiem/bac-si">Bác sĩ</a></li>
-                                    <li><a class="dropdown-item" href="/tim-kiem/dich-vu">Dịch vụ</a></li>
-                                    {{#ifEquals role "doctor"}}
-                                    <li><a class="dropdown-item" href="/tim-kiem/benh-nhan">Bệnh nhân</a></li>
-                                    <li><a class="dropdown-item" href="/tim-kiem/ho-so-benh-an">Hồ sơ bệnh án</a></li>
-                                    {{/ifEquals}}
-                                </ul>
-                            </li>
-                            <li class="nav-item">
+                            {{#ifEquals role "doctor"}}
+                            <li class="nav-item dropdown">
                                 <a class="nav-link" data-bs-toggle="dropdown" aria-expanded="false" href="#">Chỉnh
                                     sửa</a>
-                                <ul class="dropdown-menu">
+                                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start">
                                     {{#ifEquals role "doctor"}}
                                     <li><a class="dropdown-item" href="/chinh-sua/thuoc-dich-vu">Thuốc/Dịch vụ</a></li>
                                     <li><a class="dropdown-item" href="/chinh-sua/so-benh-nhan-toi-da">Số bệnh nhân tối
@@ -39,10 +27,11 @@
                                     {{/ifEquals}}
                                 </ul>
                             </li>
-                            <li class="nav-item">
+                            {{/ifEquals}}
+                            <li class="nav-item dropdown">
                                 <a class="nav-link" data-bs-toggle="dropdown" aria-expanded="false" href="#">Tài
                                     liệu</a>
-                                <ul class="dropdown-menu">
+                                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start">
                                     {{#ifEquals role "doctor"}}
                                     <li><a class="dropdown-item" href="/tai-lieu/xuat-hoa-don">Lập phiếu khám bệnh</a>
                                     </li>
@@ -54,8 +43,20 @@
                                             bệnh</a></li>
                                     {{/ifEquals}}
                                     {{#ifEquals role "patient"}}
-                                    <li><a class="dropdown-item" href="/tai-lieu/lap-phieu-hen">Lập phiếu hẹn khám
-                                            bệnh</a></li>
+                                    <li><a class="dropdown-item" href="/tai-lieu/lap-phieu-hen">Đặt lịch hẹn</a></li>
+                                    {{/ifEquals}}
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown me-2">
+                                <a class="nav-link" data-bs-toggle="dropdown" aria-expanded="false" href="#">Tìm
+                                    kiếm</a>
+                                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start">
+                                    <li><a class="dropdown-item" href="/tim-kiem/thuoc">Thuốc</a></li>
+                                    <li><a class="dropdown-item" href="/tim-kiem/bac-si">Bác sĩ</a></li>
+                                    <li><a class="dropdown-item" href="/tim-kiem/dich-vu">Dịch vụ</a></li>
+                                    {{#ifEquals role "doctor"}}
+                                    <li><a class="dropdown-item" href="/tim-kiem/benh-nhan">Bệnh nhân</a></li>
+                                    <li><a class="dropdown-item" href="/tim-kiem/ho-so-benh-an">Hồ sơ bệnh án</a></li>
                                     {{/ifEquals}}
                                 </ul>
                             </li>

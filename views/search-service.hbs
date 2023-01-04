@@ -56,14 +56,14 @@
                         <div class="modal-body">
                             <form class="px-md-2" id="editServiceForm{{ID}}" action="/chinh-sua/dich-vu/{{ID}}" method="POST">
                                 {{!-- Drug name input --}}
-                                <div class="form-outline mb-4">
+                                <div class="form-floating mb-4">
                                     <input type="text" id="ServiceName{{ID}}" class="form-control" name="ServiceName" value="{{ServiceName}}"
                                         required />
                                     <label class="form-label" for="ServiceName{{ID}}">Tên dịch vụ</label>
                                 </div>
 
                                 {{!-- Unit input --}}
-                                <div class="form-outline mb-4">
+                                <div class="form-floating mb-4">
                                     <input type="text" id="Price{{ID}}" class="form-control" name="Price" value="{{Price}}"
                                         required />
                                     <label class="form-label" for="Price{{ID}}">Giá</label>

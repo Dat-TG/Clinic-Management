@@ -112,20 +112,20 @@
                             <div class="col">
                                 <form class="d-none mt-2" id="changePasswordForm" action="/tai-khoan" method="POST">
                                     {{!-- New Password input --}}
-                                    <div class="form-outline mt-4 mb-4">
+                                    <div class="form-floating mt-4 mb-4">
                                         <input type="password" id="newpassword" class="form-control"
                                             value="{{user.NewPassword}}" name="NewPassword" required />
                                         <label class="form-label" for="newpassword">Mật khẩu hiện tại</label>
                                     </div>
                                     <p class="text-danger {{changePasswordNoSuccess}}">Mật khẩu không chính xác</p>
                                     {{!-- Password input --}}
-                                    <div class="form-outline mt-4 mb-4">
+                                    <div class="form-floating mt-4 mb-4">
                                         <input type="password" id="password" class="form-control"
                                             value="{{user.Password}}" name="Password" required />
                                         <label class="form-label" for="password">Mật khẩu mới</label>
                                     </div>
                                     {{!-- Confirm password input --}}
-                                    <div class="form-outline mt-4 mb-4">
+                                    <div class="form-floating mt-4 mb-4">
                                         <input type="password" id="retype_password" class="form-control" name="Retype"
                                             value="{{user.Retype}}" required />
                                         <label class="form-label" for="retype_password">Xác nhận mật khẩu mới</label>
@@ -229,7 +229,7 @@
             <div class="modal-body">
                 <form class="px-md-2" id="editProfileForm" action="/tai-khoan" method="POST">
                     {{!-- Username input --}}
-                    <div class="form-outline mb-4">
+                    <div class="form-floating mb-4">
                         <input type="text" id="username" class="form-control" name="Username" value="{{uu.Username}}"
                             required />
                         <label class="form-label" for="username">Username</label>
@@ -237,7 +237,7 @@
                     <p class="text-danger {{editNoSuccess}}">Username đã tồn tại. Vui lòng nhập Username khác</p>
 
                     {{!-- Name input --}}
-                    <div class="form-outline mb-4">
+                    <div class="form-floating mb-4">
                         <input type="text" id="name" class="form-control" name="Name" value="{{uu.Name}}" required />
                         <label class="form-label" for="name">Họ và tên</label>
                     </div>
@@ -245,7 +245,7 @@
                     <div class="row">
                         <div class="col-md-6 mt-2 mb-2">
                             {{!-- Date of birth input --}}
-                            <div class="form-outline datepicker">
+                            <div class="form-floating datepicker">
                                 <input type="date" class="form-control datetimepicker-input" id="date-of-birth"
                                     name="DOB" value="{{uu.DOBB}}" required />
                                 <label for="date-of-birth" class="form-label">Ngày sinh</label>
@@ -271,20 +271,20 @@
                     </div>
 
                     {{!-- Phone number input --}}
-                    <div class="form-outline mb-4">
+                    <div class="form-floating mb-4">
                         <input type="text" id="phone-number" class="form-control" name="Phone" value="{{uu.Phone}}"
                             required />
                         <label class="form-label" for="phone-number">Số điện thoại</label>
                     </div>
 
                     {{!-- Email input --}}
-                    <div class="form-outline mb-4">
+                    <div class="form-floating mb-4">
                         <input type="email" id="email" class="form-control" name="Email" value="{{uu.Email}}" />
                         <label class="form-label" for="email">Email</label>
                     </div>
 
                     {{!-- Address input --}}
-                    <div class="form-outline mb-4">
+                    <div class="form-floating mb-4">
                         <input type="text" id="address" class="form-control" name="Address" value="{{uu.Address}}"
                             required />
                         <label class="form-label" for="address">Địa chỉ</label>
