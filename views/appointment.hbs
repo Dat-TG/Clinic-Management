@@ -10,7 +10,7 @@
         </div>
     </div>
 
-    <div class="container-fluid p-3 mb-2 bg-light text-white my-5 py-5">
+    <div class="container-fluid p-3 mb-2 bg-light text-dark my-5 py-5">
         <div class="container py-5">
             <div class="row gx-5">
                 <div class="col-lg-6" style="margin-left: 20px;">
@@ -21,7 +21,7 @@
                                 {{!-- Select doctors --}}
                                 <div class="col-12">
                                     <select class="form-select bg-light" name="Doctor" required>
-                                        <option selected>Chọn bác sĩ &#8727;</option>
+                                        <option value="">Chọn bác sĩ &#8727;</option>
                                         {{#each doctors}}
                                         <option value='{"ID":"{{ID}}", "Name":"{{Name}}"}'>{{Name}}</option>
                                         {{/each}}
@@ -30,17 +30,17 @@
 
                                 {{!-- Name input auto --}}
                                 <div class="col-12 col-sm-6 text-start">
-                                    <label class="form-label text-black" for="name">Họ và tên</label>
-                                    <input type="text" id="name" class="form-control bg-light" name="Name" value="{{user.Name}}">
+                                    <label class="form-label text-black" for="name">Họ và tên &#8727;</label>
+                                    <input type="text" id="name" class="form-control bg-light" name="Name" value="{{user.Name}}" required>
                                 </div>
 
                                 <input class="d-none" name="Username" type="text" value="{{user.Username}}">
 
                                 {{!-- Phone input auto --}}
                                 <div class="col-12 col-sm-6 text-start">
-                                    <label class="form-label text-black" for="phone-number">Số điện thoại</label>
+                                    <label class="form-label text-black" for="phone-number">Số điện thoại &#8727;</label>
                                     <input type="text" id="phone-number" class="form-control bg-light" name="Phone"
-                                        value="{{user.Phone}}">
+                                        value="{{user.Phone}}" required>
                                 </div>
 
                                 {{!-- Email input auto --}}
@@ -51,9 +51,9 @@
 
                                 {{!-- Date of birth input --}}
                                 <div class="col-12 col-sm-6 text-start">
-                                    <label for="date-of-birth" class="form-label text-black">Ngày sinh</label>
+                                    <label for="date-of-birth" class="form-label text-black">Ngày sinh &#8727;</label>
                                     <input type="date" class="form-control datetimepicker-input bg-light"
-                                        id="date-of-birth" name="DOB" value="{{user.DOB}}">
+                                        id="date-of-birth" name="DOB" value="{{user.DOB}}" required>
                                 </div>
 
                                 {{!-- Sex input --}}
@@ -87,7 +87,7 @@
                                 {{!-- Confirm --}}
                                 <div class="col-sm-6">
                                     <button class="btn btn-primary w-100 py-3" type="submit" style="margin-top: 20px;">
-                                        Tạo phiếu hẹn &#10142;
+                                        Tạo phiếu hẹn
                                     </button>
                                 </div>
                                 <div id="status" class="col-sm-12 text-start" style="color: red;">(*) Thông tin bắt buộc

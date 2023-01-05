@@ -3,8 +3,8 @@
     <table class="table table-bordered">
         <thead>
             <div class="d-flex justify-content-center mb-2">
-                <div class="text-center me-2">Tháng <input type="text" name="thang" form="drug-report" value="{{thang}}"></div>
-                <div class="text-center">Năm <input type="text" name="nam" form="drug-report" value="{{nam}}"></div>
+                <div class="text-center me-2">Tháng <input type="number" name="thang" min="1" max="12" form="drug-report" required value="{{thang}}"></div>
+                <div class="text-center">Năm <input type="number" name="nam" min="1" max="12" form="drug-report" required value="{{nam}}"></div>
             </div>
             <tr>
                 <th scope="col" class="text-center">STT</th>

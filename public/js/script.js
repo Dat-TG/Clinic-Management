@@ -530,9 +530,9 @@ function autoGenerate1() {
     <tr>
       <th scope="row" class="text-center">${index + 1}</th>
       <td class="text-center"> <input type="text" form="drug-report" list="drugs" data-index="${index + 1}" name="Name${index + 1}" value="" class="form-control mx-sm-3 border-1 text-center"> </td>
-      <td class="text-center"> <input type="text" form="drug-report" data-index="${index + 1}" value="" name="Unit${index + 1}" id="Unit${index + 1}" class="form-control mx-sm-3 border-1 text-center"> </td>
-      <td class="text-center"> <input type="number" form="drug-report" data-index="${index + 1}" name="Quantity${index + 1}" id="Quantity${index + 1}" class="form-control mx-sm-3 border-1 text-center"> </td>
-      <td class="text-center"> <input type="number" form="drug-report" data-index="${index + 1}" name="Used${index + 1}" id="Used${index + 1}" class="form-control mx-sm-3 border-1 text-center"> </td>
+      <td class="text-center"> <input type="text" form="drug-report" data-index="${index + 1}" value="" name="Unit${index + 1}" id="Unit${index + 1}" class="form-control mx-sm-3 border-1 text-center" readonly> </td>
+      <td class="text-center"> <input type="number" min="0" form="drug-report" data-index="${index + 1}" name="Quantity${index + 1}" id="Quantity${index + 1}" class="form-control mx-sm-3 border-1 text-center"> </td>
+      <td class="text-center"> <input type="number" min="0" form="drug-report" data-index="${index + 1}" name="Used${index + 1}" id="Used${index + 1}" class="form-control mx-sm-3 border-1 text-center"> </td>
     </tr>
         `);
     var x = document.querySelectorAll('input[list="drugs"]');
