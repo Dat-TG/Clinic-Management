@@ -16,4 +16,5 @@ router.get('/bao-cao-thuoc/:ID',docC.viewDrugReportDetail);
 router.get('/bao-cao-thuoc',docC.getDrugReport);
 router.post('/bao-cao-thuoc',docC.postDrugReport);
 router.get('/xem-bao-cao-thuoc',docC.viewAllDrugReports);
+router.get('/ho-so-benh-an/:ID',docC.viewRecordDetail);
 module.exports=router;

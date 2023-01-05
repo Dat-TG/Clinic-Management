@@ -15,5 +15,9 @@ module.exports = {
     getAll: async()=> {
         const rs=await db.collection('MedicalRecords').find({}).toArray();
         return rs;
+    },
+    getByID: async(ID)=> {
+        const rs=await db.collection('MedicalRecords').find({ID:ID}).toArray();
+        return rs;
     }
 }

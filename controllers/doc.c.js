@@ -333,3 +333,38 @@ exports.viewDrugReportDetail=async(req,res,next)=>{
         next(err);
     }
 }
+exports.viewRecordDetail=async(req,res,next)=>{
+    let role = "patient";
+    if (req.session.Doctor) {
+        role = "doctor";
+    }
+    if (!req.session.Username) {
+        return res.render('error', { display1: "d-block", display2: "d-none", role: role });
+    }
+    try {
+        const rs=await RecordsM.getByID(req.params.ID);
+        if (!req.session.Doctor && rs[0].Username!=req.session.Username) {
+            return res.render('error', { display1: "d-none", display2: "d-block", role: role });
+        }
+        var array=[];
+        let i=0;
+        while (true) {
+            i++;
+            if (rs[0]['Name'+i]!=undefined) {
+                array.push({
+                    Name: rs[0]['Name'+i],
+                    Unit: rs[0]['Unit'+i],
+                    Quantity: rs[0]['Quantity'+i],
+                    Price: rs[0]['Price'+i],
+                    Total: rs[0]['Total'+i]
+                });
+            }
+            else {
+                break;
+            }
+        }
+        res.render('record-detail', {data:rs[0],drugs:array,display1: "d-none", display2: "d-block", role: role });
+    } catch (err) {
+        next(err);
+    }
+}
