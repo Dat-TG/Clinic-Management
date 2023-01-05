@@ -47,13 +47,13 @@
                 <form class="px-md-2" id="editDrugForm" action="/chinh-sua/thuoc/{{data.ID}}" method="POST">
                     {{!-- Drug name input --}}
                     <div class="form-floating mb-4">
-                        <input type="text" id="Name" class="form-control" name="Name" value="{{data.Name}}" required />
+                        <input type="text" id="Name" class="form-control" name="Name" value="{{data.Name}}" required readonly/>
                         <label class="form-label" for="Name">Tên thuốc</label>
                     </div>
 
                     {{!-- Unit input --}}
                     <div class="form-floating mb-4">
-                        <input type="text" id="Unit" class="form-control" name="Unit" value="{{data.Unit}}" required />
+                        <input type="text" id="Unit" class="form-control" name="Unit" value="{{data.Unit}}" required readonly/>
                         <label class="form-label" for="Unit">Đơn vị tính</label>
                     </div>
 
@@ -74,13 +74,13 @@
                     {{!-- Active substance input --}}
                     <div class="form-floating mb-4">
                         <input type="text" id="Chemicals" class="form-control" name="Chemicals"
-                            value="{{data.Chemicals}}" required />
+                            value="{{data.Chemicals}}" required readonly/>
                         <label class="form-label" for="Chemicals">Hoạt chất</label>
                     </div>
 
                     {{!-- Uses input --}}
                     <div class="form-floating mb-4">
-                        <input type="text" id="Uses" class="form-control" name="Uses" value="{{data.Uses}}" required />
+                        <input type="text" id="Uses" class="form-control" name="Uses" value="{{data.Uses}}" required readonly/>
                         <label class="form-label" for="Uses">Công dụng chính</label>
                     </div>
                 </form>
