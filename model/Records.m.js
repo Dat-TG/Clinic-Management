@@ -4,8 +4,8 @@ module.exports = {
         const rs = await db.collection('MedicalRecords').insertOne(data);
         return rs;
     },
-    getByUsername: async(name)=> {
-        const rs=await db.collection('MedicalRecords').find({Patient:name}).toArray();
+    getByUsername: async(username)=> {
+        const rs=await db.collection('MedicalRecords').find({Username:username}).toArray();
         return rs;
     },
     getMaxID: async()=>{

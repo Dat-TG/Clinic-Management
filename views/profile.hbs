@@ -146,6 +146,7 @@
                                 style="width:100%;background-color: aliceblue;">
                                 <thead>
                                     <tr>
+                                        <th>Mã bệnh án</th>
                                         <th>Ngày khám</th>
                                         <th>Giờ khám</th>
                                         <th>Bác sĩ khám</th>
@@ -156,15 +157,17 @@
                                 <tbody>
                                     {{#each records}}
                                     <tr>
+                                        <td>{{ID}}</td>
                                         <td>{{Date}}</td>
                                         <td>{{Time}}</td>
-                                        <td><a href="/bac-si/{{DoctorID}}-{{Doctor}}">{{Doctor}}</a></td>
+                                        <td><a href="/bac-si/{{DoctorID}}-{{DoctorName}}">{{DoctorName}}</a></td>
                                         <td>{{Diagnosis}}</td>
-                                        <td>{{Fee}}</td>
+                                        <td>{{AllTotal}}</td>
                                     </tr>
                                     {{/each}}
                                 <tfoot>
                                     <tr>
+                                        <th>Mã bệnh án</th>
                                         <th>Ngày khám</th>
                                         <th>Giờ khám</th>
                                         <th>Bác sĩ khám</th>
