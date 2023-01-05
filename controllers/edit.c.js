@@ -40,6 +40,8 @@ exports.postEditDrug=async(req,res,next)=>{
         var ID=req.params.ID;
         var data=req.body;
         data.ID=ID;
+        data.Price=parseInt(data.Price);
+        data.Quantity=parseInt(data.Quantity);
         await DrugsM.update(ID, data);
         const rs = await DrugsM.getByID(ID);
         if (rs.length==0) {

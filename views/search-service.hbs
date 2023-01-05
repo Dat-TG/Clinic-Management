@@ -36,71 +36,16 @@
                 {{#ifEquals ../role "doctor"}}
                 <td>
                     <div class="d-flex">
-                        <button class="d-block me-2" data-bs-toggle="modal" data-bs-target="#editServiceModal{{ID}}"><i
-                                class="bi bi-pencil-square"></i></button>
-                        <button class="d-block" data-bs-toggle="modal" data-bs-target="#deleteServiceModal{{ID}}"><i
-                                class="bi bi-trash3"></i></button>
+                        <a type="button" class="d-block me-2" data-bs-toggle="modal" data-bs-target="#editServiceModal{{ID}}">
+                            <i class="bi bi-pencil-square"></i>
+                        </button>
+                        <a type="button" class="d-block" data-bs-toggle="modal" data-bs-target="#deleteServiceModal{{ID}}">
+                            <i class="bi bi-trash3"></i>
+                        </a>
                     </div>
                 </td>
                 {{/ifEquals}}
             </tr>
-            <!-- Modal -->
-            <div class="modal fade" id="editServiceModal{{ID}}" tabindex="-1" aria-labelledby="editServiceModal{{ID}}"
-                aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title">Chỉnh sửa thông tin dịch vụ</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <form class="px-md-2" id="editServiceForm{{ID}}" action="/chinh-sua/dich-vu/{{ID}}" method="POST">
-                                {{!-- Drug name input --}}
-                                <div class="form-floating mb-4">
-                                    <input type="text" id="ServiceName{{ID}}" class="form-control" name="ServiceName" value="{{ServiceName}}"
-                                        required />
-                                    <label class="form-label" for="ServiceName{{ID}}">Tên dịch vụ</label>
-                                </div>
-
-                                {{!-- Unit input --}}
-                                <div class="form-floating mb-4">
-                                    <input type="text" id="Price{{ID}}" class="form-control" name="Price" value="{{Price}}"
-                                        required />
-                                    <label class="form-label" for="Price{{ID}}">Giá</label>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
-                            <button type="submit" class="btn btn-primary" form="editServiceForm{{ID}}">Xác nhận</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-            <!-- Modal -->
-            <div class="modal fade" id="deleteServiceModal{{ID}}" tabindex="-1" aria-labelledby="deleteServiceModal{{ID}}"
-                aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title">Xóa dịch vụ</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            Bạn có chắc chắn muốn xóa dịch vụ <i>{{ServiceName}}</i>?
-                                <form class="px-md-2" id="deleteServiceForm{{ID}}" action="/chinh-sua/dich-vu/xoa/{{ID}}"
-                                    method="POST">
-                                </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
-                            <button type="submit" class="btn btn-primary" form="deleteServiceForm{{ID}}">Xác nhận</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
             {{/each}}
         <tfoot>
             <tr>
@@ -114,3 +59,62 @@
         </tfoot>
     </table>
 </div>
+
+{{#each services}}
+<!-- Modal -->
+<div class="modal fade" id="editServiceModal{{ID}}" tabindex="-1" aria-labelledby="editServiceModal{{ID}}"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Chỉnh sửa thông tin dịch vụ</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form class="px-md-2" id="editServiceForm{{ID}}" action="/chinh-sua/dich-vu/{{ID}}" method="POST">
+                    {{!-- Drug name input --}}
+                    <div class="form-floating mb-4">
+                        <input type="text" id="ServiceName{{ID}}" class="form-control" name="ServiceName"
+                            value="{{ServiceName}}" required />
+                        <label class="form-label" for="ServiceName{{ID}}">Tên dịch vụ</label>
+                    </div>
+
+                    {{!-- Unit input --}}
+                    <div class="form-floating mb-4">
+                        <input type="number" id="Price{{ID}}" class="form-control" name="Price" value="{{Price}}" min="0"
+                            required />
+                        <label class="form-label" for="Price{{ID}}">Giá</label>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                <button type="submit" class="btn btn-primary" form="editServiceForm{{ID}}">Xác nhận</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="deleteServiceModal{{ID}}" tabindex="-1" aria-labelledby="deleteServiceModal{{ID}}"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Xóa dịch vụ</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Bạn có chắc chắn muốn xóa dịch vụ <i>{{ServiceName}}</i>?
+                <form class="px-md-2" id="deleteServiceForm{{ID}}" action="/chinh-sua/dich-vu/xoa/{{ID}}" method="POST">
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                <button type="submit" class="btn btn-primary" form="deleteServiceForm{{ID}}">Xác nhận</button>
+            </div>
+        </div>
+    </div>
+</div>
+{{/each}}

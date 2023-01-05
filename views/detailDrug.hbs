@@ -59,14 +59,14 @@
 
                     {{!-- Unit price input --}}
                     <div class="form-floating mb-4">
-                        <input type="number" id="Price" class="form-control" name="Price" value="{{data.Price}}"
+                        <input type="number" id="Price" min="0" class="form-control" name="Price" value="{{data.Price}}"
                             required />
                         <label class="form-label" for="Price">Đơn giá</label>
                     </div>
 
                     {{!-- Quantity input --}}
                     <div class="form-floating mb-4">
-                        <input type="number" id="Quantity" class="form-control" name="Quantity"
+                        <input type="number" id="Quantity" min="0" class="form-control" name="Quantity"
                             value="{{data.Quantity}}" required />
                         <label class="form-label" for="Quantity">Số lượng</label>
                     </div>
