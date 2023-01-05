@@ -61,6 +61,7 @@ exports.UpdateInvoice = async (req, res, next) => {
             data.ID=ID.toString();
         }
         await RecordsM.add(data);
+        return res.redirect('/tim-kiem/ho-so-benh-an');
     }
     res.send({ user: user[0], drug: drug[0] });
 }

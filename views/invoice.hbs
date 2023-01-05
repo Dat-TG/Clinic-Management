@@ -9,6 +9,8 @@
                 <div class="col-xl-3 float-end">
                     <a type="button" class="btn btn-light text-capitalize border-0" id="btnPrint"
                         data-bs-ripple-color="dark"><i class="fas fa-print text-primary"></i> Print</a>
+                    <button type="submit" class="btn btn-light text-capitalize border-0" id="btnSave"
+                        data-bs-ripple-color="dark" form="invoiceForm"><i class="fas fa-save text-primary"></i> Save</button>
                 </div>
                 <hr>
             </div>
@@ -31,14 +33,16 @@
 
                 <div class="row">
                     <div class="col-xl-8">
-                        <form class="form-inline">
+                        <form class="form-inline" id="invoiceForm" action="/tai-lieu/xuat-hoa-don" method="post">
                             <div class="row g-3 align-items-center mb-auto">
                                 <div class="col-auto">
                                     <label for="Name">Bệnh nhân: </label>
                                 </div>
                                 <div class="col-auto">
                                     <input type="text" list="patients" id="Name" name="Name"
-                                        class="form-control mx-sm-3 border-0" value="">
+                                        class="form-control mx-sm-3 border-0" value="" required>
+                                    <input type="text" id="Username" name="Username"
+                                        class="d-none" value="">
                                 </div>
                                 <datalist id="patients">
                                     {{#each patients}}
@@ -51,7 +55,7 @@
                                     <label for="DOB">Ngày sinh: </label>
                                 </div>
                                 <div class="col-auto">
-                                    <input type="text" id="DOB" class="form-control mx-sm-3 border-0" value="">
+                                    <input type="text" id="DOB" class="form-control mx-sm-3 border-0" value="" name="DOB" required>
                                 </div>
                             </div>
                             <div class="row g-3 align-items-center">
@@ -59,7 +63,7 @@
                                     <label for="Address">Địa chỉ: </label>
                                 </div>
                                 <div class="col-auto">
-                                    <input type="text" id="Address" class="form-control mx-sm-3 border-0" value="">
+                                    <input type="text" id="Address" class="form-control mx-sm-3 border-0" value="" name="Address" required>
                                 </div>
                             </div>
                             <div class="row g-3 align-items-center">
@@ -67,7 +71,7 @@
                                     <label for="Res">Chẩn đoán: </label>
                                 </div>
                                 <div class="col-auto">
-                                    <input type="text" id="Res" class="form-control mx-sm-3 border-0" value="">
+                                    <input type="text" id="Res" class="form-control mx-sm-3 border-0" value="" name="Diagnosis" required>
                                 </div>
                             </div>
                         </form>
@@ -76,27 +80,28 @@
                         <p class="text-muted">Hóa đơn khám bệnh</p>
                         <ul class="list-unstyled">
                             <li class="text-muted"><i class="fas fa-circle" style="color:#84B0CA ;"></i> <span
-                                    class="fw-bold">Ngày tạo: </span>{{today}}</li>
+                                    class="fw-bold">Ngày tạo: </span><span>{{today}}</span></li>
                             <li class="text-muted"><i class="fas fa-circle" style="color:#84B0CA ;"></i> <span
                                     class="fw-bold">Bác sĩ chẩn đoán: </span><span>{{doctor.Name}}</span></li>
-                            <div class="d-none" id="DoctorID">{{doctor.ID}}</div>
-                            <div class="d-none" id="DoctorName">{{doctor.Name}}</div>
-                            <div class="d-none" id="Date">{{date}}</div>
-                            <div class="d-none" id="Time">{{time}}</div>
+                            <input class="d-none" type="text" name="DoctorID" value="{{doctor.ID}}" form="invoiceForm">
+                            <input class="d-none" type="text" name="DoctorName" value="{{doctor.Name}}" form="invoiceForm">
+                            <input class="d-none" type="text" name="Date" value="{{date}}" form="invoiceForm">
+                            <input class="d-none" type="time" name="Time" value="{{time}}" form="invoiceForm">
                         </ul>
                     </div>
                 </div>
 
                 <div class="row my-2 mx-1 justify-content-center">
-                    <table class="table table-striped table-borderless">
+                    <table class="table table-striped table-borderless auto-index">
                         <thead style="background-color:#84B0CA ;" class="text-white">
                             <tr>
-                                <th scope="col">STT</th>
-                                <th scope="col">Tên thuốc/dịch vụ</th>
-                                <th scope="col">Đơn vị tính</th>
-                                <th scope="col">Số lượng</th>
-                                <th scope="col">Đơn giá</th>
-                                <th scope="col">Tổng cộng</th>
+                                <th scope="col" class="text-center">STT</th>
+                                <th scope="col" class="text-center">Tên thuốc/dịch vụ</th>
+                                <th scope="col" class="text-center">Đơn vị tính</th>
+                                <th scope="col" class="text-center">Số lượng</th>
+                                <th scope="col" class="text-center">Đơn giá</th>
+                                <th scope="col" class="text-center">Tổng cộng</th>
+                                <th scope="col" class="text-center"></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -120,7 +125,7 @@
                     </div>
                     <div class="col-xl-6">
                         <p class="text-black float-start"><span class="text-black me-3">Tổng số tiền cần thanh
-                                toán:</span><span style="font-size: 25px;"><span id="AllTotal">0</span></span></p>
+                                toán:</span><span style="font-size: 25px;"><input type="number" readonly required value="0" id="AllTotal" name="AllTotal" form="invoiceForm"></span></p>
                     </div>
 
                 </div>

@@ -19,13 +19,14 @@
             <tr>
                 <td>{{ID}}</td>
                 <td>{{Name}}</td>
-                <td>{{Patient}}</td>
+                {{#if Username}}<td>{{Username}}</td>
+                {{else}} <td>Không có</td> {{/if}}
                 <td>{{Date}}</td>
                 <td>{{Time}}</td>
-                <td><a href="/bac-si/{{DoctorID}}-{{Doctor}}">{{Doctor}}</a></td>
+                <td><a href="/bac-si/{{DoctorID}}-{{DoctorName}}">{{DoctorName}}</a></td>
                 <td>{{DoctorID}}</td>
                 <td>{{Diagnosis}}</td>
-                <td>{{Fee}}</td>
+                <td>{{AllTotal}}</td>
             </tr>
             {{/each}}
         <tfoot>

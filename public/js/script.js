@@ -192,7 +192,7 @@ $(function () {
         mywindow.document.write('</body></html>');
         mywindow.document.close();
         mywindow.print();
-        $.post("/tai-lieu/xuat-hoa-don",
+        /*$.post("/tai-lieu/xuat-hoa-don",
             {
                 Patient: usernameProfile,
                 Name: NamePatient,
@@ -206,7 +206,7 @@ $(function () {
             },
             function (data, status) {
                 console.log(data);
-            });
+            });*/
     });
     $('input').on('input', function () {
         var val = $(this).val();
@@ -266,9 +266,14 @@ $(function () {
         let nRows=parseInt(document.getElementsByTagName("tbody")[0].childElementCount);
         let removeIndex=parseInt($(this).closest('tr').index())+1;
         console.log('remove',removeIndex);
+        let subtract=parseInt($("#Total"+removeIndex).val());
+        if (!isNaN(subtract)) {
+            $("#AllTotal").val(parseInt($("#AllTotal").val())-subtract);
+        }
         $(this).closest('tr').remove();
         for (let i=removeIndex+1;i<=nRows;i++) {
             let j=i-1;
+
             $("#Name"+i).attr("name", "Name"+j);
             $("#Username"+i).attr("name", "Username"+j);
             $("#Unit"+i).attr("name", "Unit"+j);
@@ -278,6 +283,8 @@ $(function () {
             $("#DOB"+i).attr("name", "DOB"+j);
             $("#Address"+i).attr("name", "Address"+j);
             $("#Time"+i).attr("name", "Time"+j);
+            $("#Price"+i).attr("name", "Price"+j);
+            $("#Total"+i).attr("name", "Total"+j);
 
             $("#Name"+i).attr("id", "Name"+j);
             $("#Username"+i).attr("id", "Username"+j);
@@ -288,6 +295,8 @@ $(function () {
             $("#DOB"+i).attr("id", "DOB"+j);
             $("#Address"+i).attr("id", "Address"+j);
             $("#Time"+i).attr("id", "Time"+j);
+            $("#Price"+i).attr("id", "Price"+j);
+            $("#Total"+i).attr("id", "Total"+j);
         }
      })
 })
@@ -347,6 +356,8 @@ function onInput(e) {
             console.log("match");
             usernameProfile = options[i].getAttribute('data-username');
             NamePatient = options[i].getAttribute('data-name');
+            $('#Name').val(NamePatient);
+            $('#Username').val(usernameProfile);
             $.post("/tai-lieu/xuat-hoa-don",
                 {
                     username: options[i].getAttribute('data-username')
@@ -374,12 +385,13 @@ function autoGenerate() {
     let index = document.getElementsByTagName("tbody")[0].childElementCount;
     $('table tbody').append(`
     <tr>
-      <th scope="row">${index + 1}</th>
-      <td> <input type="text" list="drugs" data-index="${index + 1}" value="" class="form-control mx-sm-3 border-0"> </td>
-      <td id="Unit${index + 1}"></td>
-      <td> <input type="number" data-index="${index + 1}" id="Quantity${index + 1}" value=1 min=1 class="form-control mx-sm-3 border-0"> </td>
-      <td id="Price${index + 1}"></td>
-      <td id="Total${index + 1}"></td>
+      <td scope="row" class="text-center"></td>
+      <td class="text-center"> <input type="text" list="drugs" data-index="${index + 1}" id="Name${index+1}" name="Name${index+1}" value="" class="form-control border-0" required form="invoiceForm"> </td>
+      <td class="text-center"><input type="text" data-index="${index + 1}" id="Unit${index + 1}" name="Unit${index + 1}" class="form-control border-0" readonly required form="invoiceForm"></td>
+      <td class="text-center"> <input type="number" data-index="${index + 1}" id="Quantity${index + 1}" name="Quantity${index + 1}" value=1 min=1 class="form-control border-0" required form="invoiceForm"> </td>
+      <td class="text-center"><input type="number" data-index="${index + 1}" id="Price${index + 1}" name="Price${index + 1}" class="form-control border-0" readonly required form="invoiceForm"></td>
+      <td class="text-center"><input type="number" data-index="${index + 1}" id="Total${index + 1}" name="Total${index + 1}" class="form-control border-0" readonly required form="invoiceForm"></td>
+      <td class="text-center"> <button class="btn btn-light rounded-circle"><i class="bi bi-x"></i></button> </td>
     </tr>
         `);
     var x = document.querySelectorAll('input[list="drugs"]');
@@ -416,16 +428,20 @@ function onInput1(e) {
                 },
                 function (data, status) {
                     console.log(data);
-                    $('#Unit' + index).html(data.drug.Unit);
+                   // $('#Unit' + index).html(data.drug.Unit);
                     $('#Unit' + index).val(data.drug.Unit);
-                    $('#Price' + index).html(data.drug.Price);
+                    //$('#Price' + index).html(data.drug.Price);
+                    $('#Price' + index).val(data.drug.Price);
                     let quantity = $('#Quantity' + index).val();
-                    let curTotal = parseInt($("#AllTotal").html());
-                    let oldTotal = parseInt($('#Total' + index).html());
+                    if (quantity=="") quantity=0;
+                    let curTotal = parseInt($("#AllTotal").val());
+                    let oldTotal = parseInt($('#Total' + index).val());
                     if (oldTotal > 0) curTotal -= oldTotal;
-                    $('#Total' + index).html(parseInt(data.drug.Price) * parseInt(quantity));
+                    //$('#Total' + index).html(parseInt(data.drug.Price) * parseInt(quantity));
+                    $('#Total' + index).val(parseInt(data.drug.Price) * parseInt(quantity));
                     curTotal += parseInt(data.drug.Price) * parseInt(quantity);
-                    $('#AllTotal').html(curTotal);
+                    //$('#AllTotal').html(curTotal);
+                    $('#AllTotal').val(curTotal);
                 });
             // An item was selected from the list!
             // yourCallbackHere()
@@ -439,17 +455,27 @@ function onInput2(e) {
     console.log('input');
     var input = e.target,
         val = input.value;
+    val=parseInt(val);
+    if (isNaN(val)) val=0;
 
     console.log('index', input.getAttribute("data-index"));
     var index = input.getAttribute("data-index");
-    const unitPrice = $("#Price" + index).html();
-    var allTotal = parseInt($("#AllTotal").html());
-    allTotal -= parseInt($("#Total" + index).html());
+    var unitPrice = parseInt($("#Price" + index).val());
+    if (isNaN(unitPrice)) {
+        unitPrice=0;
+    }
+    var allTotal = parseInt($("#AllTotal").val());
+    if (isNaN(allTotal)) allTotal=0;
+    let temp=parseInt($("#Total" + index).val());
+    if (isNaN(temp)) temp=0;
+    allTotal -= temp;
     const total = parseInt(val) * parseInt(unitPrice);
     allTotal += total;
     console.log(val, unitPrice, total);
-    $("#Total" + index).html(total);
-    $("#AllTotal").html(allTotal);
+    //$("#Total" + index).html(total);
+    $("#Total" + index).val(total);
+    //$("#AllTotal").html(allTotal);
+    $("#AllTotal").val(allTotal);
 }
 
 function autoGeneratePatientList() {
