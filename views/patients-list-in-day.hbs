@@ -1,7 +1,7 @@
 <h3 class="text-center mt-2"><b>DANH SÁCH KHÁM BỆNH</b></h3>
 <p class="text-center">Ngày khám: {{today}}</p>
 <div class="row my-2 mx-1 justify-content-center">
-    <table class="table table-striped table-borderless">
+    <table class="table table-striped table-borderless auto-index">
         <thead style="background-color:#84B0CA ;" class="text-white">
             <tr>
                 <th scope="col" class="col-1 text-center">STT</th>
@@ -10,12 +10,13 @@
                 <th scope="col" class="col-1 text-center">Ngày sinh</th>
                 <th scope="col" class="col-4 text-center">Địa chỉ</th>
                 <th scope="col" class="col-2 text-center">Giờ tiếp nhận</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
             {{#each list}}
             <tr>
-                <th class="col-1 text-center">{{sum @index 1}}</th>
+                <td class="col-1 text-center"></td>
                 <td class="col-3 text-center"> <input type="text" data-index="{{sum @index 1}}" list="patients"
                         id="Name{{sum @index 1}}" name="Name" class="form-control mx-sm-3 border-0" value="{{Name}}"> </td>
                 <td class="col-1 text-center"><input type="text" id="Gender{{sum @index 1}}" data-index="{{sum @index 1}}"
@@ -27,6 +28,7 @@
                 <td class="col-1 text-center"><input type="time" id="Time{{sum @index 1}}" data-index="{{sum @index 1}}"
                         class="form-control mx-sm-3 border-0" value="{{Time}}"></td>
                 <td class="d-none"><input id="Username{{sum @index 1}}" class="d-none" type="text" value="{{Username}}"></td>
+                 <td class="text-center"> <button class="btn btn-light rounded-circle"><i class="bi bi-x"></i></button> </td>
             </tr>
             {{/each}}
         </tbody>

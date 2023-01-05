@@ -262,6 +262,34 @@ $(function () {
         $("#saveSchedule").removeClass("d-block");
         $("#saveSchedule").addClass("d-none");
     });
+    $('table').on('click', 'button', function(e){
+        let nRows=parseInt(document.getElementsByTagName("tbody")[0].childElementCount);
+        let removeIndex=parseInt($(this).closest('tr').index())+1;
+        console.log('remove',removeIndex);
+        $(this).closest('tr').remove();
+        for (let i=removeIndex+1;i<=nRows;i++) {
+            let j=i-1;
+            $("#Name"+i).attr("name", "Name"+j);
+            $("#Username"+i).attr("name", "Username"+j);
+            $("#Unit"+i).attr("name", "Unit"+j);
+            $("#Quantity"+i).attr("name", "Quantity"+j);
+            $("#Used"+i).attr("name", "Used"+j);
+            $("#Gender"+i).attr("name", "Gender"+j);
+            $("#DOB"+i).attr("name", "DOB"+j);
+            $("#Address"+i).attr("name", "Address"+j);
+            $("#Time"+i).attr("name", "Time"+j);
+
+            $("#Name"+i).attr("id", "Name"+j);
+            $("#Username"+i).attr("id", "Username"+j);
+            $("#Unit"+i).attr("id", "Unit"+j);
+            $("#Quantity"+i).attr("id", "Quantity"+j);
+            $("#Used"+i).attr("id", "Used"+j);
+            $("#Gender"+i).attr("id", "Gender"+j);
+            $("#DOB"+i).attr("id", "DOB"+j);
+            $("#Address"+i).attr("id", "Address"+j);
+            $("#Time"+i).attr("id", "Time"+j);
+        }
+     })
 })
 
 function checkUpperCase(name) {
@@ -428,13 +456,14 @@ function autoGeneratePatientList() {
     let index = document.getElementsByTagName("tbody")[0].childElementCount;
     $('table tbody').append(`
     <tr>
-      <th class="col-1 text-center">${index + 1}</th>
+      <td class="col-1 text-center"></td>
       <td class="col-3 text-center"> <input type="text" data-index="${index + 1}" list="patients" id="Name${index + 1}" name="Name"  class="form-control mx-sm-3 border-0" value=""> </td>
       <td class="col-1 text-center"><input type="text" id="Gender${index + 1}" data-index="${index + 1}" class="form-control mx-sm-3 border-0"></td>
       <td class="col-2 text-center"><input type="text" id="DOB${index + 1}" data-index="${index + 1}" id="DOB" class="form-control mx-sm-3 border-0" value=""></td>
       <td class="col-4 text-center">  <input type="text" id="Address${index + 1}" data-index="${index + 1}" class="form-control mx-sm-3 border-0" value=""> </td>
       <td class="col-1 text-center"><input type="time" id="Time${index + 1}" data-index="${index + 1}" class="form-control mx-sm-3 border-0"></td>
       <td class="d-none"><input id="Username${index + 1}" class="d-none" type="text"></td>
+      <td class="text-center"> <button class="btn btn-light rounded-circle"><i class="bi bi-x"></i></button> </td>
       </tr>
         `);
     var x = document.querySelectorAll('input[list="patients"]');
@@ -489,6 +518,7 @@ function onInputPatientList(e) {
 
 function savePatientsList() {
     let nPatients = parseInt(document.getElementsByTagName("tbody")[0].childElementCount);
+    console.log('so benh nhan', nPatients);
     let PatientsList = [];
     for (let i = 1; i <= nPatients; i++) {
         let x = {};
@@ -500,6 +530,7 @@ function savePatientsList() {
         x.Time = $('#Time' + i).val();
         PatientsList.push(x);
     }
+    console.log(PatientsList);
     $.post("/tai-lieu/danh-sach-kham-benh",
         {
             PatientsList: PatientsList
@@ -528,12 +559,13 @@ function autoGenerate1() {
     let index = document.getElementsByTagName("tbody")[0].childElementCount;
     $('table tbody').append(`
     <tr>
-      <th scope="row" class="text-center">${index + 1}</th>
-      <td class="text-center"> <input type="text" form="drug-report" list="drugs" data-index="${index + 1}" name="Name${index + 1}" value="" class="form-control mx-sm-3 border-1 text-center"> </td>
-      <td class="text-center"> <input type="text" form="drug-report" data-index="${index + 1}" value="" name="Unit${index + 1}" id="Unit${index + 1}" class="form-control mx-sm-3 border-1 text-center" readonly> </td>
-      <td class="text-center"> <input type="number" min="0" form="drug-report" data-index="${index + 1}" name="Quantity${index + 1}" id="Quantity${index + 1}" class="form-control mx-sm-3 border-1 text-center"> </td>
-      <td class="text-center"> <input type="number" min="0" form="drug-report" data-index="${index + 1}" name="Used${index + 1}" id="Used${index + 1}" class="form-control mx-sm-3 border-1 text-center"> </td>
-    </tr>
+      <td scope="row" class="text-center"></td>
+      <td class="text-center " style="overflow:hidden"> <input type="text" form="drug-report" list="drugs" autocomplete="off" data-index="${index + 1}" name="Name${index + 1}" id="Name${index + 1}" value="" class="form-control  border-1 text-center"> </td>
+      <td class="text-center" style="overflow:hidden"> <input type="text" form="drug-report" data-index="${index + 1}" value="" name="Unit${index + 1}" id="Unit${index + 1}" class="form-control  border-1 text-center" readonly> </td>
+      <td class="text-center" style="overflow:hidden"> <input type="number" min="0" form="drug-report" data-index="${index + 1}" name="Quantity${index + 1}" id="Quantity${index + 1}" class="form-control  border-1 text-center"> </td>
+      <td class="text-center" style="overflow:hidden"> <input type="number" min="0" form="drug-report" data-index="${index + 1}" name="Used${index + 1}" id="Used${index + 1}" class="form-control  border-1 text-center"> </td>
+      <td class="text-center" style="overflow:hidden"> <button class="btn btn-light rounded-circle"><i class="bi bi-x"></i></button> </td>
+      </tr>
         `);
     var x = document.querySelectorAll('input[list="drugs"]');
     for (let i = 0; i < x.length; i++) {

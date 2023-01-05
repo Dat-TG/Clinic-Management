@@ -1,10 +1,10 @@
 <h3 class="text-center mt-2"><b>BÁO CÁO SỬ DỤNG THUỐC</b></h3>
 <div class="table-container">
-    <table class="table table-bordered">
+    <table class="table table-bordered auto-index">
         <thead>
             <div class="d-flex justify-content-center mb-2">
                 <div class="text-center me-2">Tháng <input type="number" name="thang" min="1" max="12" form="drug-report" required value="{{thang}}"></div>
-                <div class="text-center">Năm <input type="number" name="nam" min="1" max="12" form="drug-report" required value="{{nam}}"></div>
+                <div class="text-center">Năm <input type="number" name="nam" form="drug-report" required value="{{nam}}"></div>
             </div>
             <tr>
                 <th scope="col" class="text-center">STT</th>
@@ -12,6 +12,7 @@
                 <th scope="col" class="text-center">Đơn vị tính</th>
                 <th scope="col" class="text-center">Số lượng</th>
                 <th scope="col" class="text-center">Số lần dùng</th>
+                <th scope="col" class="text-center"></th>
             </tr>
         </thead>
         <form id="drug-report" method="post" action="/tai-lieu/bao-cao-thuoc">
@@ -19,18 +20,19 @@
         <tbody>
             {{#each data}}
             <tr>
-                <th scope="row" class="text-center">{{sum @index 1}}</th>
+                <td scope="row" class="text-center"></td>
                 <td class="text-center"> <input type="text" form="drug-report" list="drugs" data-index="{{sum @index 1}}"
-                        name="Name{{sum @index 1}}" value="{{Name}}" class="form-control mx-sm-3 border-1 text-center"> </td>
+                        name="Name{{sum @index 1}}" id="Name{{sum @index 1}}" value="{{Name}}" class="form-control  border-1 text-center"> </td>
                 <td class="text-center"> <input type="text" form="drug-report" data-index="{{sum @index 1}}" value="{{Unit}}"
-                        name="Unit{{sum @index 1}}" id="Unit{{sum @index 1}}" class="form-control mx-sm-3 border-1 text-center">
+                        name="Unit{{sum @index 1}}" id="Unit{{sum @index 1}}" class="form-control  border-1 text-center">
                 </td>
                 <td class="text-center"> <input type="number" form="drug-report" data-index="{{sum @index 1}}" value="{{Quantity}}"
                         name="Quantity{{sum @index 1}}" id="Quantity{{sum @index 1}}"
-                        class="form-control mx-sm-3 border-1 text-center"> </td>
+                        class="form-control  border-1 text-center"> </td>
                 <td class="text-center"> <input type="number" form="drug-report" data-index="{{sum @index 1}}" value="{{Used}}"
-                        name="Used{{sum @index 1}}" id="Used{{sum @index 1}}" class="form-control mx-sm-3 border-1 text-center">
+                        name="Used{{sum @index 1}}" id="Used{{sum @index 1}}" class="form-control border-1 text-center">
                 </td>
+                 <td class="text-center"> <button class="btn btn-light rounded-circle"><i class="bi bi-x"></i></button> </td>
             </tr>
             {{/each}}
         </tbody>
