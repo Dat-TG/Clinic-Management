@@ -298,7 +298,7 @@ $(function () {
             $("#Price"+i).attr("id", "Price"+j);
             $("#Total"+i).attr("id", "Total"+j);
         }
-     })
+     });
 })
 
 function checkUpperCase(name) {
@@ -386,12 +386,12 @@ function autoGenerate() {
     $('table tbody').append(`
     <tr>
       <td scope="row" class="text-center"></td>
-      <td class="text-center"> <input type="text" list="drugs" data-index="${index + 1}" id="Name${index+1}" name="Name${index+1}" value="" class="form-control border-0" required form="invoiceForm"> </td>
-      <td class="text-center"><input type="text" data-index="${index + 1}" id="Unit${index + 1}" name="Unit${index + 1}" class="form-control border-0" readonly required form="invoiceForm"></td>
+      <td class="text-center"> <input type="text" list="drugs" data-index="${index + 1}" id="Name${index+1}" name="Name${index+1}" value="" class="form-control border-0" required form="invoiceForm" autocomplete="nonono"> </td>
+      <td class="text-center"><input type="text" data-index="${index + 1}" id="Unit${index + 1}" name="Unit${index + 1}" class="form-control border-0" onkeydown="return false;" autocomplete="off" style="caret-color: transparent !important;" required form="invoiceForm"></td>
       <td class="text-center"> <input type="number" data-index="${index + 1}" id="Quantity${index + 1}" name="Quantity${index + 1}" value=1 min=1 class="form-control border-0" required form="invoiceForm"> </td>
-      <td class="text-center"><input type="number" readonly id="MaxQuantity${index+1}"></td>
-      <td class="text-center"><input type="number" data-index="${index + 1}" id="Price${index + 1}" name="Price${index + 1}" class="form-control border-0" readonly required form="invoiceForm"></td>
-      <td class="text-center"><input type="number" data-index="${index + 1}" id="Total${index + 1}" name="Total${index + 1}" class="form-control border-0" readonly required form="invoiceForm"></td>
+      <td class="text-center"><input type="number" class="form-control border-0" id="MaxQuantity${index+1}" onkeydown="return false;" style="caret-color: transparent !important;" autocomplete="off"></td>
+      <td class="text-center"><input type="number" data-index="${index + 1}" id="Price${index + 1}" name="Price${index + 1}" class="form-control border-0" required onkeydown="return false;" style="caret-color: transparent !important;" autocomplete="off" form="invoiceForm"></td>
+      <td class="text-center"><input type="number" data-index="${index + 1}" id="Total${index + 1}" name="Total${index + 1}" class="form-control border-0" required onkeydown="return false;" style="caret-color: transparent !important;" autocomplete="off" form="invoiceForm"></td>
       <td class="text-center"> <button class="btn btn-light rounded-circle"><i class="bi bi-x"></i></button> </td>
     </tr>
         `);
