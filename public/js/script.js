@@ -389,6 +389,7 @@ function autoGenerate() {
       <td class="text-center"> <input type="text" list="drugs" data-index="${index + 1}" id="Name${index+1}" name="Name${index+1}" value="" class="form-control border-0" required form="invoiceForm"> </td>
       <td class="text-center"><input type="text" data-index="${index + 1}" id="Unit${index + 1}" name="Unit${index + 1}" class="form-control border-0" readonly required form="invoiceForm"></td>
       <td class="text-center"> <input type="number" data-index="${index + 1}" id="Quantity${index + 1}" name="Quantity${index + 1}" value=1 min=1 class="form-control border-0" required form="invoiceForm"> </td>
+      <td class="text-center"><input type="number" readonly id="MaxQuantity${index+1}"></td>
       <td class="text-center"><input type="number" data-index="${index + 1}" id="Price${index + 1}" name="Price${index + 1}" class="form-control border-0" readonly required form="invoiceForm"></td>
       <td class="text-center"><input type="number" data-index="${index + 1}" id="Total${index + 1}" name="Total${index + 1}" class="form-control border-0" readonly required form="invoiceForm"></td>
       <td class="text-center"> <button class="btn btn-light rounded-circle"><i class="bi bi-x"></i></button> </td>
@@ -422,27 +423,28 @@ function onInput1(e) {
 
     for (var i = 0; i < options.length; i++) {
         if (options[i].innerText === val) {
-            $.post("/tai-lieu/xuat-hoa-don",
-                {
-                    name: val,
-                },
-                function (data, status) {
-                    console.log(data);
+                    var Unit=options[i].getAttribute("data-unit");
+                    var Price=options[i].getAttribute("data-price");
+                    var MaxQuantity=options[i].getAttribute("data-quantity");
+                    $('#MaxQuantity'+index).val(MaxQuantity);
+                    $('#Quantity'+index).attr({
+                        "max" : MaxQuantity,
+                        "min" : 1
+                     })
                    // $('#Unit' + index).html(data.drug.Unit);
-                    $('#Unit' + index).val(data.drug.Unit);
+                    $('#Unit' + index).val(Unit);
                     //$('#Price' + index).html(data.drug.Price);
-                    $('#Price' + index).val(data.drug.Price);
+                    $('#Price' + index).val(Price);
                     let quantity = $('#Quantity' + index).val();
                     if (quantity=="") quantity=0;
                     let curTotal = parseInt($("#AllTotal").val());
                     let oldTotal = parseInt($('#Total' + index).val());
                     if (oldTotal > 0) curTotal -= oldTotal;
                     //$('#Total' + index).html(parseInt(data.drug.Price) * parseInt(quantity));
-                    $('#Total' + index).val(parseInt(data.drug.Price) * parseInt(quantity));
-                    curTotal += parseInt(data.drug.Price) * parseInt(quantity);
+                    $('#Total' + index).val(parseInt(Price) * parseInt(quantity));
+                    curTotal += parseInt(Price) * parseInt(quantity);
                     //$('#AllTotal').html(curTotal);
                     $('#AllTotal').val(curTotal);
-                });
             // An item was selected from the list!
             // yourCallbackHere()
             //alert('item selected: ' + val);

@@ -3,19 +3,17 @@
         <div class="container mb-5 mt-3">
             <div class="row d-flex align-items-baseline">
                 <div class="col-xl-9">
-                    <p style="color: #7e8d9f;font-size: 20px;">HÓA ĐƠN KHÁM BỆNH
+                    <p style="color: #7e8d9f;font-size: 20px;">PHIẾU KHÁM BỆNH
                     </p>
                 </div>
                 <div class="col-xl-3 float-end">
-                    <a type="button" class="btn btn-light text-capitalize border-0" id="btnPrint"
-                        data-bs-ripple-color="dark"><i class="fas fa-print text-primary"></i> Print</a>
                     <button type="submit" class="btn btn-light text-capitalize border-0" id="btnSave"
                         data-bs-ripple-color="dark" form="invoiceForm"><i class="fas fa-save text-primary"></i> Save</button>
                 </div>
                 <hr>
             </div>
 
-            <div class="container" id="printPDF">
+            <div class="container">
                 <div class="col-md-12">
                     <div class="text-center">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -77,7 +75,7 @@
                         </form>
                     </div>
                     <div class="col-xl-4">
-                        <p class="text-muted">Hóa đơn khám bệnh</p>
+                        <p class="text-muted">Phiếu khám bệnh</p>
                         <ul class="list-unstyled">
                             <li class="text-muted"><i class="fas fa-circle" style="color:#84B0CA ;"></i> <span
                                     class="fw-bold">Ngày tạo: </span><span>{{today}}</span></li>
@@ -99,6 +97,7 @@
                                 <th scope="col" class="text-center">Tên thuốc/dịch vụ</th>
                                 <th scope="col" class="text-center">Đơn vị tính</th>
                                 <th scope="col" class="text-center">Số lượng</th>
+                                <th scope="col" class="text-center">Trong kho</th>
                                 <th scope="col" class="text-center">Đơn giá</th>
                                 <th scope="col" class="text-center">Tổng cộng</th>
                                 <th scope="col" class="text-center"></th>
@@ -109,7 +108,7 @@
                     </table>
                     <datalist id="drugs">
                         {{#each drugs}}
-                        <option value="{{Name}}" data-id="{{ID}}">{{Name}}</option>
+                        <option value="{{Name}}" data-id="{{ID}}" data-quantity="{{Quantity}}" data-unit="{{Unit}}" data-price="{{Price}}">{{Name}}</option>
                         {{/each}}
                     </datalist>
                     <button onclick="autoGenerate()">

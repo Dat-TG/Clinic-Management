@@ -32,6 +32,7 @@ exports.createInvoice = async (req, res, next) => {
         for (let i = 0; i < services.length; i++) {
             services[i].Name = services[i].ServiceName;
             services[i].Unit = "Dịch vụ";
+            services[i].Quantity=1;
             drugs.push(services[i]);
         }
         res.render('invoice', { patients: patients, doctor: doctor[0], today: today, drugs: drugs,date:date,time:time, display1:"d-none",display2:"d-block", role:"doctor"});
@@ -61,7 +62,7 @@ exports.UpdateInvoice = async (req, res, next) => {
             data.ID=ID.toString();
         }
         await RecordsM.add(data);
-        return res.redirect('/tim-kiem/ho-so-benh-an');
+        return res.redirect('/tai-lieu/ho-so-benh-an/'+ID);
     }
     res.send({ user: user[0], drug: drug[0] });
 }
