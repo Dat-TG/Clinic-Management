@@ -299,6 +299,13 @@ $(function () {
             $("#Total"+i).attr("id", "Total"+j);
         }
      });
+     $('#invoiceForm').submit(function(event){
+        let nRows=parseInt(document.getElementsByTagName("tbody")[0].childElementCount);
+        if (nRows<=0) {
+            event.preventDefault();
+            alert("Cần thêm ít nhất 1 loại thuốc/dịch vụ!");
+        }
+     })
 })
 
 function checkUpperCase(name) {
