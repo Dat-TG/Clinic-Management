@@ -22,7 +22,7 @@
     </table>
     <datalist id="drugs">
         {{#each drugs}}
-        <option value="{{Name}}" data-id="{{ID}}">{{Name}}</option>
+        <option value="{{Name}}" data-id="{{ID}}" data-unit="{{Unit}}">{{Name}}</option>
         {{/each}}
     </datalist>
     <button onclick="autoGenerate1()">
