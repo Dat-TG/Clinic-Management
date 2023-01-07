@@ -45,16 +45,22 @@ https://nmcnpm-group21.onrender.com/
 ## Hướng dẫn deploy lên Render
 Truy cập https://render.com/ để tạo tài khoản
 ![sign_up_render](https://www.freecodecamp.org/news/content/images/2022/08/sign_up_render.png)
+
 Chọn ```New Web Service```
 ![dashboard](https://www.freecodecamp.org/news/content/images/2022/08/dashboard.png)
+
 Kết nối với tài khoản GitHub 
 ![new_web_service](https://www.freecodecamp.org/news/content/images/2022/08/new_web_service.png)
+
 Chọn Resposity của project sau đó nhấn ```Connect```
 ![connected_repository](https://www.freecodecamp.org/news/content/images/2022/08/connected_repository.png)
+
 Nhập các thông tin cần thiết
 ![details](https://www.freecodecamp.org/news/content/images/2022/08/details.png)
+
 Chọn dịch vụ bạn muốn sử dụng sau đó nhấn ```Create Web Service```
 ![advanced_options](https://www.freecodecamp.org/news/content/images/2022/08/advanced_options.png)
+
 Cuối cùng là chờ cho đến khi trang web deploy xong
 Chi tiết hướng dẫn xem tại: https://www.freecodecamp.org/news/how-to-deploy-nodejs-application-with-render/
 ## Current status
