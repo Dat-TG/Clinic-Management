@@ -5,7 +5,15 @@
                 <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">
                     <ol class="breadcrumb mb-0">
                         <li class="breadcrumb-item"><a href="/">Trang chủ</a></li>
-                        <li class="breadcrumb-item"><a href="/tim-kiem/bac-si">Tìm kiếm bác sĩ</a></li>
+                        {{#if session.Doctor}}
+                            {{#ifEquals session.Username data.Username}}
+                                <li class="breadcrumb-item"><a href="/tai-khoan">Tài khoản</a></li>
+                            {{else}}
+                                <li class="breadcrumb-item"><a href="/tim-kiem/bac-si">Tìm kiếm bác sĩ</a></li>
+                            {{/ifEquals}}
+                        {{else}}
+                            <li class="breadcrumb-item"><a href="/tim-kiem/bac-si">Tìm kiếm bác sĩ</a></li>
+                        {{/if}}
                         <li class="breadcrumb-item active" aria-current="page">{{data.Name}}</li>
                     </ol>
                 </nav>

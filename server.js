@@ -71,10 +71,9 @@ app.engine('hbs', hbs.engine({
                 `
                 <tr>
                     <th scope="row" class="text-center">${i + 1}</th>
-                    <td class="text-center"><input type="date" class="text-center" name="ngay-${i + 1}"></td>
-                    <td class="text-center"><input type="number" class="text-center" name="sobenhnhan-${i + 1}"></td>
-                    <td class="text-center"><input type="number" class="text-center" name="doanhthu-${i + 1}"></td>
-                    <td class="text-center"><input type="number" step="any" class="text-center" id="tyle-${i + 1}" name="tyle-${i + 1}"></td>
+                    <td class="text-center"><input type="number" class="text-center" name="sobenhnhan-${i + 1}" min="0"></td>
+                    <td class="text-center"><input type="number" class="text-center" name="doanhthu-${i + 1}" min="0"></td>
+                    <td class="text-center"><input type="text" class="text-center" id="tyle-${i + 1}" name="tyle-${i + 1}" required onkeydown="return false;" style="caret-color: transparent !important;" autocomplete="off"></td>
                 </tr>
                 `;
             }
@@ -88,10 +87,9 @@ app.engine('hbs', hbs.engine({
                 `
                 <tr>
                     <th scope="row" class="text-center">${i + 1}</th>
-                    <td class="text-center"><input type="date" class="text-center" name="ngay-${i + 1}" value="{{data.ngay-${i + 1}}}"></td>
-                    <td class="text-center"><input type="number" class="text-center" name="sobenhnhan-${i + 1}" value="{{data.sobenhnhan-${i + 1}}}"></td>
-                    <td class="text-center"><input type="number" class="text-center" name="doanhthu-${i + 1}" value="{{data.doanhthu-${i + 1}}}"></td>
-                    <td class="text-center"><input type="text" step="any" class="text-center" id="tyle-${i + 1}" name="tyle-${i + 1}" value="{{data.tyle-${i + 1}}}"></td>
+                    <td class="text-center"><input type="number" class="text-center" name="sobenhnhan-${i + 1}" value="{{data.sobenhnhan-${i + 1}}}" min="0"></td>
+                    <td class="text-center"><input type="number" class="text-center" name="doanhthu-${i + 1}" value="{{data.doanhthu-${i + 1}}}" min="0"></td>
+                    <td class="text-center"><input type="text" class="text-center" id="tyle-${i + 1}" name="tyle-${i + 1}" value="{{data.tyle-${i + 1}}}" required onkeydown="return false;" style="caret-color: transparent !important;" autocomplete="off"></td>
                 </tr>
                 `;
             }
@@ -146,11 +144,6 @@ app.all('*',function(req, res) {
     }
 });
 
-
-app.use((err, req, res, next) => {
-    const statusCode = err.statusCode | 500;
-    res.status(statusCode).send(err.message);
-})
 
 
 app.listen(port, () => {
