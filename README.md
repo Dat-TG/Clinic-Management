@@ -117,3 +117,4 @@ Tính năng chung cho cả bác sĩ và bệnh nhân
 Đối với bác sĩ
 - Đăng bài viết chia sẻ về sức khỏe, kiến thức, ...
 ## Video demo
+https://drive.google.com/drive/folders/13C8DbPHM5C5svDsbEf9bbXTN8SwaOl_x
