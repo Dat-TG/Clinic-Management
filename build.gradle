@@ -1,0 +1,36 @@
+plugins {
+  //inlude the nodeJS plugin to execute nodejs and npm tasks
+  id "com.github.node-gradle.node" version "7.0.2"
+}
+
+node {
+	download = true
+	version = "20.14.0"  
+    npmVersion = "10.0.0" 
+}
+
+//declare a build task
+task build
+
+//declare a task to create a zip of the app
+task zip(type: Zip) {
+	from ('.') {
+		include "*"
+		// include "bin/**"
+		// include "data/**"
+		include "node_modules/**"
+		include "public/**"
+		include "routers/**"
+        include "controllers/**"
+		include "views/**"
+	}
+	destinationDirectory.set(file("dist"))
+    archiveBaseName.set("clinic")
+}
+
+//declare task dependencies
+build.dependsOn zip
+zip.dependsOn npm_build
+npm_build.dependsOn npm_test
+npm_test.dependsOn npmInstall
+npm_build.dependsOn npmInstall

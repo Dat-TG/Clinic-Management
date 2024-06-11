@@ -5,7 +5,6 @@ const session = require('express-session');
 const { urlencoded } = require('express');
 const path=require('path');
 const app = express();
-const port = process.env.PORT || 3000;
 
 //Use Session 
 app.set('trust proxy', 1) // trust first proxy
@@ -145,7 +144,4 @@ app.all('*',function(req, res) {
 });
 
 
-
-app.listen(port, () => {
-    console.log(`Server is running on port ${port}`)
-})
+module.exports = app;
