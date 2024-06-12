@@ -1,4 +1,4 @@
-FROM node:carbon
+FROM node:18.18.1
 WORKDIR /usr/src/app
 COPY package*.json ./
 RUN npm install
