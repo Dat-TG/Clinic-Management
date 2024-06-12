@@ -1,10 +1,13 @@
 
 const request = require('supertest');
 const app = require('../server');
+
 const {client}=require('../model/Database.m');
 
 afterAll(async () => {
-    await client.close(); // Close the connection to the database when testing is done
+    if (client) {
+        await client.close(); // Close the connection to the database when testing is done
+    }
 });
 
 describe('Index Page', () => {
