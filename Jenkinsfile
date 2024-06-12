@@ -14,20 +14,13 @@ pipeline {
                 git url: 'https://github.com/Dat-TG/Clinic-Management.git'
             }
         }
-    //     stage('Build') {
-    //         steps {
-    //             echo 'Running build automation'
-    //             bat './gradlew build --no-daemon'
-    //             archiveArtifacts artifacts: 'dist/trainSchedule.zip'
-    //         }
-    //     }
-    //     stage('Test') {
-    //         steps {
-    //             echo 'Running tests with Jest'
-    //             bat 'npm install'
-    //             bat 'npm test'
-    //         }
-    //     }
+        stage('Build and Unit Test') {
+            steps {
+                echo 'Running build automation'
+                bat './gradlew build --no-daemon'
+                archiveArtifacts artifacts: 'dist/clinic.zip'
+            }
+        }
     //     stage('Build Docker Image') {
     //         steps {
     //             script {

@@ -1,22 +1,26 @@
 plugins {
-  //inlude the nodeJS plugin to execute nodejs and npm tasks
   id "com.github.node-gradle.node" version "7.0.2"
 }
 
 node {
 	download = true
-	version = "20.14.0"  
-    npmVersion = "10.0.0" 
+	version = "18.18.1"  
+    npmVersion = "9.8.1" 
 }
 
 //declare a build task
 task build
 
+// Define npmBuild task
+task npm_build(type: NpmTask) {
+  args = ['run', 'build']
+}
+
 //declare a task to create a zip of the app
 task zip(type: Zip) {
 	from ('.') {
 		include "*"
-		// include "bin/**"
+		include "bin/**"
 		// include "data/**"
 		include "node_modules/**"
 		include "public/**"
