@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: clinic
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: ab
+    spec:
+      containers:
+        - name: clinic
+          image: ddawst/clinic:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3000
+          env:
+            - name: ALLOW_EMPTY_PASSWORD
+              value: "yes"
+  selector:
+    matchLabels:
+      app: ab
