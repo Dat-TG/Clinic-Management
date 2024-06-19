@@ -23,14 +23,32 @@ pipeline {
                 archiveArtifacts artifacts: 'dist/clinic.zip'
             }
         }
+        stage('Start Application') {
+            steps {
+                script {
+                    if (isUnix()) {
+                        sh 'npm start &'
+                    } else {
+                        bat 'start /B npm start'
+                    }
+                    // Give the application some time to start
+                    sleep(time: 10, unit: 'SECONDS')
+                }
+            }
+        }
         stage('Execute Katalon Tests') {
             steps {
                 script {
-                    def katalonCmd = "katalonc -noSplash -runMode=console -projectPath="C:\Users\PC\Katalon Studio\Clinic Management\Clinic Management.prj" -retry=0 -testSuitePath="Test Suites/Jenkins Test" -browserType="Chrome" -executionProfile="default" -apiKey="ea38acfe-c0a4-439f-953e-0b8ecdd3f85b" --config -proxy.auth.option=NO_PROXY -proxy.system.option=NO_PROXY -proxy.system.applyToDesiredCapabilities=true -webui.autoUpdateDrivers=true"
-                    if (isUnix()) {
-                        sh katalonCmd
-                    } else {
-                        bat katalonCmd
+                    catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                        def katalonCmd = '''
+                        cd C:\\Users\\PC\\Katalon_Studio_Engine_Windows_64-9.5.0
+                        katalonc -noSplash -runMode=console -projectPath="C:\\Users\\PC\\Katalon Studio\\Clinic Management\\Clinic Management.prj" -retry=0 -testSuitePath="Test Suites/Jenkins Test" -browserType="Chrome" -executionProfile="default" -apiKey="ea38acfe-c0a4-439f-953e-0b8ecdd3f85b" --config -proxy.auth.option=NO_PROXY -proxy.system.option=NO_PROXY -proxy.system.applyToDesiredCapabilities=true -webui.autoUpdateDrivers=true
+                        '''
+                        if (isUnix()) {
+                            sh katalonCmd
+                        } else {
+                            bat katalonCmd
+                        }
                     }
                 }
             }
