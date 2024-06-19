@@ -39,7 +39,7 @@
                                 {{!-- Phone input auto --}}
                                 <div class="col-12 col-sm-6 text-start">
                                     <label class="form-label text-black" for="phone-number">Số điện thoại &#8727;</label>
-                                    <input type="text" id="phone-number" class="form-control bg-light" name="Phone"
+                                    <input type="tel" id="phone-number" pattern="((09|03|07|08|05)[0-9]{8})|(02[0-9]{9})" class="form-control bg-light" name="Phone"
                                         value="{{user.Phone}}" required>
                                 </div>
 
