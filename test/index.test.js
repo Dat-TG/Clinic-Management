@@ -6,7 +6,8 @@ const {client}=require('../model/Database.m');
 
 afterAll(async () => {
     if (client) {
-        await client.close(); // Close the connection to the database when testing is done
+        // Close the connection to the database when testing is done
+        await client.close(); 
     }
 });
 
